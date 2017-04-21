@@ -2,7 +2,7 @@ import java.io.File;
 import java.io.IOException;
 import javax.sound.sampled.*;
 
-class audioPlayer {
+class SoundManager {
 
   String song;
   Clip clip;
