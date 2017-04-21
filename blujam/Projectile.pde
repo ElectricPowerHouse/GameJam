@@ -1,24 +1,45 @@
 class Projectile{
-  float dist, baseDist, xVel, angle;
+  float dist, baseDist, xVel, yVel, angle;
+  float xPos = 0;
+  boolean dead = false;
   
-  Projectile(float distance, float xVelocity, float a) {
+  Projectile(float distance, float bounds, float xVelocity, float a, float yVelocity) {
     dist = distance;
-    baseDist = distance;
+    baseDist = bounds;
     xVel = xVelocity;
+    yVel = yVelocity;
     angle = a;
   }
   
   void display() {
-    pushMatrix();
-    this.update();
-    rotate(angle);
-    noStroke();
-    fill(255);
-    ellipse(0, dist-50, 10, 10);
-    popMatrix();
+    this.update2();
+    if (!dead) {
+      pushMatrix();
+      rotate(angle);
+      noStroke();
+      fill(255);
+      ellipse(xPos, dist-10, 10, 10);
+      popMatrix();
+    }
   }
   
   void update() {
-    angle += xVel;
+    dist -= yVel;
+    yVel -= 0.25;
+    if (dist > baseDist) {
+      dead = true;
+    }
+  }
+  
+  void update2() {
+    if(xVel != 0) {
+      xPos += xVel;
+      xVel += ((abs(xVel))/xVel)*0.05;
+    }
+    dist -= yVel;
+    yVel -= 0.25;
+    if (dist > baseDist) {
+      dead = true;
+    }
   }
 }
