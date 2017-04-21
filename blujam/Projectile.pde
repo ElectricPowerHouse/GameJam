@@ -12,7 +12,7 @@ class Projectile{
   }
   
   void display() {
-    this.update2();
+    this.update();
     if (!dead) {
       pushMatrix();
       rotate(angle);
@@ -24,21 +24,13 @@ class Projectile{
   }
   
   void update() {
-    dist -= yVel;
-    yVel -= 0.25;
-    if (dist > baseDist) {
-      dead = true;
-    }
-  }
-  
-  void update2() {
     if(xVel != 0) {
       xPos += xVel;
       xVel += ((abs(xVel))/xVel)*0.05;
     }
     dist -= yVel;
     yVel -= 0.25;
-    if (dist > baseDist) {
+    if (sqrt(sq(xPos)+sq(dist)) >= baseDist) {
       dead = true;
     }
   }
