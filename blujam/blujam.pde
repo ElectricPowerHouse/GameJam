@@ -84,12 +84,23 @@ void draw() {
   }
   playerOne.display();
   playerTwo.display();
+  
+  drawCore();
+  drawBounds();
+ 
+  popMatrix();
+}
+
+void drawCore(){
+}
+
+void drawBounds(){
   noFill();
   strokeWeight(2);
   stroke(240);
   ellipse(0,0,ellipseSz,ellipseSz);
-  popMatrix();
 }
+
 void keyPressed() {
   if (key == 'a') {
     p1left = true;
