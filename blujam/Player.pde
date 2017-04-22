@@ -71,4 +71,9 @@ class Player{
       }
     }
   }
+  
+  float getAngle(){
+   
+    return angle;
+  }
 }

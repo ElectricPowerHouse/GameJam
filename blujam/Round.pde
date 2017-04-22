@@ -35,8 +35,8 @@ float currentMilli = 0;
 
 void drawRound() {
   
-  checkProjectileSpawn();
-  
+  checkPickupSpawn();
+  checkPickupCollision();
   
   //print(width,height);
   background(57);
@@ -162,7 +162,7 @@ void drawRound() {
   popMatrix();
 }
 
-void checkProjectileSpawn(){
+void checkPickupSpawn(){
   
   currentMilli = millis();
   if(currentMilli-startMilli > 10000){
@@ -173,6 +173,32 @@ void checkProjectileSpawn(){
    
    
   }
+  
+}
+
+void checkPickupCollision(){
+  
+  
+        float targAngle = pickup.getAngle();
+        float curAngle = playerOne.getAngle();
+        if (abs(targAngle/(2*PI)) > 1) {
+          targAngle -= (int(targAngle/(2*PI))*2*PI);
+        }
+        if (abs(curAngle/(2*PI)) > 1) {
+          curAngle -= (int(curAngle/(2*PI))*2*PI);
+        }
+        if (curAngle < 0) {
+          curAngle += 2*PI;
+        }
+        if (targAngle < 0) {
+          targAngle += 2*PI;
+        }
+        println(targAngle);
+        println(curAngle);
+        if (curAngle >= targAngle - PI/20.0 && curAngle <= targAngle + PI/20.0) {
+          pickup.deActivate();
+        }
+   
   
 }
 
