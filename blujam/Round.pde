@@ -4,7 +4,8 @@ class Round{
   BlueHole blueHole;
   Pickup pickup;
   
-  //SoundManager charge = new SoundManager("C:/Users/Jackson/Desktop/GameJam/blujam/tst.wav");
+  //SoundManager round1 = new SoundManager("C:/Users/Jackson/Desktop/GameJam/blujam/sounds/Level1Music.wav");
+  //SoundManager round2 = new SoundManager("C:/Users/Jackson/Desktop/GameJam/blujam/sounds/TitleScreen.wav");
   
   float ellipseSz = 550;
   float playerWd = 48.0;
@@ -33,18 +34,24 @@ class Round{
   boolean p1right, p1left, p1jump, p1fire, p1charge, p2right, p2left, p2jump, p2fire, p2charge;
   
   int roundOver = 0;
+  int roundNum;
   
   float startMilli = 0;
   float currentMilli = 0;
   int minPickupTime = 5000;
   int maxPickupTime = 30000;
 
-  Round(){
+  Round(int roundCount){
+    roundNum = roundCount;
     
     blueHole= new BlueHole(ellipseSz/3.0);
     pickup = new Pickup(ellipseSz/2.0);
     
-    //charge.playLoop();
+    if (roundNum == 1) {
+      //round1.playLoop();
+    } else if (roundNum == 2) {
+      //round2.playLoop();
+    }
   }
 
   void drawRound() {
@@ -57,6 +64,13 @@ class Round{
     }
     if (playerTwo.dead) {
       roundOver = 2;
+    }
+    if (roundOver > 0) {
+      if (roundNum == 1) {
+        //round1.stop();
+      } else if (roundNum == 2) {
+        //round2.stop();
+      }
     }
     
     background(37);
