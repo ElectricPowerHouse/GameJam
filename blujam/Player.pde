@@ -122,11 +122,11 @@ class Player{
             targAngle += 2*PI;
           }
           if (checkProj.type == 3) {
-            if (curAngle >= targAngle - PI/10.0 && curAngle <= targAngle + PI/10.0) {
+            if (curAngle >= targAngle - PI/10.0 && curAngle <= targAngle + PI/10.0 && dist > baseDist-ht) {
               this.jump(15);
             }
           } else {
-            if (curAngle >= targAngle - PI/20.0 && curAngle <= targAngle + PI/20.0) {
+            if (curAngle >= targAngle - PI/20.0 && curAngle <= targAngle + PI/20.0 && dist > baseDist-ht) {
               this.jump(15);
             }
           }

@@ -360,7 +360,7 @@ class Round{
     if (targAngle < 0) {
       targAngle += 2*PI;
     }
-    if (curAngle >= targAngle - PI/20.0 && curAngle <= targAngle + PI/20.0) {
+    if (curAngle >= targAngle - PI/20.0 && curAngle <= targAngle + PI/20.0 && player.dist > player.baseDist-player.ht) {
       pickup.deActivate();
       player.poweredUp=true;
       player.powerStart = millis();
@@ -375,18 +375,18 @@ class Round{
     pushStyle();
     shapeMode(CENTER);
     pushMatrix();
-    rotate(PI/4000.0*frameCount);
+    //rotate(PI/4000.0*frameCount);
     fill(43);
     noStroke();
-    shape(ring, 0,0,ellipseSz*2,ellipseSz*2);
+    //shape(ring, 0,0,ellipseSz*2,ellipseSz*2);
     popMatrix();
     
     pushMatrix();
-    rotate(-PI/8000.0*frameCount);
+    //rotate(-PI/8000.0*frameCount);
     fill(50);
     strokeWeight(18);
     stroke(37);
-    shape(ring2, 0,0,ellipseSz*2,ellipseSz*2);
+    //shape(ring2, 0,0,ellipseSz*2,ellipseSz*2);
     popMatrix();
     
     fill(23);
