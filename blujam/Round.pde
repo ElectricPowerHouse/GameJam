@@ -73,7 +73,7 @@ class Round{
       }
     }
     
-    background(37);
+    background(94,62,62);
     pushMatrix();
     translate(width/2.0, height/2.0);
     
