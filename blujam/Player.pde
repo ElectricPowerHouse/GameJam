@@ -41,9 +41,16 @@ class Player{
   
   void jump(float jumpVel) {
     if (touchingGround) {
-      println("test");
       touchingGround = false;
       jumpDif = jumpVel;
+    }
+  }
+  
+  void checkCollisions(ArrayList<Projectile> enemyProjs) {
+    for(Projectile checkProj : enemyProjs) {
+      if (angle < checkProj.finalangle + PI/100.0 && angle > checkProj.finalangle - PI/100.0) {
+        col = color(0,0,255);
+      }
     }
   }
 }

@@ -10,20 +10,16 @@ float ellipseSz = 550;
 Player playerOne = new Player(0.0, ellipseSz/2.0, 22.0, 22.0, color(20,255,220));
 Player playerTwo = new Player(PI, ellipseSz/2.0, 22.0, 22.0, color(255,210,20));
 
-Projectile p1projectile;
+ArrayList<Projectile> p1projectiles = new ArrayList<Projectile>();
 float p1projvelocity = 3;
 float p1aim = 0;
 
 Projectile p2projectile;
+ArrayList<Projectile> p2projectiles = new ArrayList<Projectile>();
 float p2projvelocity = 3;
 float p2aim = 0;
 
 boolean p1right, p1left, p1jump, p1fire, p1charge, p2right, p2left, p2jump, p2fire, p2charge;
-
-/*void setup() {
-  size(600,600);
-  rectMode(CENTER);
-}*/
 
 void drawRound() {
   
@@ -54,6 +50,8 @@ void drawRound() {
   if (p1charge) {
     if (p1projvelocity < 15) {
       p1projvelocity += 0.3;
+    } else {
+      playerOne.col = color(255,0,0);
     }
   }
   if (p1fire) {
@@ -64,9 +62,10 @@ void drawRound() {
     } else {
       p1aim = 0;
     }
-    p1projectile = new Projectile(playerOne.dist, ellipseSz/2.0, 3*p1aim, playerOne.angle, p1projvelocity);
+    p1projectiles.add(new Projectile(playerOne.dist, ellipseSz/2.0, 3*p1aim, playerOne.angle, p1projvelocity));
     p1fire = false;
     p1projvelocity = 3;
+    playerOne.col = color(20,255,220);
   }
   if (p2charge) {
     if (p2projvelocity < 15) {
@@ -81,16 +80,49 @@ void drawRound() {
     } else {
       p2aim = 0;
     }
-    p2projectile = new Projectile(playerTwo.dist, ellipseSz/2.0, 3*p2aim, playerTwo.angle, p2projvelocity);
+    p2projectiles.add(new Projectile(playerTwo.dist, ellipseSz/2.0, 3*p2aim, playerTwo.angle, p2projvelocity));
     p2fire = false;
     p2projvelocity = 3;
   }
-  if (p2projectile != null) {
-    p2projectile.display();
+  if (p2projectiles.size() > 0) {
+    for(Projectile curProj : p2projectiles) {
+      curProj.display();
+      if (curProj.dead) {
+        pushMatrix();
+        rotate(curProj.finalangle);
+        noStroke();
+        fill(255,255,255);
+        ellipse(0,ellipseSz/2.0,50,50);
+        popMatrix();
+      }
+    }
   }
-  if (p1projectile != null) {
-    p1projectile.display();
+  for(int i = p2projectiles.size()-1; i >= 0; i--) {
+    Projectile curProj = p2projectiles.get(i);
+    if (curProj.dead) {
+      p2projectiles.remove(i);
+    }
   }
+  if (p1projectiles.size() > 0) {
+    for(Projectile curProj : p1projectiles) {
+      curProj.display();
+      if (curProj.dead) {
+        pushMatrix();
+        rotate(curProj.finalangle);
+        noStroke();
+        fill(255,255,255);
+        ellipse(0,ellipseSz/2.0,50,50);
+        popMatrix();
+      }
+    }
+  }
+  for(int i = p1projectiles.size()-1; i >= 0; i--) {
+    Projectile curProj = p1projectiles.get(i);
+    if (curProj.dead) {
+      p1projectiles.remove(i);
+    }
+  }
+  
   playerOne.display();
   playerTwo.display();
   

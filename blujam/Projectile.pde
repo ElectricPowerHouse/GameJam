@@ -1,5 +1,5 @@
 class Projectile{
-  float dist, baseDist, xVel, yVel, angle;
+  float dist, baseDist, xVel, yVel, angle, finalangle;
   float xPos = 0;
   boolean dead = false;
   
@@ -12,8 +12,8 @@ class Projectile{
   }
   
   void display() {
-    this.update();
     if (!dead) {
+      this.update();
       pushMatrix();
       rotate(angle);
       noStroke();
@@ -31,6 +31,11 @@ class Projectile{
     dist -= yVel;
     yVel -= 0.25;
     if (sqrt(sq(xPos)+sq(dist)) >= baseDist) {
+      if (xVel != 0) {
+        finalangle = angle-(((abs(xVel))/xVel)*2*(asin(((sqrt(sq(xPos)+sq(baseDist-dist)))/2.0)/baseDist)));
+      } else {
+        finalangle = angle;
+      }
       dead = true;
     }
   }
