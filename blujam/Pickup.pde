@@ -2,18 +2,24 @@
 //random 0-2 pi angle
 class Pickup{
   
-  float angle, dist, wd, ht, jumpDif;
+  float angle, dist, wd, ht;
   boolean active;
+  int type;
+  
   
    Pickup (float distance, float widt, float hght) {
+     
+     getRandomType();
   
      active = true;
     dist = distance;
     wd = widt;
     ht = hght;
-    jumpDif = 0;
+    
     
     angle = random(0,2)*PI;
+    
+    
     
    }
    
@@ -48,11 +54,20 @@ class Pickup{
   
   void activate(){
     
+    angle = random(0,2)*PI;
+    getRandomType();
     active = true;
   }
   
   boolean isActive(){
    return active; 
+  }
+  
+  
+  void getRandomType(){
+    
+    type = int(random(0,3));
+    
   }
     
     
