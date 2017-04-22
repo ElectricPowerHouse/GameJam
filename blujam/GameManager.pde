@@ -28,6 +28,10 @@ void drawManager(){
    drawMenu();
    
  }
+ if (game.gameOver) {
+   gameState = "MAINMENU";
+   drawMenu();
+ }
   
 }
 

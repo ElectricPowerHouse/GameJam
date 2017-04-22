@@ -28,6 +28,8 @@ class Round{
   
   boolean p1right, p1left, p1jump, p1fire, p1charge, p2right, p2left, p2jump, p2fire, p2charge;
   
+  int roundOver = 0;
+  
   float startMilli = 0;
   float currentMilli = 0;
   
@@ -43,6 +45,12 @@ class Round{
     
     checkPickupSpawn();
     checkPickupCollision();
+    if (playerOne.dead) {
+      roundOver = 1;
+    }
+    if (playerTwo.dead) {
+      roundOver = 2;
+    }
     
     background(57);
     pushMatrix();
