@@ -45,6 +45,7 @@ class Player{
       rotate(angle);
       noStroke();
       fill(col);
+      ellipse(flipVal*wd/6.0, dist-ht/2.0, wd/4.0, ht/4.0);
       scale(flipVal,1);
       image(img, -wd/2.0, dist-ht, wd, ht);
       popMatrix();
