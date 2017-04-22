@@ -18,7 +18,7 @@ class Projectile{
   
   void display() {
     if (!dead) {
-      bounceUpdate();
+      update();
       pushMatrix();
       rotate(angle);
       noStroke();
@@ -62,5 +62,8 @@ class Projectile{
         
     }
     
+  }
+  
+  
   }
 }
