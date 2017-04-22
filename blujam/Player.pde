@@ -63,8 +63,6 @@ class Player{
         if (targAngle < 0) {
           targAngle += 2*PI;
         }
-        println(targAngle);
-        println(curAngle);
         if (curAngle >= targAngle - PI/20.0 && curAngle <= targAngle + PI/20.0) {
           this.jump(15);
         }

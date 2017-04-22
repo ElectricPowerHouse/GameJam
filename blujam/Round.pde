@@ -6,7 +6,7 @@ class Round{
   
   Round(){
     
-    blueHole= new BlueHole();
+    blueHole= new BlueHole(ellipseSz/3.0);
     pickup = new Pickup(ellipseSz/2.0, 22.0, 22.0);
     
     
