@@ -286,8 +286,10 @@ class Round{
     
     checkPlayerCollision();
     
+    if(playerOneScore<3&&playerTwoScore<3){
     playerOne.display();
     playerTwo.display();
+    }
     
     pickup.drawPickup();
     drawScores();

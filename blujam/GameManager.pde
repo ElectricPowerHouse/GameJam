@@ -51,7 +51,7 @@ class GameManager {
 
   void drawMenu() {
 
-    background(94, 62, 62);
+    background(37);
     fill(255);
 
 
