@@ -21,6 +21,7 @@ class Round{
   float playerHt = 48.0;
   PImage image1 = loadImage("test1.png");
   PImage image2 = loadImage("test2.png");
+  PImage splash = loadImage("splash.png");
   PShape ring = loadShape("ring.svg");
   PShape ring2 = loadShape("ring.svg");
 
