@@ -115,8 +115,14 @@ class Player{
           if (targAngle < 0) {
             targAngle += 2*PI;
           }
-          if (curAngle >= targAngle - PI/20.0 && curAngle <= targAngle + PI/20.0) {
-            this.jump(15);
+          if (powerType == 3) {
+            if (curAngle >= targAngle - PI/15.0 && curAngle <= targAngle + PI/15.0) {
+              this.jump(15);
+            }
+          } else {
+            if (curAngle >= targAngle - PI/20.0 && curAngle <= targAngle + PI/20.0) {
+              this.jump(15);
+            }
           }
         }
       }
