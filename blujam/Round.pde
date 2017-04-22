@@ -308,6 +308,7 @@ class Round{
     
      //need to do this after the matrix has been popped to properly overlay
     drawWinScreen();
+    image(splash, 0, 0);
   }
   
   void checkPickupSpawn(){
