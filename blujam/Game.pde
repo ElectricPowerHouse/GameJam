@@ -2,7 +2,17 @@
 
 class Game{
   
-  Round round = new Round();
+  int roundNum;
+  
+  Round round;
+  
+  Game(){
+    
+  int roundNum = 1;
+  round = new Round();
+  
+  
+  }
   
 
   
