@@ -2,6 +2,7 @@ class Projectile{
   float dist, baseDist, xVel, yVel, angle, finalangle;
   float xPos = 0;
   int bounces = 5;
+  int type = 1;
   boolean dead = false;
   float initXVel, initYVel;
   
@@ -17,7 +18,11 @@ class Projectile{
   
   void display() {
     if (!dead) {
-      this.update();
+      if (type == 0) {
+        this.update();
+      } else if (type == 1) {
+        bounceUpdate();
+      }
       pushMatrix();
       rotate(angle);
       noStroke();
@@ -35,11 +40,7 @@ class Projectile{
     dist -= yVel;
     yVel -= 0.25;
     if (sqrt(sq(xPos)+sq(dist)) >= baseDist) {
-      if (xVel != 0) {
-        finalangle = angle-(((abs(xVel))/xVel)*2*(asin(((sqrt(sq(xPos)+sq(baseDist-dist)))/2.0)/baseDist)));
-      } else {
-        finalangle = angle;
-      }
+      finalangle = angle-(((abs(xVel))/xVel)*2*(asin(((sqrt(sq(xPos)+sq(baseDist-dist)))/2.0)/baseDist)));
       dead = true;
     }
   }
@@ -53,12 +54,16 @@ class Projectile{
     yVel -= 0.25;
     if (sqrt(sq(xPos)+sq(dist)) >= baseDist) {
       if(bounces>0){
-        
+        finalangle = angle-(((abs(xVel))/xVel)*2*(asin(((sqrt(sq(xPos)+sq(baseDist-dist)))/2.0)/baseDist)));
+        angle = finalangle;
         xVel = initXVel;
         yVel = initYVel;
-        dist = baseDist;
-        angle = angle-(((abs(xVel))/xVel)*2*(asin(((sqrt(sq(xPos)+sq(baseDist-dist)))/2.0)/baseDist)));
+        dist = baseDist-2;
+        bounces--;
         
+      } else {
+        finalangle = angle-(((abs(xVel))/xVel)*2*(asin(((sqrt(sq(xPos)+sq(baseDist-dist)))/2.0)/baseDist)));
+        dead = true;
       }
     }
   }

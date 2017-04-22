@@ -66,7 +66,7 @@ class Player{
   void checkCollisions(ArrayList<Projectile> enemyProjs) {
     if (!dead) {
       for(Projectile checkProj : enemyProjs) {
-        if (checkProj.dead) {
+        if (checkProj.dead || checkProj.type == 1) {
           float targAngle = checkProj.finalangle;
           float curAngle = angle;
           if (abs(targAngle/(2*PI)) > 1) {
