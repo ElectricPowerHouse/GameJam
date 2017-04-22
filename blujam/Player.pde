@@ -50,29 +50,23 @@ class Player{
     for(Projectile checkProj : enemyProjs) {
       if (checkProj.dead) {
         float targAngle = checkProj.finalangle;
-        println(targAngle);
         float curAngle = angle;
-        println(curAngle);
         if (abs(targAngle/(2*PI)) > 1) {
           targAngle -= (int(targAngle/(2*PI))*2*PI);
         }
         if (abs(curAngle/(2*PI)) > 1) {
           curAngle -= (int(curAngle/(2*PI))*2*PI);
         }
-        if (curAngle > 0) {
-          if (targAngle < 0) {
-            targAngle *= -1;
-          }
-        } else if (curAngle < 0) {
-          if (targAngle > 0) {
-            targAngle *= -1;
-          }
+        if (curAngle < 0) {
+          curAngle += 2*PI;
+        }
+        if (targAngle < 0) {
+          targAngle += 2*PI;
         }
         println(targAngle);
         println(curAngle);
         if (curAngle >= targAngle - PI/20.0 && curAngle <= targAngle + PI/20.0) {
-          println("hello");
-          col = color(0,0,255);
+          this.jump(15);
         }
       }
     }

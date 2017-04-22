@@ -15,12 +15,12 @@ Player playerOne = new Player(0.0, ellipseSz/2.0, 22.0, 22.0, color(20,255,220))
 Player playerTwo = new Player(PI, ellipseSz/2.0, 22.0, 22.0, color(255,210,20));
 
 ArrayList<Projectile> p1projectiles = new ArrayList<Projectile>();
-float p1projvelocity = 3;
+float p1projvelocity = 0;
 float p1aim = 0;
 
 Projectile p2projectile;
 ArrayList<Projectile> p2projectiles = new ArrayList<Projectile>();
-float p2projvelocity = 3;
+float p2projvelocity = 0;
 float p2aim = 0;
 
 boolean p1right, p1left, p1jump, p1fire, p1charge, p2right, p2left, p2jump, p2fire, p2charge;
@@ -59,16 +59,18 @@ void drawRound() {
     }
   }
   if (p1fire) {
-    if(p1left) {
-      p1aim = -1;
-    } else if (p1right) {
-      p1aim = 1;
-    } else {
-      p1aim = 0;
+    if(p1projvelocity > 3) {
+      if(p1left) {
+        p1aim = -1;
+      } else if (p1right) {
+        p1aim = 1;
+      } else {
+        p1aim = 0;
+      }
+      p1projectiles.add(new Projectile(playerOne.dist, ellipseSz/2.0, 3*p1aim, playerOne.angle, p1projvelocity));
     }
-    p1projectiles.add(new Projectile(playerOne.dist, ellipseSz/2.0, 3*p1aim, playerOne.angle, p1projvelocity));
     p1fire = false;
-    p1projvelocity = 3;
+    p1projvelocity = 0;
     playerOne.col = color(20,255,220);
   }
   if (p2charge) {
@@ -77,16 +79,18 @@ void drawRound() {
     }
   }
   if (p2fire) {
-    if(p2left) {
-      p2aim = -1;
-    } else if (p2right) {
-      p2aim = 1;
-    } else {
-      p2aim = 0;
+    if(p2projvelocity > 3) {
+      if(p2left) {
+        p2aim = -1;
+      } else if (p2right) {
+        p2aim = 1;
+      } else {
+        p2aim = 0;
+      }
+      p2projectiles.add(new Projectile(playerTwo.dist, ellipseSz/2.0, 3*p2aim, playerTwo.angle, p2projvelocity));
     }
-    p2projectiles.add(new Projectile(playerTwo.dist, ellipseSz/2.0, 3*p2aim, playerTwo.angle, p2projvelocity));
     p2fire = false;
-    p2projvelocity = 3;
+    p2projvelocity = 0;
   }
   if (p1projectiles.size() > 0) {
     for(Projectile curProj : p1projectiles) {

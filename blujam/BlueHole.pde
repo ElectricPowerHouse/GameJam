@@ -14,9 +14,10 @@ class BlueHole{
   void drawHole(){
     
     
-    stroke(255);
-    fill(0,102,204);
-   ellipse(0,0,height/5,height/5); 
+    //stroke(255);
+    noStroke();
+    fill(20,132,244);
+    ellipse(0,0,height/5,height/5); 
     
   }
   
