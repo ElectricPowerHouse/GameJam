@@ -10,10 +10,12 @@ class Round{
   int shakeLength = 3;
   float shakeAngle = PI/150.0;
   
+  PFont pointed;
+  
   //SoundManager round1 = new SoundManager("C:/Users/Jackson/Desktop/GameJam/blujam/sounds/Level1Music.wav");
   //SoundManager round2 = new SoundManager("C:/Users/Jackson/Desktop/GameJam/blujam/sounds/TitleScreen.wav");
   float ellipseSz = 550;
-  float ellipseSz = 800;
+  //float ellipseSz = 800;
   float playerWd = 48.0;
   float playerHt = 48.0;
   PImage image1 = loadImage("test1.png");
@@ -50,6 +52,8 @@ class Round{
   int maxPickupTime = 30000;
 
   Round(int roundCount){
+    
+    pointed = createFont("font/Pointed.ttf", height/4);
     roundNum = roundCount;
     
     blueHole= new BlueHole(ellipseSz/3.0);
@@ -264,9 +268,14 @@ class Round{
     
     pickup.drawPickup();
     
+  
+    
     drawBounds();
     
     popMatrix();
+    
+     //need to do this after the matrix has been popped to properly overlay
+    drawWinScreen();
   }
   
   void checkPickupSpawn(){
@@ -384,6 +393,17 @@ class Round{
         p2jump = false;
       }
     }
+  }
+  
+  
+  void drawWinScreen(){
+    
+    fill(255);
+    textFont(pointed, height/10);
+    text("VICTOR", width/16, (height/2));
+    textFont(pointed, height/20);
+    text("PLAYER2", width/12, (height-(height/2.3)));
+    
   }
 
   
