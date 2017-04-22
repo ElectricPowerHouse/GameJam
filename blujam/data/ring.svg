@@ -4,42 +4,41 @@
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="400px"
 	 height="400px" viewBox="0 0 400 400" enable-background="new 0 0 400 400" xml:space="preserve">
 <g id="Layer_2">
-	<g>
-		<polygon fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" points="122.382,175.32 70.482,147.699 79.395,101.991 
-			143.305,136.005 		"/>
-		<polygon fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" points="142.564,150.978 94.126,97.17 132.683,85.895 
-			175.664,121.181 		"/>
-		<polygon fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" points="190.355,129.159 153.895,129.159 157.575,101.991 
-			190.355,89.192 		"/>
-		
-			<rect x="165.451" y="76.421" transform="matrix(0.6691 0.7432 -0.7432 0.6691 140.0808 -117.2078)" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="72.398" height="44.537"/>
-		<polygon fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" points="308.617,299.734 260.178,245.927 278.99,228.99 
-			324.146,272.936 		"/>
-		
-			<rect x="189.358" y="287.078" transform="matrix(0.1061 0.9944 -0.9944 0.1061 499.6587 43.6366)" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="72.399" height="25.313"/>
-		
-			<rect x="154.156" y="249.443" transform="matrix(-0.015 0.9999 -0.9999 -0.015 468.0858 88.696)" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="72.399" height="50.923"/>
-		<rect x="225.557" y="60.479" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="29.582" height="50.831"/>
-		
-			<rect x="230.202" y="50.327" transform="matrix(0.9023 0.431 -0.431 0.9023 62.803 -99.7039)" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="42.465" height="76.838"/>
-		
-			<rect x="272.568" y="97.487" transform="matrix(0.9023 0.431 -0.431 0.9023 87.2738 -113.3642)" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="42.464" height="76.838"/>
-		
-			<rect x="86.356" y="205.812" transform="matrix(0.9023 0.431 -0.431 0.9023 115.7762 -22.5214)" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="42.463" height="76.837"/>
-		<polygon fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" points="110.186,238.327 71.869,220.024 119.087,157.425 
-			143.305,168.994 		"/>
-		
-			<rect x="139.183" y="236.485" transform="matrix(0.9023 0.431 -0.431 0.9023 134.1551 -42.2955)" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="42.464" height="76.84"/>
-		
-			<rect x="277.312" y="162.512" transform="matrix(1 0.0037 -0.0037 1 0.7414 -1.0972)" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="42.463" height="76.838"/>
-		
-			<rect x="251.577" y="103.662" transform="matrix(0.7921 -0.6104 0.6104 0.7921 -30.0081 196.0589)" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="42.463" height="76.838"/>
-		<polygon fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" points="172.125,261.702 138.489,287.621 110.246,246.283 
-			125.225,200.839 		"/>
-		
-			<rect x="225.652" y="220.02" transform="matrix(0.7921 -0.6104 0.6104 0.7921 -106.4202 204.4158)" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="42.464" height="76.838"/>
-	</g>
+	<polygon fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" points="122.381,176.082 -25.255,97.51 -26.047,16.614 
+		155.756,113.37 	"/>
+	<polygon fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" points="142.564,151.74 65.226,65.829 140.706,35.297 
+		212.536,88.75 	"/>
+	<polygon fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" points="190.355,129.921 153.895,129.921 157.575,102.754 
+		190.355,89.955 	"/>
+	
+		<rect x="149.295" y="61.27" transform="matrix(0.6691 0.7432 -0.7432 0.6691 146.5303 -129.0624)" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="137.782" height="77.468"/>
+	<polygon fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" points="324.148,369.125 233.236,268.139 275.188,230.371 
+		361.029,311.865 	"/>
+	
+		<rect x="178.372" y="306.967" transform="matrix(0.1061 0.9944 -0.9944 0.1061 529.8672 57.6292)" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="109.015" height="33.134"/>
+	
+		<rect x="138.503" y="265.625" transform="matrix(-0.015 0.9999 -0.9999 -0.015 484.0321 105.3554)" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="103.24" height="50.923"/>
+	<rect x="225.557" y="61.242" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="29.582" height="50.831"/>
+	
+		<rect x="198.497" y="-16.923" transform="matrix(0.9023 0.431 -0.431 0.9023 46.1319 -99.7904)" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="89.581" height="137.667"/>
+	
+		<rect x="285.332" y="41.916" transform="matrix(0.9023 0.431 -0.431 0.9023 77.3071 -121.3479)" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="42.193" height="136.003"/>
+	
+		<rect x="72.017" y="205.339" transform="matrix(0.9023 0.431 -0.431 0.9023 128.5115 -15.1514)" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="51.349" height="141.359"/>
+	<polygon fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" points="13.546,253.474 -8.815,171.134 134.1,164.855 
+		148.234,216.897 	"/>
+	
+		<rect x="106.392" y="229.817" transform="matrix(0.9023 0.431 -0.431 0.9023 150.6066 -26.2837)" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="53.832" height="178.82"/>
+	
+		<rect x="244.399" y="173.578" transform="matrix(-0.4632 0.8862 -0.8862 -0.4632 632.9065 40.6519)" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="119.487" height="76.839"/>
+	
+		<rect x="74.989" y="123.769" transform="matrix(0.7921 -0.6104 0.6104 0.7921 -79.132 101.0441)" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="67.559" height="85.84"/>
+	<polygon fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" points="172.125,262.465 108.344,311.613 82.131,268.711 
+		125.225,201.602 	"/>
+	
+		<rect x="203.201" y="228.429" transform="matrix(0.7921 -0.6104 0.6104 0.7921 -116.229 202.1208)" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="70.819" height="86.524"/>
 </g>
 <g id="Layer_1">
+	<circle fill="#FFFFFF" stroke="#000000" stroke-width="2" stroke-miterlimit="10" cx="200" cy="200.001" r="100"/>
 </g>
 </svg>
