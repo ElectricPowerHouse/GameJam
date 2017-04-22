@@ -2,6 +2,9 @@
 //random 0-2 pi angle
 class Pickup {
 
+  
+   PImage pickupImage = loadImage("powerup2.png");
+  
   float angle, dist, wd, ht;
   boolean active;
   int type;
@@ -17,7 +20,7 @@ class Pickup {
     active = true;
     dist = distance;
     //wd = widt;
-    
+     pickupImage.resize(int(wd),int(ht));
 
 
     angle = random(0, 2)*PI;
@@ -35,7 +38,8 @@ class Pickup {
     rotate(angle);
     noStroke();
     fill(c);
-    ellipse(0, dist-(ht/2.0), wd, wd);
+    image(pickupImage,0, int(dist-(ht)));
+    //ellipse(0, dist-(ht/2.0), wd, wd);
     popMatrix();
   }
 
