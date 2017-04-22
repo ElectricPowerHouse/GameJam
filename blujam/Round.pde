@@ -2,10 +2,13 @@
 class Round{
   
   BlueHole blueHole;
+  Pickup pickup;
   
   Round(){
     
     blueHole= new BlueHole();
+    pickup = new Pickup(ellipseSz/2.0, 22.0, 22.0);
+    
     
   }
 
@@ -25,7 +28,15 @@ float p2aim = 0;
 
 boolean p1right, p1left, p1jump, p1fire, p1charge, p2right, p2left, p2jump, p2fire, p2charge;
 
+float startMilli = 0;
+float currentMilli = 0;
+
+
+
 void drawRound() {
+  
+  checkProjectileSpawn();
+  
   
   //print(width,height);
   background(57);
@@ -143,10 +154,26 @@ void drawRound() {
   playerOne.display();
   playerTwo.display();
   
+  pickup.drawPickup();
   
   drawBounds();
+  
  
   popMatrix();
+}
+
+void checkProjectileSpawn(){
+  
+  currentMilli = millis();
+  if(currentMilli-startMilli > 1000){
+    
+    pickup = new Pickup(ellipseSz/2.0, 22.0, 22.0);
+    
+   startMilli = currentMilli;
+   
+   
+  }
+  
 }
 
 
