@@ -116,7 +116,7 @@ class Round{
     }
     if (p1fire) {
       if(p1projvelocity > minVel) {
-        p1projectiles.add(new Projectile(playerOne.dist, ellipseSz/2.0, projxvel*p1aim, playerOne.angle, p1projvelocity,playerOne.powerType));
+        p1projectiles.add(new Projectile(playerOne.dist, ellipseSz/2.0, projxvel*p1aim, playerOne.angle, p1projvelocity,playerOne.powerType, playerOne.proj));
       }
       p1fire = false;
       p1projvelocity = 0;

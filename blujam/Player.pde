@@ -4,7 +4,7 @@ class Player{
   int powerType = 0;
   color col;
   int flipVal = 1;
-  PImage img;
+  PImage img, proj;
   LightTrail[] trail = new LightTrail[3];
   float powerStart, powerDuration, powerCount;
   
@@ -17,6 +17,7 @@ class Player{
     col = baseCol;
     jumpDif = 0;
     img = image;
+    proj = loadImage("proj.png");
     powerDuration = 5000;
     for (int i = 0; i < 3; i++) {   
       if (i == 1) {
