@@ -458,21 +458,25 @@ class Round{
   void drawWinScreen(){
     
     
-    if(playerTwoScore>2){
+    //if(playerTwoScore>2){
     fill(255);
     textFont(pointed, height/10);
     text("VICTOR", width/16, (height/2));
     textFont(pointed, height/20);
     text("PLAYER2", width/12, (height-(height/2.3)));
-    }
+    textFont(pointed, height/25);
+    text("'ENTER'", width/10, (height-(height/4)));
+    text("TO RETURN", width/12, (height-(height/4.6)));
+    //}
     
-    if(playerOneScore>2){
+    //if(playerOneScore>2){
+      fill(255);
     textFont(pointed, height/10);
     text("VICTOR", width-(width/5), (height/2));
     textFont(pointed, height/20);
     text("PLAYER1", width-(width/5.6), (height-(height/2.3)));
     
-    }
+    //}
     
     
     
