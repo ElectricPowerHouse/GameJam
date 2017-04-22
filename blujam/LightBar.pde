@@ -32,6 +32,7 @@ class LightBar{
   
   void update(){
     col = color(red(col), green(col), blue(col), alpha(col) - dur);
+    sz *= 0.98;
     if (alpha(col) <= 0) {
       expired = true;
     }
