@@ -26,8 +26,8 @@ class LightTrail{
   void updateLight(float angle, float dist) {
     x1 = x2;
     y1 = y2;
-    x2 = -(dist-24)*sin(angle);
-    y2 = (dist-24)*cos(angle);
-    trail.add(new LightBar(4,col,10,x1, x2, y1, y2));
+    x2 = -(dist)*sin(angle);
+    y2 = (dist)*cos(angle);
+    trail.add(new LightBar(sz,col,dur,x1, x2, y1, y2));
   }
 }

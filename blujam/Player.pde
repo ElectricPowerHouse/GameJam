@@ -4,7 +4,7 @@ class Player{
   color col;
   int flipVal = 1;
   PImage img;
-  LightTrail trail;
+  LightTrail[] trail = new LightTrail[3];
   
   Player (float a, float distance, float widt, float hght, color baseCol, PImage image) {
     angle = a;
@@ -15,7 +15,13 @@ class Player{
     col = baseCol;
     jumpDif = 0;
     img = image;
-    trail = new LightTrail(col, 5, 20);
+    for (int i = 0; i < 3; i++) {   
+      if (i == 1) {
+        trail[i] = new LightTrail(col, 10, 7);
+      } else {
+        trail[i] = new LightTrail(col, 10, 4);
+      }
+    }
     poweredUp=false;
   }
   
@@ -23,10 +29,11 @@ class Player{
     if (!dead) {
       pushMatrix();
       this.updateJump();
-      //if (touchingGround) {
-      trail.updateLight(angle,dist);
-      //}
-      trail.drawLight();
+      for (int i = 0; i < 3; i++) {  
+        trail[i].updateLight(angle,dist-18-(i*4.5));
+        trail[i].drawLight();
+      }
+      
       if (dist > baseDist) {
         touchingGround = true;
         dist = baseDist;
