@@ -3,6 +3,9 @@ class GameManager{
   PFont calibri;
   PFont pointed;
   
+  PImage wasd = loadImage("data/wasd.png");
+  PImage arrows = loadImage("data/arrows.png");
+  
   
   String gameState;
   Game game;
@@ -12,8 +15,8 @@ class GameManager{
      calibri = createFont("font/calibri.ttf",32); 
      pointed = createFont("font/Pointed.ttf",height/4);
      
-     gameState = "PLAYING";
-     game = new Game();    // delete this when menu properly implemented
+     gameState = "MAINMENU";
+     //game = new Game();    // delete this when menu properly implemented
   }
   
   
@@ -49,6 +52,11 @@ void drawMenu(){
    text("ELIUM",width/4,height/2.3);
    textFont(pointed,height/12);
    text("press any key to battle",width/3.5,height-(height/2.2));
+   
+   image(wasd,0,height-(height/3));
+   wasd.resize(1,1);
+   image(arrows,0,height-(height/3));
+   arrows.resize(1,1);
   
   
 }
