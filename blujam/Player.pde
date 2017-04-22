@@ -14,16 +14,16 @@ class Player{
     col = baseCol;
     jumpDif = 0;
     img = image;
-    trail = new LightTrail(col, 5, 30);
+    trail = new LightTrail(col, 5, 20);
   }
   
   void display() {
     if (!dead) {
       pushMatrix();
       this.updateJump();
-      if (touchingGround) {
-        trail.updateLight(angle,dist);
-      }
+      //if (touchingGround) {
+      trail.updateLight(angle,dist);
+      //}
       trail.drawLight();
       if (dist > baseDist) {
         touchingGround = true;
