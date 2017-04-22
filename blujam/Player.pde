@@ -48,8 +48,32 @@ class Player{
   
   void checkCollisions(ArrayList<Projectile> enemyProjs) {
     for(Projectile checkProj : enemyProjs) {
-      if (angle < checkProj.finalangle + PI/100.0 && angle > checkProj.finalangle - PI/100.0) {
-        col = color(0,0,255);
+      if (checkProj.dead) {
+        float targAngle = checkProj.finalangle;
+        println(targAngle);
+        float curAngle = angle;
+        println(curAngle);
+        if (abs(targAngle/(2*PI)) > 1) {
+          targAngle -= (int(targAngle/(2*PI))*2*PI);
+        }
+        if (abs(curAngle/(2*PI)) > 1) {
+          curAngle -= (int(curAngle/(2*PI))*2*PI);
+        }
+        if (curAngle > 0) {
+          if (targAngle < 0) {
+            targAngle *= -1;
+          }
+        } else if (curAngle < 0) {
+          if (targAngle > 0) {
+            targAngle *= -1;
+          }
+        }
+        println(targAngle);
+        println(curAngle);
+        if (curAngle >= targAngle - PI/20.0 && curAngle <= targAngle + PI/20.0) {
+          println("hello");
+          col = color(0,0,255);
+        }
       }
     }
   }

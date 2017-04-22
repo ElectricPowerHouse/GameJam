@@ -1,4 +1,3 @@
-
 GameManager gameManager;
 
 void setup(){

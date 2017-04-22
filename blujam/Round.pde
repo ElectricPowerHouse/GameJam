@@ -88,6 +88,19 @@ void drawRound() {
     p2fire = false;
     p2projvelocity = 3;
   }
+  if (p1projectiles.size() > 0) {
+    for(Projectile curProj : p1projectiles) {
+      curProj.display();
+      if (curProj.dead) {
+        pushMatrix();
+        rotate(curProj.finalangle);
+        noStroke();
+        fill(255,255,255);
+        ellipse(0,ellipseSz/2.0,50,50);
+        popMatrix();
+      }
+    }
+  }
   if (p2projectiles.size() > 0) {
     for(Projectile curProj : p2projectiles) {
       curProj.display();
@@ -101,23 +114,17 @@ void drawRound() {
       }
     }
   }
+  if (p2projectiles.size() > 0) {
+    playerOne.checkCollisions(p2projectiles);
+  }
+  if (p1projectiles.size() > 0) {
+    playerTwo.checkCollisions(p1projectiles);
+  }
+  
   for(int i = p2projectiles.size()-1; i >= 0; i--) {
     Projectile curProj = p2projectiles.get(i);
     if (curProj.dead) {
       p2projectiles.remove(i);
-    }
-  }
-  if (p1projectiles.size() > 0) {
-    for(Projectile curProj : p1projectiles) {
-      curProj.display();
-      if (curProj.dead) {
-        pushMatrix();
-        rotate(curProj.finalangle);
-        noStroke();
-        fill(255,255,255);
-        ellipse(0,ellipseSz/2.0,50,50);
-        popMatrix();
-      }
     }
   }
   for(int i = p1projectiles.size()-1; i >= 0; i--) {
