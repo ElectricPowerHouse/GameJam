@@ -165,7 +165,7 @@ void drawRound() {
 void checkProjectileSpawn(){
   
   currentMilli = millis();
-  if(currentMilli-startMilli > 1000){
+  if(currentMilli-startMilli > 10000){
     
     pickup = new Pickup(ellipseSz/2.0, 22.0, 22.0);
     
