@@ -12,8 +12,10 @@ class Round{
   
   //SoundManager round1 = new SoundManager("C:/Users/Jackson/Desktop/GameJam/blujam/sounds/Level1Music.wav");
   //SoundManager round2 = new SoundManager("C:/Users/Jackson/Desktop/GameJam/blujam/sounds/TitleScreen.wav");
+  
   float ellipseSz = 550;
-  float ellipseSz = 800;
+  //float ellipseSz = 800;
+  
   float playerWd = 48.0;
   float playerHt = 48.0;
   PImage image1 = loadImage("test1.png");

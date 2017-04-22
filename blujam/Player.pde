@@ -18,7 +18,7 @@ class Player{
     jumpDif = 0;
     img = image;
     proj = loadImage("proj.png");
-    powerDuration = 5000;
+    powerDuration = 4000;
     for (int i = 0; i < 3; i++) {   
       if (i == 1) {
         trail[i] = new LightTrail(col, 10, 7);
@@ -32,8 +32,16 @@ class Player{
   void display() {
     if (!dead) {
       if (poweredUp && powerType != 2) {
+        if (powerType == 3) {
+          wd = 64;
+          ht = 64;
+        }
         powerCount = millis();
         if (powerCount - powerStart >= powerDuration) {
+          if (powerType == 3) {
+            wd = 48;
+            ht = 48;
+          }
           poweredUp = false;
           powerType = 0;
         }

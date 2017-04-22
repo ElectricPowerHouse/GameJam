@@ -64,13 +64,13 @@ class Pickup {
 
   void getRandomType() {
 
-    type = int(random(0, 3));
-    //type = 2;
+    type = int(random(1, 4));
+    type = 3;
     
-    if (type==0) {
+    if (type==1) {
       c = color(255,0,0);
       wd = 20;
-    } else if (type ==1) {
+    } else if (type ==2) {
       c = color(0,255,0);
       wd = 30;
     } else {
