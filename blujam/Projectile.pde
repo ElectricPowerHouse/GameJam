@@ -7,8 +7,9 @@ class Projectile{
   float initXVel, initYVel;
   boolean isBouncy;
   PImage pro;
+  color col;
   
-  Projectile(float distance, float bounds, float xVelocity, float a, float yVelocity, int type, PImage proj) {
+  Projectile(float distance, float bounds, float xVelocity, float a, float yVelocity, int type, PImage proj, color initCol) {
     dist = distance;
     baseDist = bounds;
     xVel = xVelocity;
@@ -17,6 +18,7 @@ class Projectile{
     initYVel = yVel;
     angle = a;
     pro = proj;
+    col = initCol;
     this.type = type;
     
   }
@@ -30,9 +32,10 @@ class Projectile{
       }
       pushMatrix();
       rotate(angle);
-      noStroke();
-      fill(255);
-      image(pro, xPos, dist-10, 10, 10);
+      pushStyle();
+      tint(col);
+      image(pro, xPos, dist-10, 18, 18);
+      popStyle();
       popMatrix();
     }
   }

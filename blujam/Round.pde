@@ -116,7 +116,7 @@ class Round{
     }
     if (p1fire) {
       if(p1projvelocity > minVel) {
-        p1projectiles.add(new Projectile(playerOne.dist, ellipseSz/2.0, projxvel*p1aim, playerOne.angle, p1projvelocity,playerOne.powerType, playerOne.proj));
+        p1projectiles.add(new Projectile(playerOne.dist, ellipseSz/2.0, projxvel*p1aim, playerOne.angle, p1projvelocity,playerOne.powerType, playerOne.proj, playerOne.col));
       }
       p1fire = false;
       p1projvelocity = 0;
@@ -133,7 +133,7 @@ class Round{
     }
     if (p2fire) {
       if(p2projvelocity > minVel) {
-        p2projectiles.add(new Projectile(playerTwo.dist, ellipseSz/2.0, projxvel*p2aim, playerTwo.angle, p2projvelocity, playerTwo.powerType, playerTwo.proj));
+        p2projectiles.add(new Projectile(playerTwo.dist, ellipseSz/2.0, projxvel*p2aim, playerTwo.angle, p2projvelocity, playerTwo.powerType, playerTwo.proj, playerTwo.col));
       }
       p2fire = false;
       p2projvelocity = 0;
@@ -235,10 +235,12 @@ class Round{
   }  
   
   void drawBounds(){
+    pushStyle();
     noFill();
-    strokeWeight(2);
-    stroke(240);
-    ellipse(0,0,ellipseSz,ellipseSz);
+    strokeWeight(5);
+    stroke(200);
+    ellipse(0,0,ellipseSz+5,ellipseSz+5);
+    popStyle();
   }
   
   void keyPressedRound() {
