@@ -18,6 +18,7 @@ class Round{
   float playerHt = 48.0;
   PImage image1 = loadImage("test1.png");
   PImage image2 = loadImage("test2.png");
+  PImage ring = loadImage("ring.png");
 
   Player playerOne = new Player(0.0, ellipseSz/2.0, playerWd, playerHt, color(20,255,220), image1);
   Player playerTwo = new Player(PI, ellipseSz/2.0, playerWd, playerHt, color(255,210,20), image2);
@@ -331,10 +332,8 @@ class Round{
   
   void drawBounds(){
     pushStyle();
-    noFill();
-    strokeWeight(5);
-    stroke(200);
-    ellipse(0,0,ellipseSz+5,ellipseSz+5);
+    imageMode(CENTER);
+    image(ring, 0,0,ellipseSz*1.252,ellipseSz*1.252);
     popStyle();
   }
   
