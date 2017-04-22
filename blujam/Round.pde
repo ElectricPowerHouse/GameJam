@@ -4,6 +4,8 @@ class Round{
   BlueHole blueHole;
   Pickup pickup;
   
+  //SoundManager charge = new SoundManager("C:/Users/Jackson/Desktop/GameJam/blujam/tst.wav");
+  
   float ellipseSz = 550;
   float playerWd = 48.0;
   float playerHt = 48.0;
@@ -40,7 +42,7 @@ class Round{
     blueHole= new BlueHole(ellipseSz/3.0);
     pickup = new Pickup(ellipseSz/2.0);
     
-    
+    //charge.playLoop();
   }
 
   void drawRound() {
@@ -54,7 +56,7 @@ class Round{
       roundOver = 2;
     }
     
-    background(57);
+    background(37);
     pushMatrix();
     translate(width/2.0, height/2.0);
     
