@@ -5,8 +5,8 @@ class Round{
   Pickup pickup;
   
   float ellipseSz = 550;
-  float playerWd = 22.0;
-  float playerHt = 22.0;
+  float playerWd = 48.0;
+  float playerHt = 48.0;
   PImage image1 = loadImage("test1.png");
   PImage image2 = loadImage("test1.png");
 
@@ -15,16 +15,16 @@ class Round{
   
   ArrayList<Projectile> p1projectiles = new ArrayList<Projectile>();
   float p1projvelocity = 0;
-  float p1aim = 0;
+  float p1aim = -1;
   
   ArrayList<Projectile> p2projectiles = new ArrayList<Projectile>();
   float p2projvelocity = 0;
-  float p2aim = 0;
+  float p2aim = -1;
   
-  float maxVel = 15;
+  float maxVel = 18;
   float minVel = 3;
   float movespeed = PI/180.0;
-  float chargeInc = 0.3;
+  float chargeInc = 0.35;
   float projxvel = 3;
   float jumpHght = 8;
   
@@ -61,15 +61,19 @@ class Round{
     blueHole.drawHole();
     
     if (p1left) {
+      p1aim = -1;
       playerOne.update(movespeed);
     }
     if (p1right) {
+      p1aim = 1;
       playerOne.update(-movespeed);
     }
     if (p2left) {
+      p2aim = -1;
       playerTwo.update(movespeed);
     }
     if (p2right) {
+      p2aim = 1;
       playerTwo.update(-movespeed);
     }
     if (p1jump) {
@@ -89,13 +93,6 @@ class Round{
     }
     if (p1fire) {
       if(p1projvelocity > minVel) {
-        if(p1left) {
-          p1aim = -1;
-        } else if (p1right) {
-          p1aim = 1;
-        } else {
-          p1aim = 0;
-        }
         p1projectiles.add(new Projectile(playerOne.dist, ellipseSz/2.0, projxvel*p1aim, playerOne.angle, p1projvelocity));
       }
       p1fire = false;
@@ -113,13 +110,6 @@ class Round{
     }
     if (p2fire) {
       if(p2projvelocity > minVel) {
-        if(p2left) {
-          p2aim = -1;
-        } else if (p2right) {
-          p2aim = 1;
-        } else {
-          p2aim = 0;
-        }
         p2projectiles.add(new Projectile(playerTwo.dist, ellipseSz/2.0, projxvel*p2aim, playerTwo.angle, p2projvelocity));
       }
       p2fire = false;
