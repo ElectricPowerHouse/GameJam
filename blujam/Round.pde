@@ -435,6 +435,10 @@ class Round{
   
   void drawScores(){
     
+    if(playerOneScore>2||playerTwoScore>2){
+     return; 
+    }
+    
     fill(255);
     textFont(pointed, height/5);
     text(playerOneScore, -width/2.5, height/3);
@@ -447,17 +451,22 @@ class Round{
   
   void drawWinScreen(){
     
+    
+    if(playerTwoScore>2){
     fill(255);
     textFont(pointed, height/10);
     text("VICTOR", width/16, (height/2));
     textFont(pointed, height/20);
     text("PLAYER2", width/12, (height-(height/2.3)));
+    }
     
-    
+    if(playerOneScore>2){
     textFont(pointed, height/10);
     text("VICTOR", width-(width/5), (height/2));
     textFont(pointed, height/20);
     text("PLAYER1", width-(width/5.6), (height-(height/2.3)));
+    
+    }
     
     
     

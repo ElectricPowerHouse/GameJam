@@ -27,22 +27,30 @@ void drawGame(){
     round.drawRound();
     if (round.roundOver == 1) {
       playerTwoScore++;
-      if (roundNum < 4) {
+      if (playerTwoScore>3) {
+        roundNum++;
+      }
+      else{
         roundNum++;
         round = new Round(roundNum,playerOneScore,playerTwoScore);
       }
-    }
+      }
+    
     else if (round.roundOver == 2) {
       playerOneScore++;
-      if (roundNum < 4) {
+      
+      if (playerOneScore>3) {
+        roundNum++;
+      }
+      else{
         roundNum++;
         round = new Round(roundNum,playerOneScore,playerTwoScore);
       }
     }  
-    if (roundNum >= 4) {
+    /*if (roundNum >= 4) {
       round = null;
       gameOver = true;
-    }
+    }*/
   }
 }
 
