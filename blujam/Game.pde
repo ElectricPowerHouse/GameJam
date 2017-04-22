@@ -6,10 +6,16 @@ class Game{
   boolean gameOver;
   Round round;
   
+  int playerOneScore;
+  int playerTwoScore;
+  
   Game(){
     
     roundNum = 1;
-    round = new Round(roundNum);
+    round = new Round(roundNum, playerOneScore, playerTwoScore);
+    
+    playerOneScore = 0;
+    playerTwoScore = 0;
   
   
   }
@@ -20,17 +26,17 @@ void drawGame(){
   if (round != null) {
     round.drawRound();
     if (round.roundOver == 1) {
-      println("Player Two Wins!");
+      playerTwoScore++;
       if (roundNum < 4) {
         roundNum++;
-        round = new Round(roundNum);
+        round = new Round(roundNum,playerOneScore,playerTwoScore);
       }
     }
     else if (round.roundOver == 2) {
-      println("Player One Wins!");
+      playerOneScore++;
       if (roundNum < 4) {
         roundNum++;
-        round = new Round(roundNum);
+        round = new Round(roundNum,playerOneScore,playerTwoScore);
       }
     }  
     if (roundNum >= 4) {

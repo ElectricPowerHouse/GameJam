@@ -46,16 +46,20 @@ class Round{
   
   int roundOver = 0;
   int roundNum;
+  int playerOneScore;
+  int playerTwoScore;
   
   float startMilli = 0;
   float currentMilli = 0;
   int minPickupTime = 5000;
   int maxPickupTime = 30000;
 
-  Round(int roundCount){
+  Round(int roundCount, int playerOneScore, int playerTwoScore){
     
     pointed = createFont("font/Pointed.ttf", height/4);
     roundNum = roundCount;
+    this.playerOneScore = playerOneScore;
+    this.playerTwoScore = playerTwoScore;
     
     blueHole= new BlueHole(ellipseSz/3.0);
     pickup = new Pickup(ellipseSz/2.0);
@@ -405,8 +409,8 @@ class Round{
     
     fill(255);
     textFont(pointed, height/5);
-    text("2", -width/2.5, height/3);
-    text("2", width/2.9, height/3);
+    text(playerOneScore, -width/2.5, height/3);
+    text(playerTwoScore, width/2.9, height/3);
     
     
     
