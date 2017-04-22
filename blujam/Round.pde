@@ -410,6 +410,12 @@ class Round{
     textFont(pointed, height/20);
     text("PLAYER2", width/12, (height-(height/2.3)));
     
+    
+    textFont(pointed, height/10);
+    textFont(pointed, height/20);
+    
+    
+    
   }
 
   
