@@ -1,6 +1,6 @@
 class Player{
   float angle, dist, wd, ht, jumpDif, baseDist;
-  boolean touchingGround, dead;
+  boolean touchingGround, dead, poweredUp;
   color col;
   PImage img;
   LightTrail trail;
@@ -15,6 +15,7 @@ class Player{
     jumpDif = 0;
     img = image;
     trail = new LightTrail(col, 5, 30);
+    poweredUp = false;
   }
   
   void display() {
