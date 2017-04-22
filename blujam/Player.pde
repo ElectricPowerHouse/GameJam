@@ -1,10 +1,12 @@
 class Player{
   float angle, dist, wd, ht, jumpDif, baseDist;
   boolean touchingGround, dead, poweredUp;
+  int powerType = 0;
   color col;
   int flipVal = 1;
   PImage img;
   LightTrail[] trail = new LightTrail[3];
+  float powerStart, powerDuration, powerCount;
   
   Player (float a, float distance, float widt, float hght, color baseCol, PImage image) {
     angle = a;
@@ -15,6 +17,7 @@ class Player{
     col = baseCol;
     jumpDif = 0;
     img = image;
+    powerDuration = 5000;
     for (int i = 0; i < 3; i++) {   
       if (i == 1) {
         trail[i] = new LightTrail(col, 10, 7);
@@ -30,8 +33,7 @@ class Player{
       pushMatrix();
       this.updateJump();
       for (int i = 0; i < 3; i++) {  
-        trail[i].updateLight(angle,dist-18-(i*4.5));
-        trail[i].drawLight();
+        trail[i].updateLight(angle,dist-18-(i*4.5),col);         trail[i].drawLight();
       }
       
       if (dist > baseDist) {
@@ -42,7 +44,6 @@ class Player{
       rotate(angle);
       noStroke();
       fill(col);
-      //rect(0,dist-(ht/2.0),wd,ht);
       scale(flipVal,1);
       image(img, -wd/2.0, dist-ht, wd, ht);
       popMatrix();
@@ -50,6 +51,13 @@ class Player{
   }
   
   void update(float angleDif) {
+    if (poweredUp) {
+      powerCount = millis();
+      if (powerCount - powerStart >= powerDuration) {
+        poweredUp = false;
+        powerType = 0;
+      }
+    }
     if (!dead) {
       angle += angleDif;
     }

@@ -23,7 +23,8 @@ class LightTrail{
     }
   }
   
-  void updateLight(float angle, float dist) {
+  void updateLight(float angle, float dist, color newCol) {
+    col = newCol;
     x1 = x2;
     y1 = y2;
     x2 = -(dist)*sin(angle);
