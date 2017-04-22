@@ -345,15 +345,18 @@ class Round{
   }  
   
   void drawBounds(){
+    ring.disableStyle();
     pushStyle();
-    
     shapeMode(CENTER);
-    
+    fill(85);
+    stroke(0);
+    strokeWeight(1);
     shape(ring, 0,0,ellipseSz*2,ellipseSz*2);
     fill(37);
     noStroke();
     ellipse(0,0,ellipseSz,ellipseSz);
     popStyle();
+   
   }
   
   void keyPressedRound() {
