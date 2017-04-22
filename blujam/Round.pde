@@ -11,7 +11,7 @@ class Round{
   float playerWd = 48.0;
   float playerHt = 48.0;
   PImage image1 = loadImage("test1.png");
-  PImage image2 = loadImage("test1.png");
+  PImage image2 = loadImage("test2.png");
 
   Player playerOne = new Player(0.0, ellipseSz/2.0, playerWd, playerHt, color(20,255,220), image1);
   Player playerTwo = new Player(PI, ellipseSz/2.0, playerWd, playerHt, color(255,210,20), image2);
