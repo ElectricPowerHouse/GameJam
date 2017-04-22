@@ -53,6 +53,8 @@ class Round{
   float currentMilli = 0;
   int minPickupTime = 5000;
   int maxPickupTime = 30000;
+  
+  ArrayList<Explosion> explosions = new ArrayList<Explosion>();
 
   Round(int roundCount, int playerOneScore, int playerTwoScore){
     
@@ -238,12 +240,7 @@ class Round{
         curProj.display();
         if (curProj.dead) {
           screenShake = true;
-          pushMatrix();
-          rotate(curProj.finalangle); //final rotation
-          noStroke(); //explosion code here
-          fill(255,255,255);
-          ellipse(0,ellipseSz/2.0,50,50); //make sure to position it at (0, ellipseSz/2.0)
-          popMatrix();
+          explosions.add(new Explosion(curProj.finalangle, ellipseSz/2.0, curProj.col));
         }
       }
     }
@@ -269,6 +266,17 @@ class Round{
     }
     if (p1projectiles.size() > 0) {
       playerTwo.checkCollisions(p1projectiles);
+    }
+    
+    for (Explosion explode : explosions) {
+      explode.display();
+    }
+    
+    for(int i = explosions.size()-1; i >= 0; i--) {
+      Explosion curExp = explosions.get(i);
+      if (curExp.expired) {
+        explosions.remove(i);
+      }
     }
     
     for(int i = p2projectiles.size()-1; i >= 0; i--) {
