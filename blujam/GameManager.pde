@@ -5,6 +5,10 @@ class GameManager{
   
   PImage wasd = loadImage("data/wasd.png");
   PImage arrows = loadImage("data/arrows.png");
+  int wasdWidth = wasd.width;
+  int wasdHeight = wasd.height;
+  int arrowWidth = arrows.width;
+  int arrowHeight = arrows.height;
   
   
   String gameState;
@@ -53,10 +57,10 @@ void drawMenu(){
    textFont(pointed,height/12);
    text("press any key to battle",width/3.5,height-(height/2.2));
    
-   image(wasd,0,height-(height/3));
-   wasd.resize(1,1);
-   image(arrows,0,height-(height/3));
-   arrows.resize(1,1);
+   image(wasd,width/15,height-(height/3));
+   wasd.resize(int(wasdWidth/1.5),int(wasdHeight/1.5));
+   image(arrows,width/1.9,height-(height/3));
+   arrows.resize(int(arrowWidth/1.5),int(arrowHeight/1.5));
   
   
 }
