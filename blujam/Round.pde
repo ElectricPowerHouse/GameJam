@@ -22,6 +22,7 @@ class Round{
   PImage image1 = loadImage("test1.png");
   PImage image2 = loadImage("test2.png");
   PShape ring = loadShape("ring.svg");
+  PShape ring2 = loadShape("ring.svg");
 
   Player playerOne = new Player(0.0, ellipseSz/2.0, playerWd, playerHt, color(20,255,220), image1);
   Player playerTwo = new Player(PI, ellipseSz/2.0, playerWd, playerHt, color(255,210,20), image2);
@@ -71,6 +72,11 @@ class Round{
     } else if (roundNum == 2) {
       //round2.playLoop();
     }
+    
+    //STYLE BACKGROUND
+    ring.disableStyle();
+    
+    ring2.disableStyle();
   }
 
   void drawRound() {
@@ -251,12 +257,7 @@ class Round{
         curProj.display();
         if (curProj.dead) {
           screenShake = true;
-          pushMatrix();
-          rotate(curProj.finalangle); //final rotation
-          noStroke(); //explosion code here
-          fill(255,255,255);
-          ellipse(0,ellipseSz/2.0,50,50); //make sure to position it at (0, ellipseSz/2.0)
-          popMatrix();
+          explosions.add(new Explosion(curProj.finalangle, ellipseSz/2.0, curProj.col));
         }
       }
     }
@@ -371,26 +372,24 @@ class Round{
   }  
   
   void drawBounds(){
-    ring.disableStyle();
     pushStyle();
     shapeMode(CENTER);
     pushMatrix();
     rotate(PI/4000.0*frameCount);
     fill(43);
+    noStroke();
     shape(ring, 0,0,ellipseSz*2,ellipseSz*2);
     popMatrix();
     
     pushMatrix();
     rotate(-PI/8000.0*frameCount);
     fill(50);
-    noStroke();
     strokeWeight(18);
     stroke(37);
-    shape(ring, 0,0,ellipseSz*2,ellipseSz*2);
+    shape(ring2, 0,0,ellipseSz*2,ellipseSz*2);
     popMatrix();
     
     fill(23);
-    //noStroke();
     stroke(80);
     strokeWeight(2);
     ellipse(0,0,ellipseSz,ellipseSz);
