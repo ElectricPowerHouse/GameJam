@@ -116,7 +116,7 @@ class Round{
     }
     
     drawBounds();
-    //blueHole.drawHole();
+    blueHole.drawHole();
     
     if (p1left) {
       p1aim = -1;
@@ -367,18 +367,24 @@ class Round{
     pushStyle();
     shapeMode(CENTER);
     pushMatrix();
-    rotate(-45);
-    fill(125);
+    rotate(PI/4000.0*frameCount);
+    fill(43);
     shape(ring, 0,0,ellipseSz*2,ellipseSz*2);
     popMatrix();
     
-    fill(85);
+    pushMatrix();
+    rotate(-PI/8000.0*frameCount);
+    fill(50);
     noStroke();
-    //strokeWeight(1);
+    strokeWeight(18);
+    stroke(37);
     shape(ring, 0,0,ellipseSz*2,ellipseSz*2);
+    popMatrix();
     
     fill(37);
-    noStroke();
+    //noStroke();
+    stroke(80);
+    strokeWeight(2);
     ellipse(0,0,ellipseSz,ellipseSz);
     popStyle();
    
