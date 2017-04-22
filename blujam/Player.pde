@@ -2,6 +2,7 @@ class Player{
   float angle, dist, wd, ht, jumpDif, baseDist;
   boolean touchingGround, dead, poweredUp;
   color col;
+  int flipVal = 1;
   PImage img;
   LightTrail trail;
   
@@ -35,6 +36,7 @@ class Player{
       noStroke();
       fill(col);
       //rect(0,dist-(ht/2.0),wd,ht);
+      scale(flipVal,1);
       image(img, -wd/2.0, dist-ht, wd, ht);
       popMatrix();
     }

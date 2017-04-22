@@ -81,18 +81,22 @@ class Round{
     
     if (p1left) {
       p1aim = -1;
+      playerOne.flipVal = 1;
       playerOne.update(movespeed);
     }
     if (p1right) {
       p1aim = 1;
+      playerOne.flipVal = -1;
       playerOne.update(-movespeed);
     }
     if (p2left) {
       p2aim = -1;
+      playerTwo.flipVal = 1;
       playerTwo.update(movespeed);
     }
     if (p2right) {
       p2aim = 1;
+      playerTwo.flipVal = -1;
       playerTwo.update(-movespeed);
     }
     if (p1jump) {
