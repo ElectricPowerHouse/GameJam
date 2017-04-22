@@ -21,7 +21,7 @@ class Projectile{
       if (type == 0) {
         this.update();
       } else if (type == 1) {
-        bounceUpdate();
+        this.bounceUpdate();
       }
       pushMatrix();
       rotate(angle);
@@ -56,11 +56,11 @@ class Projectile{
       if(bounces>0){
         finalangle = angle-(((abs(xVel))/xVel)*2*(asin(((sqrt(sq(xPos)+sq(baseDist-dist)))/2.0)/baseDist)));
         angle = finalangle;
+        xPos = 0;
         xVel = initXVel;
         yVel = initYVel;
         dist = baseDist-2;
         bounces--;
-        
       } else {
         finalangle = angle-(((abs(xVel))/xVel)*2*(asin(((sqrt(sq(xPos)+sq(baseDist-dist)))/2.0)/baseDist)));
         dead = true;
