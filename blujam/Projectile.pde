@@ -23,8 +23,8 @@ class Projectile{
     col = initCol;
     this.type = type;
     if (type == 3) {
-      wd = 32;
-      ht = 32;
+      wd = 40;
+      ht = 40;
     }
     
   }

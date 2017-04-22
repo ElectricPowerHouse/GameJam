@@ -14,15 +14,14 @@ class Round{
   
   //SoundManager round1 = new SoundManager("C:/Users/Jackson/Desktop/GameJam/blujam/sounds/Level1Music.wav");
   //SoundManager round2 = new SoundManager("C:/Users/Jackson/Desktop/GameJam/blujam/sounds/TitleScreen.wav");
-  
   float ellipseSz = 550;
   //float ellipseSz = 800;
-
+  
   float playerWd = 48.0;
   float playerHt = 48.0;
   PImage image1 = loadImage("test1.png");
   PImage image2 = loadImage("test2.png");
-  PImage ring = loadImage("ring.png");
+  PShape ring = loadShape("ring.svg");
 
   Player playerOne = new Player(0.0, ellipseSz/2.0, playerWd, playerHt, color(20,255,220), image1);
   Player playerTwo = new Player(PI, ellipseSz/2.0, playerWd, playerHt, color(255,210,20), image2);
@@ -91,6 +90,7 @@ class Round{
     pushMatrix();
     translate(width/2.0, height/2.0);
     
+    
     if (screenShake) {
       rotate(shakeAngle*screeninc);
       if (up && screeninc < shakeLength) {
@@ -111,6 +111,7 @@ class Round{
       }
     }
     
+    drawBounds();
     blueHole.drawHole();
     
     if (p1left) {
@@ -270,11 +271,13 @@ class Round{
     
     pickup.drawPickup();
     
+
   
     
     drawBounds();
     drawScores();
     
+
     popMatrix();
     
      //need to do this after the matrix has been popped to properly overlay
@@ -344,12 +347,13 @@ class Round{
   
   void drawBounds(){
     pushStyle();
-    stroke(220);
-    noFill();
-    strokeWeight(5);
-    ellipse(0,0,ellipseSz+5,ellipseSz+5);
-    imageMode(CENTER);
-    //image(ring, 0,0,ellipseSz*1.252,ellipseSz*1.252);
+    
+    shapeMode(CENTER);
+    
+    shape(ring, 0,0,ellipseSz*2,ellipseSz*2);
+    fill(37);
+    noStroke();
+    ellipse(0,0,ellipseSz,ellipseSz);
     popStyle();
   }
   
