@@ -381,7 +381,7 @@ class Round{
     shape(ring, 0,0,ellipseSz*2,ellipseSz*2);
     popMatrix();
     
-    fill(37);
+    fill(23);
     //noStroke();
     stroke(80);
     strokeWeight(2);

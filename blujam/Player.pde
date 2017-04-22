@@ -19,11 +19,17 @@ class Player{
     img = image;
     proj = loadImage("proj.png");
     powerDuration = 4000;
+    int mult;
+    if (angle > 0) {
+      mult = -1;
+    } else {
+      mult = 1;
+    }
     for (int i = 0; i < 3; i++) {   
       if (i == 1) {
-        trail[i] = new LightTrail(col, 10, ht/6.5);
+        trail[i] = new LightTrail(col, 10, ht/6.5, mult*dist);
       } else {
-        trail[i] = new LightTrail(col, 10, ht/12.0);
+        trail[i] = new LightTrail(col, 10, ht/12.0, mult*dist);
       }
     }
     poweredUp=false;

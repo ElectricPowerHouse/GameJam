@@ -5,10 +5,12 @@ class LightTrail{
   float dur, sz;
   ArrayList<LightBar> trail = new ArrayList<LightBar>();
   
-  LightTrail(color lightCol, float duration, float hght) {
+  LightTrail(color lightCol, float duration, float hght, float dist) {
     col = lightCol;
     dur = duration;
     sz = hght;
+    y1 = dist;
+    y2 = dist;
   }
   
   void drawLight() {
