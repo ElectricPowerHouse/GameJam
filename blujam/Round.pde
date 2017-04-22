@@ -2,6 +2,7 @@
 class Round{
   
   BlueHole blueHole;
+  Pickup pickup;
   
   //Arena scale
   float ellipseSz = 550;
@@ -35,23 +36,28 @@ class Round{
   //BOOL CHECKS FOR MOVEMENT
   boolean p1right, p1left, p1jump, p1fire, p1charge, p2right, p2left, p2jump, p2fire, p2charge;
   
+  float currentMilli, startMilli;
+  
   Round(){
     
     blueHole= new BlueHole(ellipseSz/3.0);
+    pickup = new Pickup(ellipseSz/2.0, 22.0, 22.0);
     
   }
-
-  void drawRound() {
+  
+void drawRound() {
+  
+    checkProjectileSpawn();
+    
     background(57);
     pushMatrix();
-    //Move axis to center
-    translate(width/2.0, height/2.0);
+    translate(width/2.0, height/2.0); //Position center axis
     
     blueHole.drawHole();
     
     //Movement checks
     if (p1left) {
-      playerOne.update(movespeed);
+      playerOne.update(PI/180.0);
     }
     if (p1right) {
       playerOne.update(-movespeed);
@@ -81,6 +87,7 @@ class Round{
         playerOne.col = color(255,0,0); //Change player one appearance at max charge here
       }
     }
+    
     //Fire code
     if (p1fire) {
       if(p1projvelocity > minVel) { //Only fire if projectile velocity exceeds minimum velocity
@@ -107,6 +114,7 @@ class Round{
         playerTwo.col = color(255,0,0); //Change player two appearance at max charge here
       }
     }
+    
     //Fire code
     if (p2fire) {
       if(p2projvelocity > minVel) {
@@ -181,13 +189,22 @@ class Round{
     playerOne.display();
     playerTwo.display();
     
+    //DRAW PICKUP
+    pickup.drawPickup();
+    
     //DISPLAY ARENA
     drawBounds();
    
     popMatrix();
   }
   
-  
+  void checkProjectileSpawn(){
+    currentMilli = millis();
+    if(currentMilli-startMilli > 10000){
+      pickup = new Pickup(ellipseSz/2.0, 22.0, 22.0);
+      startMilli = currentMilli;
+    }
+  }
   
   void drawBounds(){
     noFill();
@@ -219,7 +236,6 @@ class Round{
    }
   }
   
-  
   void keyReleasedRound() {
     if (key == 'a') {
       p1left = false;
@@ -244,7 +260,5 @@ class Round{
       }
     }
   }
-
-
-
 }
+    
