@@ -18,7 +18,7 @@ class BlueHole{
     pushMatrix();
     imageMode(CENTER);
     ang += PI/2000;
-    rotate(ang);
+    //rotate(ang);
     noStroke();
     fill(20,132,244);
     image(voi, 0,0,sz,sz);
