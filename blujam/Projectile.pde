@@ -21,7 +21,7 @@ class Projectile{
   
   void display() {
     if (!dead) {
-      if (type == 0) {
+      if (type == 0 || 2) {
         this.update();
       } else if (type == 1) {
         this.bounceUpdate();
