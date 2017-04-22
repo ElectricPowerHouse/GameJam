@@ -412,7 +412,9 @@ class Round{
     
     
     textFont(pointed, height/10);
+    text("VICTOR", width-(width/5), (height/2));
     textFont(pointed, height/20);
+    text("PLAYER1", width-(width/5.6), (height-(height/2.3)));
     
     
     
