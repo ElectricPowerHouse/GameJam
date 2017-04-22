@@ -36,6 +36,8 @@ class Round{
   
   float startMilli = 0;
   float currentMilli = 0;
+  int minPickupTime = 5000;
+  int maxPickupTime = 30000;
 
   Round(){
     
@@ -48,7 +50,8 @@ class Round{
   void drawRound() {
     
     checkPickupSpawn();
-    checkPickupCollision();
+    checkPickupCollision(playerOne);
+    checkPickupCollision(playerTwo);
     if (playerOne.dead) {
       roundOver = 1;
     }
@@ -181,15 +184,18 @@ class Round{
   
   void checkPickupSpawn(){
     currentMilli = millis();
+    
+    int randomSpawn = int(random(minPickupTime,maxPickupTime));
+    
     if(currentMilli-startMilli > 10000){
       pickup.activate();
       startMilli = currentMilli; 
     }   
   }
   
-  void checkPickupCollision(){
+  void checkPickupCollision(Player player){
     float targAngle = pickup.getAngle();
-    float curAngle = playerOne.getAngle();
+    float curAngle = player.getAngle();
     if (abs(targAngle/(2*PI)) > 1) {
       targAngle -= (int(targAngle/(2*PI))*2*PI);
     }
