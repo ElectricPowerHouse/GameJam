@@ -4,6 +4,12 @@ class Round{
   BlueHole blueHole;
   Pickup pickup;
   
+  boolean screenShake;
+  boolean up = true;
+  int screeninc;
+  int shakeLength = 3;
+  float shakeAngle = PI/150.0;
+  
   //SoundManager round1 = new SoundManager("C:/Users/Jackson/Desktop/GameJam/blujam/sounds/Level1Music.wav");
   //SoundManager round2 = new SoundManager("C:/Users/Jackson/Desktop/GameJam/blujam/sounds/TitleScreen.wav");
   
@@ -77,6 +83,26 @@ class Round{
     background(37);
     pushMatrix();
     translate(width/2.0, height/2.0);
+    
+    if (screenShake) {
+      rotate(shakeAngle*screeninc);
+      if (up && screeninc < shakeLength) {
+        screeninc++;
+      } else if (up && screeninc == shakeLength) {
+        up = false;
+        screeninc--;
+      } else if (!up && screeninc > -shakeLength) {
+        screeninc--;
+      } else if (!up && screeninc == -shakeLength) {
+        up = true;
+        screeninc++;
+      }
+      shakeAngle *= 0.92;
+      if (shakeAngle < PI/800.0) {
+        screenShake = false;
+        shakeAngle = PI/150.0;
+      }
+    }
     
     blueHole.drawHole();
     
@@ -183,6 +209,7 @@ class Round{
       for(Projectile curProj : p1projectiles) {
         curProj.display();
         if (curProj.dead) {
+          screenShake = true;
           pushMatrix();
           rotate(curProj.finalangle); //final rotation
           noStroke(); //explosion code here
@@ -198,6 +225,7 @@ class Round{
       for(Projectile curProj : p2projectiles) {
         curProj.display();
         if (curProj.dead) {
+          screenShake = true;
           pushMatrix();
           rotate(curProj.finalangle); //final rotation
           noStroke(); //explosion code here
