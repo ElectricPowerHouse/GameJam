@@ -34,7 +34,7 @@ class Round{
   Round(){
     
     blueHole= new BlueHole(ellipseSz/3.0);
-    pickup = new Pickup(ellipseSz/2.0, 22.0, 22.0);
+    pickup = new Pickup(ellipseSz/2.0);
     
     
   }
@@ -180,7 +180,7 @@ class Round{
   void checkPickupSpawn(){
     currentMilli = millis();
     if(currentMilli-startMilli > 10000){
-      pickup = new Pickup(ellipseSz/2.0, 22.0, 22.0); 
+      pickup.activate();
       startMilli = currentMilli; 
     }   
   }
