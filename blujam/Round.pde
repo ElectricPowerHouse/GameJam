@@ -344,8 +344,7 @@ class Round{
     pushStyle();
     
     shapeMode(CENTER);
-    
-    shape(ring, 0,0,ellipseSz*2,ellipseSz*2);
+    shape(ring,0,0,ellipseSz*2,ellipseSz*2);
     fill(37);
     noStroke();
     ellipse(0,0,ellipseSz,ellipseSz);
