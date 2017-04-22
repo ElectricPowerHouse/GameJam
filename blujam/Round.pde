@@ -109,6 +109,9 @@ class Round{
       p2jump = false;
     }
     if (p1charge) {
+      if (playerOne.powerType == 2) {
+        p1movespeed *= 0.98;
+      }
       if (p1projvelocity < maxVel) {
         p1projvelocity += chargeInc;
       } else {
@@ -121,9 +124,10 @@ class Round{
           p1projectiles.add(new Projectile(playerOne.dist, ellipseSz/2.0, projxvel*p1aim, playerOne.angle, p1projvelocity,playerOne.powerType, playerOne.proj, playerOne.col));
         }
       } else {
-        p1movespeed = PI/320.0*p1projvelocity;
-        if (p1movespeed > PI/40.0) {
-          p1movespeed = PI/40.0;
+        playerOne.dangerous = true;
+        p1movespeed = PI/360.0*p1projvelocity;
+        if (p1movespeed > PI/30.0) {
+          p1movespeed = PI/30.0;
         }
       }
       p1fire = false;
@@ -132,12 +136,17 @@ class Round{
     }
     
     if (p1movespeed > PI/180.0) {
-      p1movespeed *= 0.98;
-    } else  {
+      p1movespeed *= 0.95;
+    } else if (!p1charge && playerOne.chargeAvailable && playerOne.dangerous) {
+      playerOne.dangerous = false;
+      playerOne.chargeAvailable = false;
       p1movespeed = PI/180.0;
     }
     
     if (p2charge) {
+      if (playerTwo.powerType == 2) {
+        p2movespeed *= 0.98;
+      }
       if (p2projvelocity < maxVel) {
         p2projvelocity += chargeInc;
       } else {
@@ -150,9 +159,10 @@ class Round{
         p2projectiles.add(new Projectile(playerTwo.dist, ellipseSz/2.0, projxvel*p2aim, playerTwo.angle, p2projvelocity, playerTwo.powerType, playerTwo.proj, playerTwo.col));
       }
       } else {
-        p2movespeed = PI/320.0*p2projvelocity;
-        if (p2movespeed > PI/40.0) {
-          p2movespeed = PI/40.0;
+        playerTwo.dangerous = true;
+        p2movespeed = PI/360.0*p2projvelocity;
+        if (p2movespeed > PI/30.0) {
+          p2movespeed = PI/30.0;
         }
       }
       p2fire = false;
@@ -161,8 +171,10 @@ class Round{
     }
     
     if (p2movespeed > PI/180.0) {
-      p2movespeed *= 0.98;
-    } else  {
+      p2movespeed *= 0.95;
+    } else if (!p2charge && playerTwo.chargeAvailable && playerTwo.dangerous) {
+      playerTwo.dangerous = false;
+      playerTwo.chargeAvailable = false;
       p2movespeed = PI/180.0;
     }
     
@@ -216,6 +228,8 @@ class Round{
       }
     }
     
+    checkPlayerCollision();
+    
     playerOne.display();
     playerTwo.display();
     
@@ -237,6 +251,30 @@ class Round{
     }   
   }
   
+  void checkPlayerCollision() {
+    float targAngle = playerOne.angle;
+    float curAngle = playerTwo.angle;
+    if (abs(targAngle/(2*PI)) > 1) {
+      targAngle -= (int(targAngle/(2*PI))*2*PI);
+    }
+    if (abs(curAngle/(2*PI)) > 1) {
+      curAngle -= (int(curAngle/(2*PI))*2*PI);
+    }
+    if (curAngle < 0) {
+      curAngle += 2*PI;
+    }
+    if (targAngle < 0) {
+      targAngle += 2*PI;
+    }
+    if (curAngle >= targAngle - PI/20.0 && curAngle <= targAngle + PI/20.0) {
+      if (playerOne.dangerous && playerTwo.dist > playerOne.dist - playerOne.ht) {
+        playerTwo.jump(15);
+      } else if (playerTwo.dangerous && playerOne.dist > playerTwo.dist - playerTwo.ht) {
+        playerOne.jump(15);
+      }
+    }
+  }
+  
   void checkPickupCollision(Player player){
     float targAngle = pickup.getAngle();
     float curAngle = player.getAngle();
@@ -256,6 +294,9 @@ class Round{
       pickup.deActivate();
       player.poweredUp=true;
       player.powerStart = millis();
+      if (pickup.type == 2) {
+        player.chargeAvailable = true;
+      }
       player.powerType = pickup.type;
     }  
   }  

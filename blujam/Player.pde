@@ -1,6 +1,6 @@
 class Player{
   float angle, dist, wd, ht, jumpDif, baseDist;
-  boolean touchingGround, dead, poweredUp;
+  boolean touchingGround, dead, poweredUp, dangerous, chargeAvailable;
   int powerType = 0;
   color col;
   int flipVal = 1;
@@ -31,10 +31,23 @@ class Player{
   
   void display() {
     if (!dead) {
+      if (poweredUp && powerType != 2) {
+        powerCount = millis();
+        if (powerCount - powerStart >= powerDuration) {
+          poweredUp = false;
+          powerType = 0;
+        }
+      } else if (powerType == 2) {
+        if (!chargeAvailable) {
+          poweredUp = false;
+          powerType = 0;
+        }
+      }
       pushMatrix();
       this.updateJump();
       for (int i = 0; i < 3; i++) {  
-        trail[i].updateLight(angle,dist-18-(i*4.5),col);         trail[i].drawLight();
+        trail[i].updateLight(angle,dist-18-(i*4.5),col);         
+        trail[i].drawLight();
       }
       
       if (dist > baseDist) {
@@ -53,13 +66,6 @@ class Player{
   }
   
   void update(float angleDif) {
-    if (poweredUp) {
-      powerCount = millis();
-      if (powerCount - powerStart >= powerDuration) {
-        poweredUp = false;
-        powerType = 0;
-      }
-    }
     if (!dead) {
       angle += angleDif;
     }
