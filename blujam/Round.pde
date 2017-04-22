@@ -273,6 +273,7 @@ class Round{
   
     
     drawBounds();
+    drawScores();
     
     popMatrix();
     
@@ -399,6 +400,17 @@ class Round{
         p2jump = false;
       }
     }
+  }
+  
+  void drawScores(){
+    
+    fill(255);
+    textFont(pointed, height/5);
+    text("2", -width/2.5, height/3);
+    text("2", width/2.9, height/3);
+    
+    
+    
   }
   
   
