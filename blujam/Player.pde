@@ -28,7 +28,7 @@ class Player{
       noStroke();
       fill(col);
       //rect(0,dist-(ht/2.0),wd,ht);
-      image(img, 0,dist-(ht/2.0),wd,ht);
+      image(img, wd/2.0,dist-ht,wd,ht);
       popMatrix();
     }
   }
