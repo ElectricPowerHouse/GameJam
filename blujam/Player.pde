@@ -2,8 +2,9 @@ class Player{
   float angle, dist, wd, ht, jumpDif, baseDist;
   boolean touchingGround;
   color col;
+  PImage img;
   
-  Player (float a, float distance, float widt, float hght, color baseCol) {
+  Player (float a, float distance, float widt, float hght, color baseCol, PImage image) {
     angle = a;
     dist = distance;
     baseDist = distance;
@@ -11,6 +12,7 @@ class Player{
     ht = hght;
     col = baseCol;
     jumpDif = 0;
+    img = image;
   }
   
   void display() {
@@ -24,7 +26,8 @@ class Player{
     rotate(angle);
     noStroke();
     fill(col);
-    rect(0,dist-(ht/2.0),wd,ht);
+    //rect(0,dist-(ht/2.0),wd,ht);
+    image(img, 0,dist-(ht/2.0),wd,ht);
     popMatrix();
   }
   

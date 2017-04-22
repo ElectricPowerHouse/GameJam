@@ -3,7 +3,6 @@ class Round{
   
   BlueHole blueHole;
   Pickup pickup;
-  
   Round(){
     
     blueHole= new BlueHole(ellipseSz/3.0);
@@ -14,8 +13,14 @@ class Round{
 
 float ellipseSz = 550;
 
-Player playerOne = new Player(0.0, ellipseSz/2.0, 22.0, 22.0, color(20,255,220));
-Player playerTwo = new Player(PI, ellipseSz/2.0, 22.0, 22.0, color(255,210,20));
+
+  
+PImage image1 = loadImage("test1.png");
+PImage image2 = loadImage("test1.png");
+  
+
+Player playerOne = new Player(0.0, ellipseSz/2.0, 64.0, 64.0, color(20,255,220), image1);
+Player playerTwo = new Player(PI, ellipseSz/2.0, 64.0, 64.0, color(255,210,20), image2);
 
 ArrayList<Projectile> p1projectiles = new ArrayList<Projectile>();
 float p1projvelocity = 0;
