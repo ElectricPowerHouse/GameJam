@@ -26,7 +26,8 @@ class Round{
   
   float maxVel = 18;
   float minVel = 3;
-  float movespeed = PI/180.0;
+  float p1movespeed = PI/180.0;
+  float p2movespeed = PI/180.0;
   float chargeInc = 0.35;
   float projxvel = 3;
   float jumpHght = 8;
@@ -73,7 +74,7 @@ class Round{
       }
     }
     
-    background(94,62,62);
+    background(37);
     pushMatrix();
     translate(width/2.0, height/2.0);
     
@@ -82,22 +83,22 @@ class Round{
     if (p1left) {
       p1aim = -1;
       playerOne.flipVal = 1;
-      playerOne.update(movespeed);
+      playerOne.update(p1movespeed);
     }
     if (p1right) {
       p1aim = 1;
       playerOne.flipVal = -1;
-      playerOne.update(-movespeed);
+      playerOne.update(-p1movespeed);
     }
     if (p2left) {
       p2aim = -1;
       playerTwo.flipVal = 1;
-      playerTwo.update(movespeed);
+      playerTwo.update(p2movespeed);
     }
     if (p2right) {
       p2aim = 1;
       playerTwo.flipVal = -1;
-      playerTwo.update(-movespeed);
+      playerTwo.update(-p2movespeed);
     }
     if (p1jump) {
       playerOne.jump(jumpHght);
@@ -115,14 +116,26 @@ class Round{
       }
     }
     if (p1fire) {
-      if(p1projvelocity > minVel) {
-        p1projectiles.add(new Projectile(playerOne.dist, ellipseSz/2.0, projxvel*p1aim, playerOne.angle, p1projvelocity,playerOne.powerType, playerOne.proj, playerOne.col));
+      if (playerOne.powerType != 2) {
+        if(p1projvelocity > minVel) {
+          p1projectiles.add(new Projectile(playerOne.dist, ellipseSz/2.0, projxvel*p1aim, playerOne.angle, p1projvelocity,playerOne.powerType, playerOne.proj, playerOne.col));
+        }
+      } else {
+        p1movespeed = PI/320.0*p1projvelocity;
+        if (p1movespeed > PI/40.0) {
+          p1movespeed = PI/40.0;
+        }
       }
       p1fire = false;
       p1projvelocity = 0;
       playerOne.col = color(20,255,220); //revert to non charged appearance here
     }
     
+    if (p1movespeed > PI/180.0) {
+      p1movespeed *= 0.98;
+    } else  {
+      p1movespeed = PI/180.0;
+    }
     
     if (p2charge) {
       if (p2projvelocity < maxVel) {
@@ -132,12 +145,25 @@ class Round{
       }
     }
     if (p2fire) {
+      if (playerTwo.powerType != 2) {
       if(p2projvelocity > minVel) {
         p2projectiles.add(new Projectile(playerTwo.dist, ellipseSz/2.0, projxvel*p2aim, playerTwo.angle, p2projvelocity, playerTwo.powerType, playerTwo.proj, playerTwo.col));
+      }
+      } else {
+        p2movespeed = PI/320.0*p2projvelocity;
+        if (p2movespeed > PI/40.0) {
+          p2movespeed = PI/40.0;
+        }
       }
       p2fire = false;
       p2projvelocity = 0;
       playerTwo.col = color(255,210,20); //revert to non charged appearance here
+    }
+    
+    if (p2movespeed > PI/180.0) {
+      p2movespeed *= 0.98;
+    } else  {
+      p2movespeed = PI/180.0;
     }
     
     
