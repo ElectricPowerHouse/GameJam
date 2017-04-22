@@ -13,16 +13,6 @@ class Pickup {
 
     getRandomType();
 
-    if (type==0) {
-      c = color(255,0,0);
-      wd = 20;
-    } else if (type ==1) {
-      c = color(0,255,0);
-      wd = 30;
-    } else {
-      c = color(0,0,255);
-      wd = 40;
-    }
 
     active = true;
     dist = distance;
@@ -75,5 +65,19 @@ class Pickup {
   void getRandomType() {
 
     type = int(random(0, 3));
+    
+    if (type==0) {
+      c = color(255,0,0);
+      wd = 20;
+    } else if (type ==1) {
+      c = color(0,255,0);
+      wd = 30;
+    } else {
+      c = color(0,0,255);
+      wd = 40;
+    }
+    ht=wd;
   }
+  
+  
 }
