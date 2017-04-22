@@ -116,7 +116,7 @@ class Round{
     }
     
     drawBounds();
-    blueHole.drawHole();
+    //blueHole.drawHole();
     
     if (p1left) {
       p1aim = -1;
@@ -348,10 +348,17 @@ class Round{
     ring.disableStyle();
     pushStyle();
     shapeMode(CENTER);
-    fill(85);
-    stroke(0);
-    strokeWeight(1);
+    pushMatrix();
+    rotate(-45);
+    fill(125);
     shape(ring, 0,0,ellipseSz*2,ellipseSz*2);
+    popMatrix();
+    
+    fill(85);
+    noStroke();
+    //strokeWeight(1);
+    shape(ring, 0,0,ellipseSz*2,ellipseSz*2);
+    
     fill(37);
     noStroke();
     ellipse(0,0,ellipseSz,ellipseSz);
