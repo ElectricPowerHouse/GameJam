@@ -1,12 +1,13 @@
 class Projectile{
   float dist, baseDist, xVel, yVel, angle, finalangle;
   float xPos = 0;
-  int bounces = 5;
+  int bounces = 3;
   int type = 1;
   boolean dead = false;
   float initXVel, initYVel;
+  boolean isBouncy;
   
-  Projectile(float distance, float bounds, float xVelocity, float a, float yVelocity) {
+  Projectile(float distance, float bounds, float xVelocity, float a, float yVelocity, int type) {
     dist = distance;
     baseDist = bounds;
     xVel = xVelocity;
@@ -14,6 +15,8 @@ class Projectile{
     initXVel = xVel;
     initYVel = yVel;
     angle = a;
+    this.type = type;
+    
   }
   
   void display() {

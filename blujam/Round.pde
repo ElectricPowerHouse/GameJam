@@ -112,7 +112,13 @@ class Round{
     }
     if (p1fire) {
       if(p1projvelocity > minVel) {
-        p1projectiles.add(new Projectile(playerOne.dist, ellipseSz/2.0, projxvel*p1aim, playerOne.angle, p1projvelocity));
+        //checking if players are powered up
+        if(playerOne.poweredUp){
+          p1projectiles.add(new Projectile(playerOne.dist, ellipseSz/2.0, projxvel*p1aim, playerOne.angle, p1projvelocity,1));
+        }
+        else{
+        p1projectiles.add(new Projectile(playerOne.dist, ellipseSz/2.0, projxvel*p1aim, playerOne.angle, p1projvelocity,0));
+        }
       }
       p1fire = false;
       p1projvelocity = 0;
@@ -129,7 +135,14 @@ class Round{
     }
     if (p2fire) {
       if(p2projvelocity > minVel) {
-        p2projectiles.add(new Projectile(playerTwo.dist, ellipseSz/2.0, projxvel*p2aim, playerTwo.angle, p2projvelocity));
+       
+        //checking if players are powered up
+        if(playerTwo.poweredUp){
+        p2projectiles.add(new Projectile(playerTwo.dist, ellipseSz/2.0, projxvel*p2aim, playerTwo.angle, p2projvelocity, 1));
+        }
+        else{
+          p2projectiles.add(new Projectile(playerTwo.dist, ellipseSz/2.0, projxvel*p2aim, playerTwo.angle, p2projvelocity, 0));
+        }
       }
       p2fire = false;
       p2projvelocity = 0;
@@ -224,6 +237,7 @@ class Round{
     }
     if (curAngle >= targAngle - PI/20.0 && curAngle <= targAngle + PI/20.0) {
       pickup.deActivate();
+      player.poweredUp=true;
     }  
   }  
   
