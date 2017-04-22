@@ -21,7 +21,8 @@ class BlueHole{
     //rotate(ang);
     noStroke();
     fill(20,132,244);
-    image(voi, 0,0,sz,sz);
+    //image(voi, 0,0,sz,sz);
+    ellipse(0,0,sz,sz);
     popMatrix();
     popStyle();
   }

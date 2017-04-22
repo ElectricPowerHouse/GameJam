@@ -81,7 +81,6 @@ class Pickup {
   void getRandomType() {
 
     type = int(random(1, 4));
-    type = 3;
     
     if (type==1) {
       c = color(255,0,0);

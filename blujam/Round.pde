@@ -61,7 +61,7 @@ class Round{
     this.playerOneScore = playerOneScore;
     this.playerTwoScore = playerTwoScore;
     
-    blueHole= new BlueHole(ellipseSz/3.0);
+    blueHole= new BlueHole(ellipseSz/4.0);
     pickup = new Pickup(ellipseSz/2.0);
     
     if (roundNum == 1) {
@@ -121,22 +121,38 @@ class Round{
     if (p1left) {
       p1aim = -1;
       playerOne.flipVal = 1;
-      playerOne.update(p1movespeed);
+      if (playerOne.powerType == 3) {
+        playerOne.update(p1movespeed*0.7);
+      } else {
+        playerOne.update(p1movespeed);
+      }
     }
     if (p1right) {
       p1aim = 1;
       playerOne.flipVal = -1;
-      playerOne.update(-p1movespeed);
+      if (playerOne.powerType == 3) {
+        playerOne.update(-p1movespeed*0.7);
+      } else {
+        playerOne.update(-p1movespeed);
+      }
     }
     if (p2left) {
       p2aim = -1;
       playerTwo.flipVal = 1;
-      playerTwo.update(p2movespeed);
+      if (playerTwo.powerType == 3) {
+        playerTwo.update(p2movespeed*0.7);
+      } else {
+        playerTwo.update(p2movespeed);
+      }
     }
     if (p2right) {
       p2aim = 1;
       playerTwo.flipVal = -1;
-      playerTwo.update(-p2movespeed);
+      if (playerTwo.powerType == 3) {
+        playerTwo.update(-p2movespeed*0.7);
+      } else {
+        playerTwo.update(-p2movespeed);
+      }
     }
     if (p1jump) {
       playerOne.jump(jumpHght);
