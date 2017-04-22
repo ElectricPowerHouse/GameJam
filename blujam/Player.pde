@@ -18,12 +18,12 @@ class Player{
     jumpDif = 0;
     img = image;
     proj = loadImage("proj.png");
-    powerDuration = 5000;
+    powerDuration = 4000;
     for (int i = 0; i < 3; i++) {   
       if (i == 1) {
-        trail[i] = new LightTrail(col, 10, 7);
+        trail[i] = new LightTrail(col, 10, ht/6.5);
       } else {
-        trail[i] = new LightTrail(col, 10, 4);
+        trail[i] = new LightTrail(col, 10, ht/12.0);
       }
     }
     poweredUp=false;
@@ -32,8 +32,16 @@ class Player{
   void display() {
     if (!dead) {
       if (poweredUp && powerType != 2) {
+        if (powerType == 3) {
+          wd = 64;
+          ht = 64;
+        }
         powerCount = millis();
         if (powerCount - powerStart >= powerDuration) {
+          if (powerType == 3) {
+            wd = 48;
+            ht = 48;
+          }
           poweredUp = false;
           powerType = 0;
         }
@@ -46,7 +54,7 @@ class Player{
       pushMatrix();
       this.updateJump();
       for (int i = 0; i < 3; i++) {  
-        trail[i].updateLight(angle,dist-18-(i*4.5),col);         
+        trail[i].updateLight(angle,dist-(ht/2.7)-(i*(ht/10.8)),col);         
         trail[i].drawLight();
       }
       
