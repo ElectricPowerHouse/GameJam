@@ -1,7 +1,11 @@
 
 class Round{
   
+  BlueHole blueHole;
+  
   Round(){
+    
+    blueHole= new BlueHole();
     
   }
 
@@ -123,17 +127,18 @@ void drawRound() {
     }
   }
   
+  blueHole.drawHole();
+  
   playerOne.display();
   playerTwo.display();
   
-  drawCore();
+  
   drawBounds();
  
   popMatrix();
 }
 
-void drawCore(){
-}
+
 
 void drawBounds(){
   noFill();
