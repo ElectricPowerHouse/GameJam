@@ -90,6 +90,7 @@ class Round{
     pushMatrix();
     translate(width/2.0, height/2.0);
     
+    
     if (screenShake) {
       rotate(shakeAngle*screeninc);
       if (up && screeninc < shakeLength) {
@@ -110,6 +111,7 @@ class Round{
       }
     }
     
+    drawBounds();
     blueHole.drawHole();
     
     if (p1left) {
@@ -269,10 +271,6 @@ class Round{
     
     pickup.drawPickup();
     
-  
-    
-    drawBounds();
-    
     popMatrix();
     
      //need to do this after the matrix has been popped to properly overlay
@@ -344,8 +342,11 @@ class Round{
     pushStyle();
     
     shapeMode(CENTER);
+    
     shape(ring, 0,0,ellipseSz*2,ellipseSz*2);
-
+    fill(37);
+    noStroke();
+    ellipse(0,0,ellipseSz,ellipseSz);
     popStyle();
   }
   
