@@ -1,15 +1,19 @@
 class LightBar{
   
+  float prevx, prevy, curx, cury;
+  
   float sz, a, dist;
   color col;
   float dur;
   boolean expired;
   
-  LightBar(float angle, float hght, float baseDist, color basecol, float duration) {
+  LightBar(float hght, color basecol, float duration, float x1, float x2, float y1, float y2) {
     
-    a = angle;
+    prevx = x1;
+    prevy = y1;
+    curx = x2;
+    cury = y2;
     sz = hght;
-    dist = baseDist;
     
     col = basecol;
     dur = duration;
@@ -18,11 +22,10 @@ class LightBar{
   void display() {
     this.update();
     pushMatrix();
-    rotate(a);
     stroke(col);
-    strokeWeight(10);
+    strokeWeight(sz);
     strokeCap(SQUARE);
-    line(0, dist-(sz/2.0), sz/2.0, dist-(sz/2.0));
+    line(prevx, prevy, curx, cury);
     popMatrix();
     
   }

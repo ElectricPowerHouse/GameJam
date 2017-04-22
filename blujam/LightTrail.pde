@@ -1,5 +1,6 @@
 class LightTrail{
   
+  float x1, y1, x2, y2;
   color col;
   float dur, sz;
   ArrayList<LightBar> trail = new ArrayList<LightBar>();
@@ -23,6 +24,10 @@ class LightTrail{
   }
   
   void updateLight(float angle, float dist) {
-    trail.add(new LightBar(angle,sz,dist,col,dur));
+    x1 = x2;
+    y1 = y2;
+    x2 = -(dist-28)*sin(angle);
+    y2 = (dist-28)*cos(angle);
+    trail.add(new LightBar(sz,col,dur,x1, x2, y1, y2));
   }
 }
