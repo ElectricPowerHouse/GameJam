@@ -1,13 +1,13 @@
 class LightTrail{
   
-  float x1, x2, x3, x4, y1, y2, y3, y4;
   color col;
-  float dur;
+  float dur, sz;
   ArrayList<LightBar> trail = new ArrayList<LightBar>();
   
-  LightTrail(color lightCol, float duration) {
+  LightTrail(color lightCol, float duration, float hght) {
     col = lightCol;
     dur = duration;
+    sz = hght;
   }
   
   void drawLight() {
@@ -22,15 +22,7 @@ class LightTrail{
     }
   }
   
-  void updateLight(float curx1, float curx2, float cury1, float cury2) {
-    x1 = x3;
-    x2 = x4;
-    y1 = y3;
-    y2 = y4;
-    x3 = curx1;
-    x4 = curx2;
-    y3 = cury1;
-    y4 = cury2;
-    trail.add(new LightBar(x1,x2,y1,y2,x3,x4,y3,y4,col,dur));
+  void updateLight(float angle, float dist) {
+    trail.add(new LightBar(angle,sz,dist,col,dur));
   }
 }

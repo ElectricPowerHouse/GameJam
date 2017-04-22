@@ -2,8 +2,7 @@ GameManager gameManager;
 
 void setup(){
   
-  fullScreen(P2D);
-  smooth(8);
+  fullScreen();
   //size(600,600);
   rectMode(CENTER);
 gameManager = new GameManager();
