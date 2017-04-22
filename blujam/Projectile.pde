@@ -1,13 +1,15 @@
 class Projectile{
   float dist, baseDist, xVel, yVel, angle, finalangle;
   float xPos = 0;
-  int bounces = 3;
+  int bounces = 2;
   int type = 1;
   boolean dead = false;
   float initXVel, initYVel;
   boolean isBouncy;
   PImage pro;
   color col;
+  float wd = 18;
+  float ht = 18;
   
   Projectile(float distance, float bounds, float xVelocity, float a, float yVelocity, int type, PImage proj, color initCol) {
     dist = distance;
@@ -20,12 +22,16 @@ class Projectile{
     pro = proj;
     col = initCol;
     this.type = type;
+    if (type == 3) {
+      wd = 32;
+      ht = 32;
+    }
     
   }
   
   void display() {
     if (!dead) {
-      if (type == 0) {
+      if (type == 0 || type == 3) {
         this.update();
       } else if (type == 1) {
         this.bounceUpdate();
@@ -34,7 +40,7 @@ class Projectile{
       rotate(angle);
       pushStyle();
       tint(col);
-      image(pro, xPos, dist-10, 18, 18);
+      image(pro, xPos, dist-10, wd, ht);
       popStyle();
       popMatrix();
     }
