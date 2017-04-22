@@ -50,9 +50,25 @@ class Pickup {
     active = false;
   }
 
-  void activate() {
-
-    angle = random(0, 2)*PI;
+  void activate(float angle1, float angle2) {
+    float targAngle = angle1;
+    float curAngle = angle2;
+    if (abs(targAngle/(2*PI)) > 1) {
+      targAngle -= (int(targAngle/(2*PI))*2*PI);
+    }
+    if (abs(curAngle/(2*PI)) > 1) {
+      curAngle -= (int(curAngle/(2*PI))*2*PI);
+    }
+    if (curAngle < 0) {
+      curAngle += 2*PI;
+    }
+    if (targAngle < 0) {
+      targAngle += 2*PI;
+    }
+    float[] angles = new float[2];
+    angles[0] = (targAngle + curAngle)/2.0;
+    angles[1] = ((targAngle + curAngle)/2.0)-PI;
+    angle = angles[int(random(2))];
     getRandomType();
     active = true;
   }

@@ -21,9 +21,9 @@ class Player{
     powerDuration = 4000;
     for (int i = 0; i < 3; i++) {   
       if (i == 1) {
-        trail[i] = new LightTrail(col, 10, 7);
+        trail[i] = new LightTrail(col, 10, ht/6.5);
       } else {
-        trail[i] = new LightTrail(col, 10, 4);
+        trail[i] = new LightTrail(col, 10, ht/12.0);
       }
     }
     poweredUp=false;
@@ -54,7 +54,7 @@ class Player{
       pushMatrix();
       this.updateJump();
       for (int i = 0; i < 3; i++) {  
-        trail[i].updateLight(angle,dist-18-(i*4.5),col);         
+        trail[i].updateLight(angle,dist-(ht/2.7)-(i*(ht/10.8)),col);         
         trail[i].drawLight();
       }
       

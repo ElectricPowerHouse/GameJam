@@ -286,7 +286,7 @@ class Round{
     int randomSpawn = int(random(minPickupTime,maxPickupTime));
     
     if(currentMilli-startMilli > 10000){
-      pickup.activate();
+      pickup.activate(playerOne.angle, playerTwo.angle);
       startMilli = currentMilli; 
     }   
   }
@@ -343,8 +343,12 @@ class Round{
   
   void drawBounds(){
     pushStyle();
+    stroke(220);
+    noFill();
+    strokeWeight(5);
+    ellipse(0,0,ellipseSz+5,ellipseSz+5);
     imageMode(CENTER);
-    image(ring, 0,0,ellipseSz*1.252,ellipseSz*1.252);
+    //image(ring, 0,0,ellipseSz*1.252,ellipseSz*1.252);
     popStyle();
   }
   
