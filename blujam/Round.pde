@@ -410,6 +410,7 @@ class Round{
       } else if (keyCode == UP) {
         p2jump = true;
       }
+   
    }
   }
   
@@ -454,11 +455,17 @@ class Round{
     
   }
   
+  void enterPressed(){
+    
+    
+    
+  }
+  
   
   void drawWinScreen(){
     
     
-    //if(playerTwoScore>2){
+    if(playerTwoScore>2){
     fill(255);
     textFont(pointed, height/10);
     text("VICTOR", width/16, (height/2));
@@ -467,16 +474,19 @@ class Round{
     textFont(pointed, height/25);
     text("'ENTER'", width/10, (height-(height/4)));
     text("TO RETURN", width/12, (height-(height/4.6)));
-    //}
+    }
     
-    //if(playerOneScore>2){
+    if(playerOneScore>2){
       fill(255);
     textFont(pointed, height/10);
     text("VICTOR", width-(width/5), (height/2));
     textFont(pointed, height/20);
     text("PLAYER1", width-(width/5.6), (height-(height/2.3)));
+    textFont(pointed, height/25);
+    text("'ENTER'", width-(width/6.4), (height-(height/4)));
+    text("TO RETURN", width-(width/5.8), (height-(height/4.6)));
     
-    //}
+    }
     
     
     

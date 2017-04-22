@@ -11,6 +11,7 @@ class Game{
   
   Game(){
     
+    gameOver= false;
     roundNum = 1;
     round = new Round(roundNum, playerOneScore, playerTwoScore);
     
@@ -23,38 +24,43 @@ class Game{
 
   
 void drawGame(){ 
+  
+  
   if (round != null) {
     round.drawRound();
     if (round.roundOver == 1) {
       playerTwoScore++;
-      if (playerTwoScore>3) {
+      if (playerTwoScore==3) {
+        gameOver=true;
         roundNum++;
+        
       }
       else{
         roundNum++;
         round = new Round(roundNum,playerOneScore,playerTwoScore);
       }
-      }
-    
+      
+    }
     else if (round.roundOver == 2) {
       playerOneScore++;
       
-      if (playerOneScore>3) {
+      if (playerOneScore==3) {
+        gameOver=true;
         roundNum++;
+        
       }
       else{
         roundNum++;
         round = new Round(roundNum,playerOneScore,playerTwoScore);
       }
     }  
-    /*if (roundNum >= 4) {
-      round = null;
-      gameOver = true;
-    }*/
+  
   }
 }
 
 void keyPressedGame(){
+  
+  
   
  round.keyPressedRound(); 
   

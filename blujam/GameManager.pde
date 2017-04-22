@@ -42,10 +42,10 @@ class GameManager {
     } else {
       drawMenu();
     }
-    if (game!= null && game.gameOver) {
+    /*if (game!= null && game.gameOver) {
       gameState = "MAINMENU";
       drawMenu();
-    }
+    }*/
   }
 
 
@@ -99,13 +99,26 @@ class GameManager {
 
 
   void keyPressedManager() {
+    
+    
 
     if (gameState.equals("MAINMENU")) {
 
+      
+    
 
       game = new Game();
       gameState = "PLAYING";
     } else {
+      
+     
+      
+      if(keyCode == ENTER && game.gameOver==true){
+         
+        
+        gameState="MAINMENU";
+        
+       }
 
       if (game!=null) {
         game.keyPressedGame();
