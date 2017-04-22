@@ -3,6 +3,7 @@ class Player{
   boolean touchingGround, dead;
   color col;
   PImage img;
+  LightTrail trail;
   
   Player (float a, float distance, float widt, float hght, color baseCol, PImage image) {
     angle = a;
@@ -13,6 +14,7 @@ class Player{
     col = baseCol;
     jumpDif = 0;
     img = image;
+    trail = new LightTrail(col, 5);
   }
   
   void display() {
@@ -37,6 +39,7 @@ class Player{
     if (!dead) {
       angle += angleDif;
     }
+    
   }
   
   void updateJump() {
