@@ -91,12 +91,10 @@ class Round{
   
 
   Round(int roundCount, int playerOneScore, int playerTwoScore, SoundManager[] shortShots, SoundManager[] medShots, SoundManager[] longShots, SoundManager[] jumpSounds, 
-<<<<<<< HEAD
-  SoundManager[] deathSounds, SoundManager[] bounceSounds, SoundManager chargeUp, SoundManager chargeUpv2){
-=======
-  SoundManager[] deathSounds, SoundManager[] bounceSounds, SoundManager chargeUp, SoundManager chargeMax, SoundManager[]  pickupSpawnSounds,
+
+  SoundManager[] deathSounds, SoundManager[] bounceSounds, SoundManager chargeUp, SoundManager chargeUpv2, SoundManager[]  pickupSpawnSounds,
    SoundManager[] pickupGetSounds){
->>>>>>> origin/master
+
     
     this.deathSounds = deathSounds;
     
