@@ -27,8 +27,8 @@ class GameManager {
     calibri = createFont("font/calibri.ttf", 32); 
     pointed = createFont("font/Pointed.ttf", height/4);
 
-    gameState = "PLAYING";
-    game = new Game();    // delete this when menu properly implemented
+    gameState = "MAINMENU";
+    //game = new Game();    // delete this when menu properly implemented
   }
 
 

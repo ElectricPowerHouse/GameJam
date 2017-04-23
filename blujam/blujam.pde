@@ -7,8 +7,8 @@ void setup(){
   rectMode(CENTER);
 gameManager = new GameManager();
 
-SoundManager test = new SoundManager("C:/Illium/GameJam/blujam/sounds/TitleScreen.wav");
-test.play();
+//SoundManager test = new SoundManager("C:/Illium/GameJam/blujam/sounds/TitleScreen.wav");
+//test.play();
 
 
 
