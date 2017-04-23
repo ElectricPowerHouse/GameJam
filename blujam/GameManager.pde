@@ -21,14 +21,24 @@ class GameManager {
 
   String gameState;
   Game game;
+  
+  
+  SoundManager menuMusic;
+  SoundManager startSound;
 
   GameManager() {
+    
+    menuMusic = new SoundManager("C:/Illium/GameJam/blujam/sounds/music/Title_Screen.wav");
+    startSound = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Round_1.wav");
 
     calibri = createFont("font/calibri.ttf", 32); 
     pointed = createFont("font/Pointed.ttf", height/4);
 
     gameState = "MAINMENU";
     //game = new Game();    // delete this when menu properly implemented
+    
+    
+    menuMusic.playLoop();
   }
 
 
@@ -105,7 +115,7 @@ class GameManager {
     if (gameState.equals("MAINMENU")) {
 
       
-    
+      menuMusic.stop();
 
       game = new Game();
       gameState = "PLAYING";
@@ -115,7 +125,9 @@ class GameManager {
       
       if(keyCode == ENTER && game.gameOver==true){
          
+        game.stopMusic();
         
+        menuMusic.playLoop();
         gameState="MAINMENU";
         
        }
