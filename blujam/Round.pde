@@ -78,6 +78,8 @@ class Round{
   SoundManager[] bounceSounds;
   SoundManager[] pickupSpawnSounds;
   SoundManager[] pickupGetSounds;
+  SoundManager[] explosion;
+  SoundManager[] dashes;
   
   SoundManager chargeUp1;
   SoundManager chargeUp2;
@@ -92,7 +94,7 @@ class Round{
 
   Round(int roundCount, int playerOneScore, int playerTwoScore, SoundManager[] shortShots, SoundManager[] medShots, SoundManager[] longShots, SoundManager[] jumpSounds, 
   SoundManager[] deathSounds, SoundManager[] bounceSounds, SoundManager chargeUp, SoundManager chargeUpv2, SoundManager[]  pickupSpawnSounds,
-   SoundManager[] pickupGetSounds){
+   SoundManager[] pickupGetSounds, SoundManager[] explosions, SoundManager[] dashes){
     
     this.deathSounds = deathSounds;
     
@@ -128,6 +130,8 @@ class Round{
     this.chargeUp2 = chargeUpv2;
     this.pickupSpawnSounds=pickupSpawnSounds;
     this.pickupGetSounds=pickupGetSounds;
+    this.explosion = explosions;
+    this.dashes = dashes;
     
     
   }
@@ -272,9 +276,12 @@ class Round{
           }
           
          
-          p1projectiles.add(new Projectile(playerOne.dist, ellipseSz/2.0, projxvel*p1aim, playerOne.angle, p1projvelocity,playerOne.powerType, playerOne.proj, playerOne.col,bounceSounds));
+          p1projectiles.add(new Projectile(playerOne.dist, ellipseSz/2.0, projxvel*p1aim, playerOne.angle, p1projvelocity,playerOne.powerType, playerOne.proj, playerOne.col,bounceSounds, explosion));
         }
       } else {
+         int randomChoose = int(random(0,4));
+        dashes[randomChoose].play();
+        
         playerOne.dangerous = true;
         p1movespeed = PI/360.0*p1projvelocity;
         if (p1movespeed > PI/30.0) {
@@ -326,9 +333,13 @@ class Round{
           }
           
         
-        p2projectiles.add(new Projectile(playerTwo.dist, ellipseSz/2.0, projxvel*p2aim, playerTwo.angle, p2projvelocity, playerTwo.powerType, playerTwo.proj, playerTwo.col,bounceSounds));
+        p2projectiles.add(new Projectile(playerTwo.dist, ellipseSz/2.0, projxvel*p2aim, playerTwo.angle, p2projvelocity, playerTwo.powerType, playerTwo.proj, playerTwo.col,bounceSounds, explosion));
       }
       } else {
+        int randomChoose = int(random(0,4));
+        dashes[randomChoose].play();
+        
+        
         playerTwo.dangerous = true;
         p2movespeed = PI/360.0*p2projvelocity;
         if (p2movespeed > PI/30.0) {

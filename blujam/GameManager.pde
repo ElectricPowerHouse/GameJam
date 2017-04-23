@@ -62,7 +62,7 @@ class GameManager {
   void drawMenu() {
     pushStyle();
     imageMode(CENTER);
-    textMode(CENTER);
+    //textMode(CENTER);
     background(37);
     fill(255);
 
