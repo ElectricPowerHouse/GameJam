@@ -95,7 +95,7 @@ class Round{
     
     this.deathSounds = deathSounds;
     
-      playerOne = new Player(PI, ellipseSz/2.0, playerWd, playerHt, color(100,255,0), image1, deathSounds);
+    playerOne = new Player(PI, ellipseSz/2.0, playerWd, playerHt, color(100,255,0), image1, deathSounds);
     playerTwo = new Player(0.0, ellipseSz/2.0, playerWd, playerHt, color(220,0,255), image2, deathSounds);
     
     pointed = createFont("font/Pointed.ttf", height/4);
@@ -152,7 +152,7 @@ class Round{
     
     background(10);
     pushMatrix();
-    translate(width/2.0, height/2.0);
+    translate(width/2.0, height/2.0+10);
     
     
     if (screenShake) {
@@ -178,6 +178,11 @@ class Round{
     pushStyle();
     imageMode(CENTER);
     image(mainbg,0,0);
+    
+    fill(255);
+    textFont(pointed, height/18.0);
+    text("ILIUM", -68, -480);
+   
     popStyle();
     drawBounds();
     blueHole.drawHole();
@@ -441,9 +446,9 @@ class Round{
     }
     if (curAngle >= targAngle - PI/20.0 && curAngle <= targAngle + PI/20.0) {
       if (playerOne.dangerous && playerTwo.dist > playerOne.dist - playerOne.ht) {
-        playerTwo.jump(15);
+        playerTwo.jump(20);
       } else if (playerTwo.dangerous && playerOne.dist > playerTwo.dist - playerTwo.ht) {
-        playerOne.jump(15);
+        playerOne.jump(20);
       }
     }
   }
@@ -491,7 +496,7 @@ class Round{
     pushStyle();
     
     if (playerOneScore < 3) {
-      tint(200, 250, 160);
+      tint(220, 100, 255);
       image(l_ava_b, 0, 0);
       tint(255, count);
       image(l_ava_g, 0, 0);
@@ -500,7 +505,7 @@ class Round{
     }
     
     if (playerTwoScore < 3) {
-      tint(220, 160, 255);
+      tint(220, 255, 100);
       image(r_ava_b, 0, 0);
       tint(255, count);
       image(r_ava_g, 0, 0);

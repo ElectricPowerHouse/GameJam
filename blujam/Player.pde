@@ -148,13 +148,13 @@ class Player{
               int randomChoose = int(random(0,3));
               deathSounds[randomChoose].play();
            
-              this.jump(15);
+              this.jump(20);
             }
           } else {
             if (curAngle >= targAngle - PI/20.0 && curAngle <= targAngle + PI/20.0 && dist > baseDist-ht) {
                int randomChoose = int(random(0,3));
               deathSounds[randomChoose].play();
-              this.jump(15);
+              this.jump(20);
             }
           }
         }
