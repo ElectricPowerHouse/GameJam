@@ -211,14 +211,19 @@ class Round{
       }
     }
     if (p1jump) {
+      if(playerOne.touchingGround){
       int randomChoose = int(random(0,7));
       jumpSounds[randomChoose].play();
+      }
       
       playerOne.jump(jumpHght);
       p1jump = false;
     }
     if (p2jump) {
-      
+      if(playerTwo.touchingGround){
+      int randomChoose = int(random(0,7));
+      jumpSounds[randomChoose].play();
+      }
       
       playerTwo.jump(jumpHght);
       p2jump = false;
