@@ -14,9 +14,12 @@ class Pickup {
   float dur = 10000;
 
   color c = color(0, 0, 0);
+  
+  SoundManager[] pickupSpawnSounds;
+  SoundManager[] pickupGetSounds;
 
 
-  Pickup (float distance) {
+  Pickup (float distance, SoundManager[] pickupSpawnSounds, SoundManager[] pickupGetSounds) {
 
     getRandomType();
 
@@ -28,6 +31,9 @@ class Pickup {
     dist = distance;
 
     angle = random(0, 2)*PI;
+    
+    this.pickupSpawnSounds=pickupSpawnSounds;
+    this.pickupGetSounds=pickupGetSounds;
   }
 
 
@@ -54,6 +60,9 @@ class Pickup {
   }
 
   void deActivate() {
+    int randomChoose = int(random(0,5));
+    pickupGetSounds[randomChoose].play();
+        
     startTime = millis();
     active = false;
     dur = int(random(10000, 15000));
@@ -63,6 +72,10 @@ class Pickup {
     if (!active) {
       curTime = millis();
       if (curTime - startTime >= dur) {
+        
+        int randomChoose = int(random(0,11));
+        pickupSpawnSounds[randomChoose].play();
+              
         activateMe = true;
       }
     }

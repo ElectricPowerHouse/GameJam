@@ -78,6 +78,8 @@ class Round{
   SoundManager[] jumpSounds;
   SoundManager[] deathSounds;
   SoundManager[] bounceSounds;
+  SoundManager[] pickupSpawnSounds;
+  SoundManager[] pickupGetSounds;
   
   SoundManager chargeUp1;
   SoundManager chargeUp2;
@@ -91,7 +93,8 @@ class Round{
   
 
   Round(int roundCount, int playerOneScore, int playerTwoScore, SoundManager[] shortShots, SoundManager[] medShots, SoundManager[] longShots, SoundManager[] jumpSounds, 
-  SoundManager[] deathSounds, SoundManager[] bounceSounds, SoundManager chargeUp, SoundManager chargeMax){
+  SoundManager[] deathSounds, SoundManager[] bounceSounds, SoundManager chargeUp, SoundManager chargeMax, SoundManager[]  pickupSpawnSounds,
+   SoundManager[] pickupGetSounds){
     
     this.deathSounds = deathSounds;
     
@@ -104,7 +107,7 @@ class Round{
     this.playerTwoScore = playerTwoScore;
     
     blueHole= new BlueHole(ellipseSz/4.0);
-    pickup = new Pickup(ellipseSz/2.0);
+    pickup = new Pickup(ellipseSz/2.0,pickupSpawnSounds,pickupGetSounds);
     
     if (roundNum == 1) {
       //round1.playLoop();
@@ -126,6 +129,8 @@ class Round{
     this.chargeUp1 = chargeUp;
     this.chargeUp2 = chargeUp;
     this.chargeMax = chargeMax;
+    this.pickupSpawnSounds=pickupSpawnSounds;
+    this.pickupGetSounds=pickupGetSounds;
     
     
   }
