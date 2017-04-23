@@ -3,7 +3,7 @@
 class Pickup {
 
   
-   PImage pickupImage = loadImage("powerup2.png");
+   PImage pickupImage = loadImage("pickup1.png");
   
   float angle, dist, wd, ht;
   boolean active;
@@ -19,9 +19,6 @@ class Pickup {
 
     active = true;
     dist = distance;
-    //wd = widt;
-     pickupImage.resize(int(wd),int(ht));
-
 
     angle = random(0, 2)*PI;
   }
@@ -36,10 +33,10 @@ class Pickup {
     pushMatrix();
 
     rotate(angle);
-    noStroke();
-    fill(c);
-    image(pickupImage,0, int(dist-(ht)));
-    //ellipse(0, dist-(ht/2.0), wd, wd);
+    pushStyle();
+    imageMode(CENTER);
+    image(pickupImage,0, dist-(ht/2.0), wd, ht);
+    popStyle();
     popMatrix();
   }
 
@@ -88,13 +85,13 @@ class Pickup {
     
     if (type==1) {
       c = color(255,0,0);
-      wd = 20;
+      wd = 48;
     } else if (type ==2) {
       c = color(0,255,0);
-      wd = 30;
+      wd = 64;
     } else {
       c = color(0,0,255);
-      wd = 40;
+      wd = 80;
     }
     ht=wd;
   }
