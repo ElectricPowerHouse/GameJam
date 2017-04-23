@@ -478,7 +478,7 @@ class Round{
     pushStyle();
     
     if (playerOneScore < 3) {
-      tint(150, 250, 120);
+      tint(200, 250, 160);
       image(l_ava_b, 0, 0);
       tint(255, count);
       image(l_ava_g, 0, 0);
@@ -487,7 +487,7 @@ class Round{
     }
     
     if (playerTwoScore < 3) {
-      tint(220, 120, 255);
+      tint(220, 160, 255);
       image(r_ava_b, 0, 0);
       tint(255, count);
       image(r_ava_g, 0, 0);
@@ -495,7 +495,7 @@ class Round{
       image(r_ava_h, 0, 0);
     }
     popStyle();
-    if(count >= 200){
+    if(count >= 180){
       fade = true;
     }else if(count <= 100){
       fade = false;
