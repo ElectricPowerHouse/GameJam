@@ -8,7 +8,7 @@ class BlueHole{
   BlueHole(float size){
     
     sz = size;
-    voi = loadImage("void.png");
+    //voi = loadImage("void.png");
   }
   
   
