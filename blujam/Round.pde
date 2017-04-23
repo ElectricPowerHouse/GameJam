@@ -520,8 +520,8 @@ class Round{
     
     fill(255);
     textFont(pointed, height/5);
-    text(playerOneScore, -width/2.5, height/3);
-    text(playerTwoScore, width/2.9, height/3);
+    text(playerTwoScore, -width/2.14, -height/3.1);
+    text(playerOneScore, width/2.4, height/2.2);
     
     
     
