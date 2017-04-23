@@ -9,7 +9,8 @@ class Round{
   int screeninc;
   int shakeLength = 3;
   float shakeAngle = PI/150.0;
-  
+  int count = 180;
+  boolean fade = false;
   PFont pointed;
   
   //SoundManager round1 = new SoundManager("C:/Users/Jackson/Desktop/GameJam/blujam/sounds/Level1Music.wav");
@@ -496,26 +497,39 @@ class Round{
   }
   
   void drawAvatars(){
+    
+    
     pushStyle();
     
     if (playerOneScore < 3) {
-      tint(120, 250, 280);
+      tint(150, 250, 120);
       image(l_ava_b, 0, 0);
-      tint(255, 180);
+      tint(255, count);
       image(l_ava_g, 0, 0);
       noTint();
       image(l_ava_h, 0, 0);
     }
     
     if (playerTwoScore < 3) {
-      tint(250, 120, 255);
+      tint(220, 120, 255);
       image(r_ava_b, 0, 0);
-      tint(255, 180);
+      tint(255, count);
       image(r_ava_g, 0, 0);
       noTint();
       image(r_ava_h, 0, 0);
     }
     popStyle();
+    if(count >= 200){
+      fade = true;
+    }else if(count <= 100){
+      fade = false;
+    }
+    
+    if (fade){
+      count -= 1;
+    }else{
+      count += 1;
+    }
   }
   
   void keyPressedRound() {
