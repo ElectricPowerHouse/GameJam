@@ -66,15 +66,38 @@ class Round{
   
   ArrayList<Explosion> explosions = new ArrayList<Explosion>();
   
-  SoundManager shortShot;
-  SoundManager medShot;
-  SoundManager longShot;
+  SoundManager shortShot1;
+  SoundManager shortShot2;
+  SoundManager shortShot3;
+  SoundManager shortShot4;
+  SoundManager shortShot5;
+  SoundManager shortShot6;
+  SoundManager shortShot7;
+  SoundManager medShot1;
+  SoundManager medShot2;
+  SoundManager medShot3;
+  SoundManager medShot4;
+  SoundManager medShot5;
+  SoundManager medShot6;
+  SoundManager medShot7;
+  SoundManager longShot1;
+  SoundManager longShot2;
+  SoundManager longShot3;
+  SoundManager longShot4;
+  SoundManager longShot5;
+  SoundManager longShot6;
+  SoundManager longShot7;
+  
+  SoundManager[] shortShots;
+  SoundManager[] medShots;
+  SoundManager[] longShots;
   
   int shortShotMax = 8;
   int medShotMax = 13;
   int longShotMax = 18;
+  
 
-  Round(int roundCount, int playerOneScore, int playerTwoScore){
+  Round(int roundCount, int playerOneScore, int playerTwoScore, SoundManager[] shortShots, SoundManager[] medShots, SoundManager[] longShots){
     
     pointed = createFont("font/Pointed.ttf", height/4);
     roundNum = roundCount;
@@ -95,9 +118,10 @@ class Round{
     
     ring2.disableStyle();
     
-    shortShot = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Shot_Weak_1.wav");
-    medShot = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Shot_Medium_1.wav");
-    longShot = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Shot_Full_1.wav");
+    
+    this.shortShots = shortShots;
+    this.medShots = medShots;
+    this.longShots = longShots;
     
   }
 
@@ -205,18 +229,21 @@ class Round{
     if (p1fire) {
       if (playerOne.powerType != 2) {
         if(p1projvelocity > minVel) {
+          
+          int randomChoose = int(random(0,7));
           //if p1 vel is above 
           if(p1projvelocity>2&&p1projvelocity<shortShotMax){
-            shortShot.play();
+            shortShots[randomChoose].play();
+            
           }
           else if(p1projvelocity>shortShotMax&&p1projvelocity<medShotMax){
-            medShot.play();
+            medShots[randomChoose].play();
           }
           else{
-            longShot.play();
+            longShots[randomChoose].play();
           }
           
-          print(p1projvelocity);
+         
           p1projectiles.add(new Projectile(playerOne.dist, ellipseSz/2.0, projxvel*p1aim, playerOne.angle, p1projvelocity,playerOne.powerType, playerOne.proj, playerOne.col));
         }
       } else {
@@ -253,6 +280,23 @@ class Round{
       if (playerTwo.powerType != 2) {
         // if p2 ...
       if(p2projvelocity > minVel) {
+        
+        
+          
+          int randomChoose = int(random(0,7));
+          //if p1 vel is above 
+          if(p2projvelocity>2&&p2projvelocity<shortShotMax){
+            shortShots[randomChoose].play();
+            
+          }
+          else if(p2projvelocity>shortShotMax&&p2projvelocity<medShotMax){
+            medShots[randomChoose].play();
+          }
+          else{
+            longShots[randomChoose].play();
+          }
+          
+        
         p2projectiles.add(new Projectile(playerTwo.dist, ellipseSz/2.0, projxvel*p2aim, playerTwo.angle, p2projvelocity, playerTwo.powerType, playerTwo.proj, playerTwo.col));
       }
       } else {
