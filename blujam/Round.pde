@@ -8,19 +8,19 @@ class Round{
   boolean screenShake;
   boolean up = true;
   int screeninc;
-  int shakeLength = 3;
-  float shakeAngle = PI/150.0;
+  int shakeLength = 2;
+  float shakeAngle = PI/200.0;
   int count = 180;
   boolean fade = false;
   PFont pointed;
   
   //SoundManager round1 = new SoundManager("C:/Users/Jackson/Desktop/GameJam/blujam/sounds/Level1Music.wav");
   //SoundManager round2 = new SoundManager("C:/Users/Jackson/Desktop/GameJam/blujam/sounds/TitleScreen.wav");
-  float ellipseSz = 550;
-  //float ellipseSz = 800;
+
+  float ellipseSz = 800;
   
-  float playerWd = 48.0;
-  float playerHt = 48.0;
+  float playerWd = 64.0;
+  float playerHt = 64.0;
   PImage image1 = loadImage("test1.png");
   PImage image2 = loadImage("test2.png");
   PImage splash = loadImage("splash.png");
@@ -174,10 +174,10 @@ class Round{
         up = true;
         screeninc++;
       }
-      shakeAngle *= 0.92;
+      shakeAngle *= 0.90;
       if (shakeAngle < PI/800.0) {
         screenShake = false;
-        shakeAngle = PI/150.0;
+        shakeAngle = PI/200.0;
       }
     }
     
@@ -360,7 +360,7 @@ class Round{
     }
     
     
-    if (p1projectiles.size() > 0) {
+    if (p1projectiles.size() > 0 && playerOneScore < 3 && playerTwoScore < 3) {
       for(Projectile curProj : p1projectiles) {
         curProj.display();
         if (curProj.dead) {
@@ -371,7 +371,7 @@ class Round{
     }
     
     
-    if (p2projectiles.size() > 0) {
+    if (p2projectiles.size() > 0 && playerOneScore < 3 && playerTwoScore < 3) {
       for(Projectile curProj : p2projectiles) {
         curProj.display();
         if (curProj.dead) {
@@ -425,15 +425,16 @@ class Round{
       playerTwo.display();
     }
     
-    pickup.drawPickup();
-    drawScores();
-    
+    pickup.drawPickup(); 
 
     popMatrix();
-    
+    if(playerOneScore>=3||playerTwoScore>=3){
+      drawAvatars();
+    }    
      //need to do this after the matrix has been popped to properly overlay
+    drawScores();
     drawWinScreen();
-    drawAvatars();
+    
   }
   
   void checkPickupSpawn(){    
@@ -596,17 +597,12 @@ class Round{
     }
     
     fill(255);
+    pushMatrix();
+    translate(width/2.0, height/2.0+10);
     textFont(pointed, height/5);
     text(playerTwoScore, -width/2.14, -height/3.1);
     text(playerOneScore, width/2.4, height/2.2);
-    
-    
-    
-  }
-  
-  void enterPressed(){
-    
-    
+    popMatrix();
     
   }
   

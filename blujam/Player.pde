@@ -45,14 +45,14 @@ class Player{
     if (!dead) {
       if (poweredUp && powerType != 2) {
         if (powerType == 3) {
-          wd = 64;
-          ht = 64;
+          wd = 100;
+          ht = 100;
         }
         powerCount = millis();
         if (powerCount - powerStart >= powerDuration) {
           if (powerType == 3) {
-            wd = 48;
-            ht = 48;
+            wd = 64;
+            ht = 64;
           }
           poweredUp = false;
           powerType = 0;
