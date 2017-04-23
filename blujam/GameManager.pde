@@ -72,12 +72,14 @@ class GameManager {
     if(flash){
     text("press any key to battle", width/3.5, (height-(height/2.2)));
     }
-
+    
+    pushStyle();
+    imageMode(CENTER);
     image(wasd, width/15, height-(height/3) );
     wasd.resize(int(wasdWidth/1.5), int(wasdHeight/1.5));
-    image(arrows, width/1.9, height-(height/3));
+    image(arrows, width/2.5, height-(height/3));
     arrows.resize(int(arrowWidth/1.5), int(arrowHeight/1.5));
-
+    popStyle();
 
 
     if (moveDown) {
