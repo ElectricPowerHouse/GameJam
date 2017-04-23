@@ -33,8 +33,8 @@ class Round{
   PShape ring = loadShape("ring.svg");
   PShape ring2 = loadShape("ring.svg");
 
-  Player playerOne = new Player(0.0, ellipseSz/2.0, playerWd, playerHt, color(220,0,255), image1);
-  Player playerTwo = new Player(PI, ellipseSz/2.0, playerWd, playerHt, color(100,255,0), image2);
+  Player playerOne = new Player(PI, ellipseSz/2.0, playerWd, playerHt, color(100,255,0), image1);
+  Player playerTwo = new Player(0.0, ellipseSz/2.0, playerWd, playerHt, color(220,0,255), image2);
   
   ArrayList<Projectile> p1projectiles = new ArrayList<Projectile>();
   float p1projvelocity = 0;
@@ -508,23 +508,23 @@ class Round{
   
   void keyPressedRound() {
     if (key == 'a') {
-      p1left = true;
+      p2left = true;
     } else if (key == 'd') {
-      p1right = true;
+      p2right = true;
     } else if (key == 'w') {
-      p1jump = true;
+      p2jump = true;
     } else if (key == ' ') {
-      p1charge = true;
-    } else if (key == '.') {
       p2charge = true;
+    } else if (key == '.') {
+      p1charge = true;
     }
     if (key == CODED) {
       if (keyCode == LEFT) {
-        p2left = true;
+        p1left = true;
       } else if (keyCode == RIGHT) {
-        p2right = true;
+        p1right = true;
       } else if (keyCode == UP) {
-        p2jump = true;
+        p1jump = true;
       }
    
    }
@@ -533,25 +533,25 @@ class Round{
   
   void keyReleasedRound() {
     if (key == 'a') {
-      p1left = false;
+      p2left = false;
     } else if (key == 'd') {
-      p1right = false;
+      p2right = false;
     } else if (key == 'w') {
-      p1jump = false;
+      p2jump = false;
     } else if (key == ' ') {
-      p1fire = true;
-      p1charge = false;
-    } else if (key == '.') {
       p2fire = true;
       p2charge = false;
+    } else if (key == '.') {
+      p1fire = true;
+      p1charge = false;
     }
     if (key == CODED) {
       if (keyCode == LEFT) {
-        p2left = false;
+        p1left = false;
       } else if (keyCode == RIGHT) {
-        p2right = false;
+        p1right = false;
       } else if (keyCode == UP) {
-        p2jump = false;
+        p1jump = false;
       }
     }
   }
