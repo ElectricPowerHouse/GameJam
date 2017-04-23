@@ -31,6 +31,7 @@ class Round{
   PImage r_ava_h = loadImage("r_head.png");
   PImage r_ava_b = loadImage("r_body.png");
   PImage r_ava_g = loadImage("r_glow.png");
+  PImage bg = loadImage("bg.png");
   PShape ring = loadShape("ring.svg");
   PShape ring2 = loadShape("ring.svg");
 
@@ -465,26 +466,11 @@ class Round{
   
   void drawBounds(){
     pushStyle();
-    //shapeMode(CENTER);
-    //pushMatrix();
-    //rotate(PI/4000.0*frameCount);
-    //fill(43);
-    //noStroke();
-    ////strokeWeight(18);
-    ////stroke(37);
-    //shape(ring, 0,0,ellipseSz*2,ellipseSz*2);
-    //popMatrix();
-    
-    //pushMatrix();
-    //rotate(-PI/8000.0*frameCount);
-    //fill(50);
-    //shape(ring2, 0,0,ellipseSz*2,ellipseSz*2);
-    //popMatrix();
-    
-    fill(23);
-    stroke(80);
-    strokeWeight(2);
-    ellipse(0,0,ellipseSz,ellipseSz);
+    imageMode(CENTER);
+    noStroke();
+    fill(22);
+    ellipse(0,0,ellipseSz+5,ellipseSz+5);
+    image(bg,0,0,ellipseSz,ellipseSz);
     popStyle();
    
   }

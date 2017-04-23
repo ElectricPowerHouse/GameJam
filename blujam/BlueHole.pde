@@ -28,7 +28,6 @@ class BlueHole{
     rotate(-ang);
     image(debris, 0,0,sz,sz);
     popMatrix();
-    //ellipse(0,0,sz,sz);
     popMatrix();
     popStyle();
   }
