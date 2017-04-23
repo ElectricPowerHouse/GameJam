@@ -43,9 +43,9 @@ class Game{
   
  SoundManager[] deathSounds = new SoundManager[3];
   
-
-  
-  SoundManager[] jumpSounds = new SoundManager[7];
+ SoundManager[] jumpSounds = new SoundManager[7];
+ 
+ SoundManager[] bounceSounds = new SoundManager[11];
   
   
   boolean isTense;
@@ -93,9 +93,21 @@ class Game{
     deathSounds[1] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Death_2.wav");
     deathSounds[2] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Death_3.wav");
     
+    bounceSounds[0] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Bouncing_Ball_1.wav");
+    bounceSounds[1] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Bouncing_Ball_2.wav");
+    bounceSounds[2] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Bouncing_Ball_3.wav");
+    bounceSounds[3] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Bouncing_Ball_4.wav");
+    bounceSounds[4] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Bouncing_Ball_5.wav");
+    bounceSounds[5] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Bouncing_Ball_6.wav");
+    bounceSounds[6] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Bouncing_Ball_7.wav");
+    bounceSounds[7] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Bouncing_Ball_8.wav");
+    bounceSounds[8] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Bouncing_Ball_9.wav");
+    bounceSounds[9] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Bouncing_Ball_10.wav");
+    bounceSounds[10] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Bouncing_Ball_11.wav");
+    
     gameOver= false;
     roundNum = 1;
-    round = new Round(roundNum, playerOneScore, playerTwoScore,shortShots,medShots,longShots,jumpSounds,deathSounds);
+    round = new Round(roundNum, playerOneScore, playerTwoScore,shortShots,medShots,longShots,jumpSounds,deathSounds, bounceSounds);
     
     playerOneScore = 0;
     playerTwoScore = 0;
@@ -150,7 +162,7 @@ void drawGame(){
       }
       else{
         roundNum++;
-        round = new Round(roundNum,playerOneScore,playerTwoScore,shortShots,medShots,longShots,jumpSounds,deathSounds);
+        round = new Round(roundNum,playerOneScore,playerTwoScore,shortShots,medShots,longShots,jumpSounds,deathSounds, bounceSounds);
       }
       
      
@@ -185,7 +197,7 @@ void drawGame(){
       }
       else{
         roundNum++;
-        round = new Round(roundNum,playerOneScore,playerTwoScore,shortShots,medShots,longShots,jumpSounds,deathSounds);
+        round = new Round(roundNum,playerOneScore,playerTwoScore,shortShots,medShots,longShots,jumpSounds,deathSounds, bounceSounds);
       }
     }  
   

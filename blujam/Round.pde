@@ -78,6 +78,7 @@ class Round{
   SoundManager[] longShots;
   SoundManager[] jumpSounds;
   SoundManager[] deathSounds;
+  SoundManager[] bounceSounds;
   
   int shortShotMax = 8;
   int medShotMax = 13;
@@ -85,7 +86,7 @@ class Round{
   
 
   Round(int roundCount, int playerOneScore, int playerTwoScore, SoundManager[] shortShots, SoundManager[] medShots, SoundManager[] longShots, SoundManager[] jumpSounds, 
-  SoundManager[] deathSounds){
+  SoundManager[] deathSounds, SoundManager[] bounceSounds){
     
     this.deathSounds = deathSounds;
     
@@ -116,6 +117,7 @@ class Round{
     this.medShots = medShots;
     this.longShots = longShots;
     this.jumpSounds = jumpSounds;
+    this.bounceSounds=bounceSounds;
     
     
   }
@@ -250,7 +252,7 @@ class Round{
           }
           
          
-          p1projectiles.add(new Projectile(playerOne.dist, ellipseSz/2.0, projxvel*p1aim, playerOne.angle, p1projvelocity,playerOne.powerType, playerOne.proj, playerOne.col));
+          p1projectiles.add(new Projectile(playerOne.dist, ellipseSz/2.0, projxvel*p1aim, playerOne.angle, p1projvelocity,playerOne.powerType, playerOne.proj, playerOne.col,bounceSounds));
         }
       } else {
         playerOne.dangerous = true;
@@ -304,7 +306,7 @@ class Round{
           }
           
         
-        p2projectiles.add(new Projectile(playerTwo.dist, ellipseSz/2.0, projxvel*p2aim, playerTwo.angle, p2projvelocity, playerTwo.powerType, playerTwo.proj, playerTwo.col));
+        p2projectiles.add(new Projectile(playerTwo.dist, ellipseSz/2.0, projxvel*p2aim, playerTwo.angle, p2projvelocity, playerTwo.powerType, playerTwo.proj, playerTwo.col,bounceSounds));
       }
       } else {
         playerTwo.dangerous = true;

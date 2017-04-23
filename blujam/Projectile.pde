@@ -10,8 +10,9 @@ class Projectile{
   color col;
   float wd = 18;
   float ht = 18;
+  SoundManager[] bounceSounds;
   
-  Projectile(float distance, float bounds, float xVelocity, float a, float yVelocity, int type, PImage proj, color initCol) {
+  Projectile(float distance, float bounds, float xVelocity, float a, float yVelocity, int type, PImage proj, color initCol, SoundManager[] bounceSounds) {
     dist = distance;
     baseDist = bounds;
     xVel = xVelocity;
@@ -26,6 +27,7 @@ class Projectile{
       wd = 40;
       ht = 40;
     }
+    this.bounceSounds = bounceSounds;
     
   }
   
@@ -68,6 +70,10 @@ class Projectile{
     yVel -= 0.25;
     if (sqrt(sq(xPos)+sq(dist)) >= baseDist) {
       if(bounces>0){
+        
+        int randomChoose = int(random(0,11));
+        bounceSounds[randomChoose].play();
+        
         finalangle = angle-(((abs(xVel))/xVel)*2*(asin(((sqrt(sq(xPos)+sq(baseDist-dist)))/2.0)/baseDist)));
         angle = finalangle;
         xPos = 0;
