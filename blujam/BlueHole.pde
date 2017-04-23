@@ -1,14 +1,14 @@
-PImage voi;
-
 class BlueHole{
   
   float sz;
   float ang;
+  PImage voi, debris;
   
   BlueHole(float size){
     
     sz = size;
-    //voi = loadImage("void.png");
+    voi = loadImage("center.png");
+    debris = loadImage("debris.png");
   }
   
   
@@ -18,11 +18,17 @@ class BlueHole{
     pushMatrix();
     imageMode(CENTER);
     ang += PI/2000;
-    //rotate(ang);
     noStroke();
     fill(20,132,244);
-    //image(voi, 0,0,sz,sz);
-    ellipse(0,0,sz,sz);
+    pushMatrix();
+    rotate(ang);
+    image(voi, 0,0,sz,sz);
+    popMatrix();
+    pushMatrix();
+    rotate(-ang);
+    image(debris, 0,0,sz,sz);
+    popMatrix();
+    //ellipse(0,0,sz,sz);
     popMatrix();
     popStyle();
   }
