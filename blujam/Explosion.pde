@@ -6,23 +6,26 @@ class Explosion {
   float colincagain = 0.0;
   boolean expired;
   ArrayList<Particle> parts = new ArrayList<Particle>();
+  PImage partImg;
   
-  Explosion(float angle, float dist, color col) {
+  Explosion(float angle, float dist, color col, PImage particle) {
+    partImg = particle;
     a = angle;
     distance = dist;
     basecol = col;
     lerpcol = color(255, 220, 20);
     int num = int(random(3, 9));
     for (int i = 0; i < num; i++) {
-      parts.add(new Particle());
+      parts.add(new Particle(partImg));
     }
   }
   
   void display() {
     this.updateCol();
     pushMatrix();
+    pushStyle();
     noStroke();
-    fill(basecol);
+    tint(basecol);
     rotate(a);
     translate(0,distance);
     for (Particle part : parts) {
@@ -31,6 +34,7 @@ class Explosion {
       part.display();
       popMatrix();
     }
+    popStyle();
     popMatrix();
   }
   

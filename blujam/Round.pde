@@ -36,7 +36,7 @@ class Round{
   PImage mainbg = loadImage("mainbg.png");
   PShape ring = loadShape("ring.svg");
   PShape ring2 = loadShape("ring.svg");
-
+  PImage proj = loadImage("proj.png");
 
   Player playerOne;
   Player playerTwo;
@@ -91,12 +91,8 @@ class Round{
   
 
   Round(int roundCount, int playerOneScore, int playerTwoScore, SoundManager[] shortShots, SoundManager[] medShots, SoundManager[] longShots, SoundManager[] jumpSounds, 
-<<<<<<< HEAD
-  SoundManager[] deathSounds, SoundManager[] bounceSounds, SoundManager chargeUp, SoundManager chargeUpv2){
-=======
-  SoundManager[] deathSounds, SoundManager[] bounceSounds, SoundManager chargeUp, SoundManager chargeMax, SoundManager[]  pickupSpawnSounds,
+  SoundManager[] deathSounds, SoundManager[] bounceSounds, SoundManager chargeUp, SoundManager chargeUpv2, SoundManager[]  pickupSpawnSounds,
    SoundManager[] pickupGetSounds){
->>>>>>> origin/master
     
     this.deathSounds = deathSounds;
     
@@ -129,14 +125,9 @@ class Round{
     this.jumpSounds = jumpSounds;
     this.bounceSounds=bounceSounds;
     this.chargeUp1 = chargeUp;
-<<<<<<< HEAD
     this.chargeUp2 = chargeUpv2;
-=======
-    this.chargeUp2 = chargeUp;
-    this.chargeMax = chargeMax;
     this.pickupSpawnSounds=pickupSpawnSounds;
     this.pickupGetSounds=pickupGetSounds;
->>>>>>> origin/master
     
     
   }
@@ -363,7 +354,7 @@ class Round{
         curProj.display();
         if (curProj.dead) {
           screenShake = true;
-          explosions.add(new Explosion(curProj.finalangle, ellipseSz/2.0, curProj.col));
+          explosions.add(new Explosion(curProj.finalangle, ellipseSz/2.0, curProj.col, proj));
         }
       }
     }
@@ -374,7 +365,7 @@ class Round{
         curProj.display();
         if (curProj.dead) {
           screenShake = true;
-          explosions.add(new Explosion(curProj.finalangle, ellipseSz/2.0, curProj.col));
+          explosions.add(new Explosion(curProj.finalangle, ellipseSz/2.0, curProj.col, proj));
         }
       }
     }
@@ -511,7 +502,7 @@ class Round{
       image(l_ava_b, 0, 0);
       tint(255, count);
       image(l_ava_g, 0, 0);
-      noTint();
+      tint(255,100);
       image(l_ava_h, 0, 0);
     }
     
@@ -520,7 +511,7 @@ class Round{
       image(r_ava_b, 0, 0);
       tint(255, count);
       image(r_ava_g, 0, 0);
-      noTint();
+      tint(255,100);
       image(r_ava_h, 0, 0);
     }
     popStyle();
