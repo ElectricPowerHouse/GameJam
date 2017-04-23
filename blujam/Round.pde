@@ -235,6 +235,7 @@ class Round{
       }
       if (p1projvelocity < maxVel) {
         p1projvelocity += chargeInc;
+        playerOne.col = lerpColor(playerOne.curCol, color(255,0,0), map(p1projvelocity, 0, maxVel, 0, 1));
       } else {
         playerOne.col = color(255,0,0); //change max charge appearance here
       }
@@ -285,6 +286,7 @@ class Round{
       }
       if (p2projvelocity < maxVel) {
         p2projvelocity += chargeInc;
+        playerTwo.col = lerpColor(playerTwo.curCol, color(255,0,0), map(p2projvelocity, 0, maxVel, 0, 1));
       } else {
         playerTwo.col = color(255,0,0); //change max charge appearance here
       }

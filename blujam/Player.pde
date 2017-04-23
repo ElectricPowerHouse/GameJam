@@ -2,7 +2,7 @@ class Player{
   float angle, dist, wd, ht, jumpDif, baseDist;
   boolean touchingGround, dead, poweredUp, dangerous, chargeAvailable;
   int powerType = 0;
-  color col, defCol;
+  color col, defCol, curCol;
   int flipVal = 1;
   PImage img, proj;
   LightTrail[] trail = new LightTrail[3];
@@ -16,6 +16,7 @@ class Player{
     ht = hght;
     col = baseCol;
     defCol = baseCol;
+    curCol = baseCol;
     jumpDif = 0;
     img = image;
     proj = loadImage("proj.png");
@@ -90,12 +91,16 @@ class Player{
   void updateCols() {
     if (powerType == 0) {
       col = defCol;
+      curCol = defCol;
     } else if (powerType == 1) {
       col = color(23,236,255);
+      curCol = color(23,236,255);
     } else if (powerType == 2) {
       col = color(211,0,64);
+      curCol = color(211,0,64);
     } else if (powerType == 3) {
       col = color(243,87,0);
+      curCol = color(243,87,0);
     }
   }
   
