@@ -4,6 +4,9 @@ class Round{
   BlueHole blueHole;
   Pickup pickup;
   
+  boolean p1CurrentlyCharging;
+  boolean p2CurrentlyCharging;
+  
   boolean screenShake;
   boolean up = true;
   int screeninc;
@@ -76,13 +79,19 @@ class Round{
   SoundManager[] deathSounds;
   SoundManager[] bounceSounds;
   
+  SoundManager chargeUp1;
+  SoundManager chargeUp2;
+  SoundManager chargeMax;
+  
+  
+  
   int shortShotMax = 8;
   int medShotMax = 13;
   int longShotMax = 18;
   
 
   Round(int roundCount, int playerOneScore, int playerTwoScore, SoundManager[] shortShots, SoundManager[] medShots, SoundManager[] longShots, SoundManager[] jumpSounds, 
-  SoundManager[] deathSounds, SoundManager[] bounceSounds){
+  SoundManager[] deathSounds, SoundManager[] bounceSounds, SoundManager chargeUp, SoundManager chargeMax){
     
     this.deathSounds = deathSounds;
     
@@ -114,12 +123,16 @@ class Round{
     this.longShots = longShots;
     this.jumpSounds = jumpSounds;
     this.bounceSounds=bounceSounds;
+    this.chargeUp1 = chargeUp;
+    this.chargeUp2 = chargeUp;
+    this.chargeMax = chargeMax;
     
     
   }
 
   void drawRound() {
     
+    checkChargeSounds();
     checkPickupSpawn();
     checkPickupCollision(playerOne);
     checkPickupCollision(playerTwo);
@@ -576,6 +589,29 @@ class Round{
   void enterPressed(){
     
     
+    
+  }
+  
+  void checkChargeSounds(){
+    
+    if(p1charge ){
+      if(!p1CurrentlyCharging){
+       chargeUp1.play();
+       p1CurrentlyCharging = true;
+      }
+      
+    }
+    else{
+     chargeUp1.stop(); 
+     p1CurrentlyCharging = false;
+    }
+    
+    if(p2charge){
+      chargeUp2.play();
+    }
+    else{
+     chargeUp2.stop(); 
+    }
     
   }
   
