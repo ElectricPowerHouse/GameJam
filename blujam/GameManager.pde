@@ -76,10 +76,8 @@ class GameManager {
     }
     
     
-    image(wasd, width*0.3, height*0.66);
-    wasd.resize(int(wasdWidth/1.5), int(wasdHeight/1.5));
-    image(arrows, width*0.75, height*0.66);
-    arrows.resize(int(arrowWidth/1.5), int(arrowHeight/1.5));
+    image(wasd, width*0.3, height*0.66, wasdWidth/1.5, wasdHeight/1.5);
+    image(arrows, width*0.75, height*0.66 - 20, arrowWidth/1.5, arrowHeight/1.5);
     popStyle();
 
 
