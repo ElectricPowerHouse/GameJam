@@ -41,6 +41,15 @@ class Game{
   SoundManager[] medShots = new SoundManager[7];
   SoundManager[] longShots = new SoundManager[7];
   
+  SoundManager jumping1;
+  SoundManager jumping2;
+  SoundManager jumping3;
+  SoundManager jumping4;
+  SoundManager jumping5;
+  SoundManager jumping6;
+  SoundManager jumping7;
+  
+  SoundManager[] jumpSounds = new SoundManager[7];
   
   
   boolean isTense;
@@ -76,9 +85,17 @@ class Game{
     longShots[5] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Shot_Full_6.wav");
     longShots[6] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Shot_Full_7.wav");
     
+    jumpSounds[0] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Jumping_1.wav");
+    jumpSounds[1] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Jumping_2.wav");
+    jumpSounds[2] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Jumping_3.wav");
+    jumpSounds[3] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Jumping_4.wav");
+    jumpSounds[4] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Jumping_5.wav");
+    jumpSounds[5] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Jumping_6.wav");
+    jumpSounds[6] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Jumping_7.wav");
+    
     gameOver= false;
     roundNum = 1;
-    round = new Round(roundNum, playerOneScore, playerTwoScore,shortShots,medShots,longShots);
+    round = new Round(roundNum, playerOneScore, playerTwoScore,shortShots,medShots,longShots,jumpSounds);
     
     playerOneScore = 0;
     playerTwoScore = 0;
@@ -133,7 +150,7 @@ void drawGame(){
       }
       else{
         roundNum++;
-        round = new Round(roundNum,playerOneScore,playerTwoScore,shortShots,medShots,longShots);
+        round = new Round(roundNum,playerOneScore,playerTwoScore,shortShots,medShots,longShots,jumpSounds);
       }
       
      
@@ -168,7 +185,7 @@ void drawGame(){
       }
       else{
         roundNum++;
-        round = new Round(roundNum,playerOneScore,playerTwoScore,shortShots,medShots,longShots);
+        round = new Round(roundNum,playerOneScore,playerTwoScore,shortShots,medShots,longShots,jumpSounds);
       }
     }  
   

@@ -91,13 +91,14 @@ class Round{
   SoundManager[] shortShots;
   SoundManager[] medShots;
   SoundManager[] longShots;
+  SoundManager[] jumpSounds;
   
   int shortShotMax = 8;
   int medShotMax = 13;
   int longShotMax = 18;
   
 
-  Round(int roundCount, int playerOneScore, int playerTwoScore, SoundManager[] shortShots, SoundManager[] medShots, SoundManager[] longShots){
+  Round(int roundCount, int playerOneScore, int playerTwoScore, SoundManager[] shortShots, SoundManager[] medShots, SoundManager[] longShots, SoundManager[] jumpSounds){
     
     pointed = createFont("font/Pointed.ttf", height/4);
     roundNum = roundCount;
@@ -122,6 +123,7 @@ class Round{
     this.shortShots = shortShots;
     this.medShots = medShots;
     this.longShots = longShots;
+    this.jumpSounds = jumpSounds;
     
   }
 
@@ -209,10 +211,15 @@ class Round{
       }
     }
     if (p1jump) {
+      int randomChoose = int(random(0,7));
+      jumpSounds[randomChoose].play();
+      
       playerOne.jump(jumpHght);
       p1jump = false;
     }
     if (p2jump) {
+      
+      
       playerTwo.jump(jumpHght);
       p2jump = false;
     }
