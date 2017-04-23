@@ -442,19 +442,23 @@ class Round{
   void drawAvatars(){
     pushStyle();
     
-    tint(120, 250, 280);
-    image(l_ava_b, 0, 0);
-    tint(255, 180);
-    image(l_ava_g, 0, 0);
-    noTint();
-    image(l_ava_h, 0, 0);
+    if (playerTwoScore < 3) {
+      tint(120, 250, 280);
+      image(l_ava_b, 0, 0);
+      tint(255, 180);
+      image(l_ava_g, 0, 0);
+      noTint();
+      image(l_ava_h, 0, 0);
+    }
     
-    tint(250, 120, 255);
-    image(r_ava_b, 0, 0);
-    tint(255, 180);
-    image(r_ava_g, 0, 0);
-    noTint();
-    image(r_ava_h, 0, 0);
+    if (playerOneScore < 3) {
+      tint(250, 120, 255);
+      image(r_ava_b, 0, 0);
+      tint(255, 180);
+      image(r_ava_g, 0, 0);
+      noTint();
+      image(r_ava_h, 0, 0);
+    }
     popStyle();
   }
   
