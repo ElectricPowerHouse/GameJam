@@ -4,9 +4,7 @@ class Round{
   BlueHole blueHole;
   Pickup pickup;
   
-  boolean p1CurrentlyCharging;
-  boolean p2CurrentlyCharging;
-  
+  boolean chargeSoundp1;
   boolean screenShake;
   boolean up = true;
   int screeninc;
@@ -91,7 +89,7 @@ class Round{
   
 
   Round(int roundCount, int playerOneScore, int playerTwoScore, SoundManager[] shortShots, SoundManager[] medShots, SoundManager[] longShots, SoundManager[] jumpSounds, 
-  SoundManager[] deathSounds, SoundManager[] bounceSounds, SoundManager chargeUp, SoundManager chargeMax){
+  SoundManager[] deathSounds, SoundManager[] bounceSounds, SoundManager chargeUp, SoundManager chargeUpv2){
     
     this.deathSounds = deathSounds;
     
@@ -124,8 +122,7 @@ class Round{
     this.jumpSounds = jumpSounds;
     this.bounceSounds=bounceSounds;
     this.chargeUp1 = chargeUp;
-    this.chargeUp2 = chargeUp;
-    this.chargeMax = chargeMax;
+    this.chargeUp2 = chargeUpv2;
     
     
   }
@@ -598,26 +595,16 @@ class Round{
   }
   
   void checkChargeSounds(){
-    
-    if(p1charge ){
-      if(!p1CurrentlyCharging){
-       chargeUp1.play();
-       p1CurrentlyCharging = true;
-      }
-      
-    }
-    else{
-     chargeUp1.stop(); 
-     p1CurrentlyCharging = false;
-    }
-    
-    if(p2charge){
+    if (p1charge && p1projvelocity == 0) {
+      chargeUp1.play();
+    } else if (!p1charge) {
+      chargeUp1.stop();
+    }   
+    if (p2charge && p2projvelocity == 0) {
       chargeUp2.play();
-    }
-    else{
-     chargeUp2.stop(); 
-    }
-    
+    } else if (!p2charge) {
+      chargeUp2.stop();
+    }   
   }
   
   
