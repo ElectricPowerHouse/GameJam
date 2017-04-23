@@ -3,11 +3,12 @@
 class Pickup {
 
   
-   PImage pickupImage = loadImage("pickup1.png");
+  PImage[] pickupImage = new PImage[3];
   
   float angle, dist, wd, ht;
   boolean active;
   int type;
+  int imageNum = 0;
 
   color c = color(0, 0, 0);
 
@@ -16,7 +17,9 @@ class Pickup {
 
     getRandomType();
 
-
+    pickupImage[0] = loadImage("cyangem.png");
+    pickupImage[1] = loadImage("redgem.png");
+    pickupImage[2] = loadImage("orangegem.png");
     active = true;
     dist = distance;
 
@@ -35,7 +38,7 @@ class Pickup {
     rotate(angle);
     pushStyle();
     imageMode(CENTER);
-    image(pickupImage,0, dist-(ht/2.0), wd, ht);
+    image(pickupImage[imageNum],0, dist-(ht/2.0), wd, ht);
     popStyle();
     popMatrix();
   }
@@ -84,14 +87,14 @@ class Pickup {
     type = int(random(1, 4));
     
     if (type==1) {
-      c = color(255,0,0);
-      wd = 48;
+      imageNum = 0;
+      wd = 30;
     } else if (type ==2) {
-      c = color(0,255,0);
-      wd = 64;
+      imageNum = 1;
+      wd = 40;
     } else {
-      c = color(0,0,255);
-      wd = 80;
+      imageNum = 2;
+      wd = 50;
     }
     ht=wd;
   }

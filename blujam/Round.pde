@@ -195,7 +195,7 @@ class Round{
       }
       p1fire = false;
       p1projvelocity = 0;
-      playerOne.col = color(20,255,220); //revert to non charged appearance here
+      playerOne.col = playerOne.defCol; //revert to non charged appearance here
     }
     
     if (p1movespeed > PI/180.0) {
@@ -230,7 +230,7 @@ class Round{
       }
       p2fire = false;
       p2projvelocity = 0;
-      playerTwo.col = color(255,210,20); //revert to non charged appearance here
+      playerTwo.col = playerTwo.defCol; //revert to non charged appearance here
     }
     
     if (p2movespeed > PI/180.0) {
@@ -297,8 +297,14 @@ class Round{
     checkPlayerCollision();
     
     if(playerOneScore<3&&playerTwoScore<3){
-    playerOne.display();
-    playerTwo.display();
+      if (!p1charge) {
+        playerOne.updateCols();
+      }
+      if (!p2charge) {
+        playerTwo.updateCols();
+      }
+      playerOne.display();
+      playerTwo.display();
     }
     
     pickup.drawPickup();
@@ -309,7 +315,10 @@ class Round{
     
      //need to do this after the matrix has been popped to properly overlay
     drawWinScreen();
+    pushMatrix();
+    scale(0.7);
     image(splash, 0, 0);
+    popMatrix();
   }
   
   void checkPickupSpawn(){
