@@ -33,8 +33,8 @@ class Round{
   PShape ring = loadShape("ring.svg");
   PShape ring2 = loadShape("ring.svg");
 
-  Player playerOne = new Player(0.0, ellipseSz/2.0, playerWd, playerHt, color(20,255,220), image1);
-  Player playerTwo = new Player(PI, ellipseSz/2.0, playerWd, playerHt, color(255,210,20), image2);
+  Player playerOne = new Player(0.0, ellipseSz/2.0, playerWd, playerHt, color(220,0,255), image1);
+  Player playerTwo = new Player(PI, ellipseSz/2.0, playerWd, playerHt, color(100,255,0), image2);
   
   ArrayList<Projectile> p1projectiles = new ArrayList<Projectile>();
   float p1projvelocity = 0;
