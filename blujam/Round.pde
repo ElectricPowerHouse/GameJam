@@ -22,6 +22,14 @@ class Round{
   PImage image1 = loadImage("test1.png");
   PImage image2 = loadImage("test2.png");
   PImage splash = loadImage("splash.png");
+  
+  PImage l_ava_h = loadImage("l_head.png");
+  PImage l_ava_b = loadImage("l_body.png");
+  PImage l_ava_g = loadImage("l_glow.png");
+  
+  PImage r_ava_h = loadImage("r_head.png");
+  PImage r_ava_b = loadImage("r_body.png");
+  PImage r_ava_g = loadImage("r_glow.png");
   PShape ring = loadShape("ring.svg");
   PShape ring2 = loadShape("ring.svg");
 
@@ -309,7 +317,7 @@ class Round{
     
      //need to do this after the matrix has been popped to properly overlay
     drawWinScreen();
-    image(splash, 0, 0);
+    drawAvatars();
   }
   
   void checkPickupSpawn(){
@@ -398,6 +406,25 @@ class Round{
     ellipse(0,0,ellipseSz,ellipseSz);
     popStyle();
    
+  }
+  
+  void drawAvatars(){
+    pushStyle();
+    
+    tint(120, 250, 280);
+    image(l_ava_b, 0, 0);
+    tint(255, 180);
+    image(l_ava_g, 0, 0);
+    noTint();
+    image(l_ava_h, 0, 0);
+    
+    tint(250, 120, 255);
+    image(r_ava_b, 0, 0);
+    tint(255, 180);
+    image(r_ava_g, 0, 0);
+    noTint();
+    image(r_ava_h, 0, 0);
+    popStyle();
   }
   
   void keyPressedRound() {
