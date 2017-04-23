@@ -50,6 +50,8 @@ class Game{
  SoundManager[] pickupSpawnSounds = new SoundManager[11];
  SoundManager[] pickupGetSounds = new SoundManager[5];
  
+  SoundManager[] explosions = new SoundManager[3];
+ 
  SoundManager chargeUp;
  SoundManager chargeUpv2;
   
@@ -132,6 +134,9 @@ class Game{
     pickupGetSounds[3] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Powerup_Pickup_4.wav");
     pickupGetSounds[4] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Powerup_Pickup_5.wav");
    
+     pickupGetSounds[0] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Powerup_Pickup_1.wav");
+    pickupGetSounds[1] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Powerup_Pickup_2.wav");
+    pickupGetSounds[2] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Powerup_Pickup_3.wav");
     
     gameOver= false;
     roundNum = 1;
