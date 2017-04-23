@@ -6,9 +6,12 @@ class Pickup {
   PImage[] pickupImage = new PImage[3];
   
   float angle, dist, wd, ht;
-  boolean active;
+  boolean active, activateMe;
   int type;
   int imageNum = 0;
+  float startTime;
+  float curTime;
+  float dur = 10000;
 
   color c = color(0, 0, 0);
 
@@ -20,7 +23,8 @@ class Pickup {
     pickupImage[0] = loadImage("cyangem.png");
     pickupImage[1] = loadImage("redgem.png");
     pickupImage[2] = loadImage("orangegem.png");
-    active = true;
+    active = false;
+    startTime = millis();
     dist = distance;
 
     angle = random(0, 2)*PI;
@@ -28,7 +32,7 @@ class Pickup {
 
 
   void drawPickup() {
-
+    this.updatePickup();
     if (!active) {
       return;
     }
@@ -50,8 +54,18 @@ class Pickup {
   }
 
   void deActivate() {
-
+    startTime = millis();
     active = false;
+    dur = int(random(10000, 15000));
+  }
+  
+  void updatePickup() {
+    if (!active) {
+      curTime = millis();
+      if (curTime - startTime >= dur) {
+        activateMe = true;
+      }
+    }
   }
 
   void activate(float angle1, float angle2) {
@@ -74,6 +88,7 @@ class Pickup {
     angles[1] = ((targAngle + curAngle)/2.0)-PI;
     angle = angles[int(random(2))];
     getRandomType();
+    activateMe = false;
     active = true;
   }
 

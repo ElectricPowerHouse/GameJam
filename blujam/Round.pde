@@ -64,11 +64,6 @@ class Round{
   int playerOneScore;
   int playerTwoScore;
   
-  float startMilli = 0;
-  float currentMilli = 0;
-  int minPickupTime = 5000;
-  int maxPickupTime = 30000;
-  
   ArrayList<Explosion> explosions = new ArrayList<Explosion>();
   
 
@@ -405,14 +400,9 @@ class Round{
     drawAvatars();
   }
   
-  void checkPickupSpawn(){
-    currentMilli = millis();
-    
-    int randomSpawn = int(random(minPickupTime,maxPickupTime));
-    
-    if(currentMilli-startMilli > 10000){
+  void checkPickupSpawn(){    
+    if(pickup.activateMe){
       pickup.activate(playerOne.angle, playerTwo.angle);
-      startMilli = currentMilli; 
     }   
   }
   
@@ -455,7 +445,7 @@ class Round{
     if (targAngle < 0) {
       targAngle += 2*PI;
     }
-    if (curAngle >= targAngle - PI/20.0 && curAngle <= targAngle + PI/20.0 && player.dist > player.baseDist-player.ht) {
+    if (pickup.active && curAngle >= targAngle - PI/20.0 && curAngle <= targAngle + PI/20.0 && player.dist > player.baseDist-player.ht) {
       pickup.deActivate();
       player.poweredUp=true;
       player.powerStart = millis();
