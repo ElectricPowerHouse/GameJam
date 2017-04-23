@@ -47,6 +47,9 @@ class Game{
  
  SoundManager[] bounceSounds = new SoundManager[11];
  
+ SoundManager[] pickupSpawnSounds = new SoundManager[11];
+ SoundManager[] pickupGetSounds = new SoundManager[5];
+ 
  SoundManager chargeUp;
  SoundManager chargeUpv2;
   
@@ -108,12 +111,32 @@ class Game{
     bounceSounds[9] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Bouncing_Ball_10.wav");
     bounceSounds[10] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Bouncing_Ball_11.wav");
     
+     pickupSpawnSounds[0] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Powerup_Spawn_1.wav");
+    pickupSpawnSounds[1] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Powerup_Spawn_2.wav");
+    pickupSpawnSounds[2] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Powerup_Spawn_3.wav");
+    pickupSpawnSounds[3] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Powerup_Spawn_4.wav");
+    pickupSpawnSounds[4] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Powerup_Spawn_5.wav");
+    pickupSpawnSounds[5] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Powerup_Spawn_6.wav");
+    pickupSpawnSounds[6] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Powerup_Spawn_7.wav");
+    pickupSpawnSounds[7] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Powerup_Spawn_8.wav");
+    pickupSpawnSounds[8] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Powerup_Spawn_9.wav");
+    pickupSpawnSounds[9] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Powerup_Spawn_10.wav");
+    pickupSpawnSounds[10] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Powerup_Spawn_11.wav");
+    
     chargeUp = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Charge_Up.wav");
     chargeUpv2 = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Charge_Up.wav");
     
+     pickupGetSounds[0] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Powerup_Pickup_1.wav");
+    pickupGetSounds[1] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Powerup_Pickup_2.wav");
+    pickupGetSounds[2] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Powerup_Pickup_3.wav");
+    pickupGetSounds[3] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Powerup_Pickup_4.wav");
+    pickupGetSounds[4] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Powerup_Pickup_5.wav");
+   
+    
     gameOver= false;
     roundNum = 1;
-    round = new Round(roundNum, playerOneScore, playerTwoScore,shortShots,medShots,longShots,jumpSounds,deathSounds, bounceSounds, chargeUp, chargeUpv2);
+    round = new Round(roundNum, playerOneScore, playerTwoScore,shortShots,medShots,longShots,jumpSounds,deathSounds, bounceSounds, chargeUp, chargeUpv2, pickupSpawnSounds, 
+    pickupGetSounds);
     
     playerOneScore = 0;
     playerTwoScore = 0;
@@ -168,7 +191,8 @@ void drawGame(){
       }
       else{
         roundNum++;
-        round = new Round(roundNum,playerOneScore,playerTwoScore,shortShots,medShots,longShots,jumpSounds,deathSounds, bounceSounds, chargeUp, chargeUpv2);
+        round = new Round(roundNum,playerOneScore,playerTwoScore,shortShots,medShots,longShots,jumpSounds,deathSounds, bounceSounds, chargeUp, chargeUpv2, pickupSpawnSounds,
+        pickupGetSounds);
       }
       
      
@@ -203,7 +227,8 @@ void drawGame(){
       }
       else{
         roundNum++;
-        round = new Round(roundNum,playerOneScore,playerTwoScore,shortShots,medShots,longShots,jumpSounds,deathSounds, bounceSounds, chargeUp, chargeUpv2);
+        round = new Round(roundNum,playerOneScore,playerTwoScore,shortShots,medShots,longShots,jumpSounds,deathSounds, bounceSounds, chargeUp, chargeUpv2, pickupSpawnSounds,
+        pickupGetSounds);
       }
     }  
   
