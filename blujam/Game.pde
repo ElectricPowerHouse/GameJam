@@ -50,7 +50,7 @@ class Game{
  SoundManager[] pickupSpawnSounds = new SoundManager[11];
  SoundManager[] pickupGetSounds = new SoundManager[5];
  
-  SoundManager[] explosions = new SoundManager[3];
+  SoundManager[] explosions = new SoundManager[4];
  
  SoundManager chargeUp;
  SoundManager chargeUpv2;
@@ -134,14 +134,15 @@ class Game{
     pickupGetSounds[3] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Powerup_Pickup_4.wav");
     pickupGetSounds[4] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Powerup_Pickup_5.wav");
    
-     pickupGetSounds[0] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Powerup_Pickup_1.wav");
-    pickupGetSounds[1] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Powerup_Pickup_2.wav");
-    pickupGetSounds[2] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Powerup_Pickup_3.wav");
+     explosions[0] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Shaking_1.wav");
+    explosions[1] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Shaking_2.wav");
+    explosions[2] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Shaking_3.wav");
+    explosions[3] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Shaking_4.wav");
     
     gameOver= false;
     roundNum = 1;
     round = new Round(roundNum, playerOneScore, playerTwoScore,shortShots,medShots,longShots,jumpSounds,deathSounds, bounceSounds, chargeUp, chargeUpv2, pickupSpawnSounds, 
-    pickupGetSounds);
+    pickupGetSounds, explosions);
     
     playerOneScore = 0;
     playerTwoScore = 0;
@@ -197,7 +198,7 @@ void drawGame(){
       else{
         roundNum++;
         round = new Round(roundNum,playerOneScore,playerTwoScore,shortShots,medShots,longShots,jumpSounds,deathSounds, bounceSounds, chargeUp, chargeUpv2, pickupSpawnSounds,
-        pickupGetSounds);
+        pickupGetSounds, explosions);
       }
       
      
@@ -233,7 +234,7 @@ void drawGame(){
       else{
         roundNum++;
         round = new Round(roundNum,playerOneScore,playerTwoScore,shortShots,medShots,longShots,jumpSounds,deathSounds, bounceSounds, chargeUp, chargeUpv2, pickupSpawnSounds,
-        pickupGetSounds);
+        pickupGetSounds, explosions);
       }
     }  
   

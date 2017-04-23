@@ -78,6 +78,7 @@ class Round{
   SoundManager[] bounceSounds;
   SoundManager[] pickupSpawnSounds;
   SoundManager[] pickupGetSounds;
+  SoundManager[] explosion;
   
   SoundManager chargeUp1;
   SoundManager chargeUp2;
@@ -93,7 +94,7 @@ class Round{
   Round(int roundCount, int playerOneScore, int playerTwoScore, SoundManager[] shortShots, SoundManager[] medShots, SoundManager[] longShots, SoundManager[] jumpSounds, 
 
   SoundManager[] deathSounds, SoundManager[] bounceSounds, SoundManager chargeUp, SoundManager chargeUpv2, SoundManager[]  pickupSpawnSounds,
-   SoundManager[] pickupGetSounds){
+   SoundManager[] pickupGetSounds, SoundManager[] explosions){
 
     
     this.deathSounds = deathSounds;
@@ -127,14 +128,10 @@ class Round{
     this.jumpSounds = jumpSounds;
     this.bounceSounds=bounceSounds;
     this.chargeUp1 = chargeUp;
-<<<<<<< HEAD
     this.chargeUp2 = chargeUpv2;
-=======
-    this.chargeUp2 = chargeUp;
-    this.chargeMax = chargeMax;
     this.pickupSpawnSounds=pickupSpawnSounds;
     this.pickupGetSounds=pickupGetSounds;
->>>>>>> origin/master
+    this.explosion = explosions;
     
     
   }
@@ -279,7 +276,7 @@ class Round{
           }
           
          
-          p1projectiles.add(new Projectile(playerOne.dist, ellipseSz/2.0, projxvel*p1aim, playerOne.angle, p1projvelocity,playerOne.powerType, playerOne.proj, playerOne.col,bounceSounds));
+          p1projectiles.add(new Projectile(playerOne.dist, ellipseSz/2.0, projxvel*p1aim, playerOne.angle, p1projvelocity,playerOne.powerType, playerOne.proj, playerOne.col,bounceSounds, explosion));
         }
       } else {
         playerOne.dangerous = true;
@@ -333,7 +330,7 @@ class Round{
           }
           
         
-        p2projectiles.add(new Projectile(playerTwo.dist, ellipseSz/2.0, projxvel*p2aim, playerTwo.angle, p2projvelocity, playerTwo.powerType, playerTwo.proj, playerTwo.col,bounceSounds));
+        p2projectiles.add(new Projectile(playerTwo.dist, ellipseSz/2.0, projxvel*p2aim, playerTwo.angle, p2projvelocity, playerTwo.powerType, playerTwo.proj, playerTwo.col,bounceSounds, explosion));
       }
       } else {
         playerTwo.dangerous = true;

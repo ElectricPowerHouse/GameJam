@@ -11,8 +11,9 @@ class Projectile{
   float wd = 18;
   float ht = 18;
   SoundManager[] bounceSounds;
+  SoundManager[] explosions;
   
-  Projectile(float distance, float bounds, float xVelocity, float a, float yVelocity, int type, PImage proj, color initCol, SoundManager[] bounceSounds) {
+  Projectile(float distance, float bounds, float xVelocity, float a, float yVelocity, int type, PImage proj, color initCol, SoundManager[] bounceSounds, SoundManager[] explosions) {
     dist = distance;
     baseDist = bounds;
     xVel = xVelocity;
@@ -28,6 +29,7 @@ class Projectile{
       ht = 40;
     }
     this.bounceSounds = bounceSounds;
+    this.explosions = explosions;
     
   }
   
@@ -58,6 +60,10 @@ class Projectile{
     if (sqrt(sq(xPos)+sq(dist)) >= baseDist) {
       finalangle = angle-(((abs(xVel))/xVel)*2*(asin(((sqrt(sq(xPos)+sq(baseDist-dist)))/2.0)/baseDist)));
       dead = true;
+      
+       int randomChoose = int(random(0,4));
+        explosions[randomChoose].play();
+        
     }
   }
   
@@ -83,6 +89,10 @@ class Projectile{
         bounces--;
       } else {
         finalangle = angle-(((abs(xVel))/xVel)*2*(asin(((sqrt(sq(xPos)+sq(baseDist-dist)))/2.0)/baseDist)));
+        
+        int randomChoose = int(random(0,4));
+        explosions[randomChoose].play();
+        
         dead = true;
       }
     }
