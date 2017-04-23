@@ -51,6 +51,8 @@ class Game{
  SoundManager[] pickupGetSounds = new SoundManager[5];
  
   SoundManager[] explosions = new SoundManager[4];
+  
+  SoundManager[] dashes = new SoundManager[4];
  
  SoundManager chargeUp;
  SoundManager chargeUpv2;
@@ -139,10 +141,15 @@ class Game{
     explosions[2] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Shaking_3.wav");
     explosions[3] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Shaking_4.wav");
     
+    dashes[0] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Dash_Low_1.wav");
+    dashes[1] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Dash_Low_2.wav");
+    dashes[2] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Dash_Low_3.wav");
+    dashes[3] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Dash_Low_4.wav");
+    
     gameOver= false;
     roundNum = 1;
     round = new Round(roundNum, playerOneScore, playerTwoScore,shortShots,medShots,longShots,jumpSounds,deathSounds, bounceSounds, chargeUp, chargeUpv2, pickupSpawnSounds, 
-    pickupGetSounds, explosions);
+    pickupGetSounds, explosions, dashes);
     
     playerOneScore = 0;
     playerTwoScore = 0;
@@ -198,7 +205,7 @@ void drawGame(){
       else{
         roundNum++;
         round = new Round(roundNum,playerOneScore,playerTwoScore,shortShots,medShots,longShots,jumpSounds,deathSounds, bounceSounds, chargeUp, chargeUpv2, pickupSpawnSounds,
-        pickupGetSounds, explosions);
+        pickupGetSounds, explosions, dashes);
       }
       
      
@@ -234,7 +241,7 @@ void drawGame(){
       else{
         roundNum++;
         round = new Round(roundNum,playerOneScore,playerTwoScore,shortShots,medShots,longShots,jumpSounds,deathSounds, bounceSounds, chargeUp, chargeUpv2, pickupSpawnSounds,
-        pickupGetSounds, explosions);
+        pickupGetSounds, explosions, dashes);
       }
     }  
   
