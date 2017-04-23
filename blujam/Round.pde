@@ -442,7 +442,7 @@ class Round{
   void drawAvatars(){
     pushStyle();
     
-    if (playerTwoScore < 3) {
+    if (playerOneScore < 3) {
       tint(120, 250, 280);
       image(l_ava_b, 0, 0);
       tint(255, 180);
@@ -451,7 +451,7 @@ class Round{
       image(l_ava_h, 0, 0);
     }
     
-    if (playerOneScore < 3) {
+    if (playerTwoScore < 3) {
       tint(250, 120, 255);
       image(r_ava_b, 0, 0);
       tint(255, 180);
@@ -537,7 +537,7 @@ class Round{
   void drawWinScreen(){
     
     
-    if(playerTwoScore>2){
+    if(playerOneScore>2){
     fill(255);
     textFont(pointed, height/10);
     text("VICTOR", width/16, (height/2));
@@ -548,7 +548,7 @@ class Round{
     text("TO RETURN", width/12, (height-(height/4.6)));
     }
     
-    if(playerOneScore>2){
+    if(playerTwoScore>2){
       fill(255);
     textFont(pointed, height/10);
     text("VICTOR", width-(width/5), (height/2));
