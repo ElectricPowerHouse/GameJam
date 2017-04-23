@@ -34,8 +34,11 @@ class Round{
   PShape ring = loadShape("ring.svg");
   PShape ring2 = loadShape("ring.svg");
 
-  Player playerOne = new Player(PI, ellipseSz/2.0, playerWd, playerHt, color(100,255,0), image1);
-  Player playerTwo = new Player(0.0, ellipseSz/2.0, playerWd, playerHt, color(220,0,255), image2);
+
+  Player playerOne;
+  Player playerTwo;
+  
+
   
   ArrayList<Projectile> p1projectiles = new ArrayList<Projectile>();
   float p1projvelocity = 0;
@@ -67,39 +70,26 @@ class Round{
   
   ArrayList<Explosion> explosions = new ArrayList<Explosion>();
   
-  SoundManager shortShot1;
-  SoundManager shortShot2;
-  SoundManager shortShot3;
-  SoundManager shortShot4;
-  SoundManager shortShot5;
-  SoundManager shortShot6;
-  SoundManager shortShot7;
-  SoundManager medShot1;
-  SoundManager medShot2;
-  SoundManager medShot3;
-  SoundManager medShot4;
-  SoundManager medShot5;
-  SoundManager medShot6;
-  SoundManager medShot7;
-  SoundManager longShot1;
-  SoundManager longShot2;
-  SoundManager longShot3;
-  SoundManager longShot4;
-  SoundManager longShot5;
-  SoundManager longShot6;
-  SoundManager longShot7;
+
   
   SoundManager[] shortShots;
   SoundManager[] medShots;
   SoundManager[] longShots;
   SoundManager[] jumpSounds;
+  SoundManager[] deathSounds;
   
   int shortShotMax = 8;
   int medShotMax = 13;
   int longShotMax = 18;
   
 
-  Round(int roundCount, int playerOneScore, int playerTwoScore, SoundManager[] shortShots, SoundManager[] medShots, SoundManager[] longShots, SoundManager[] jumpSounds){
+  Round(int roundCount, int playerOneScore, int playerTwoScore, SoundManager[] shortShots, SoundManager[] medShots, SoundManager[] longShots, SoundManager[] jumpSounds, 
+  SoundManager[] deathSounds){
+    
+    this.deathSounds = deathSounds;
+    
+      playerOne = new Player(PI, ellipseSz/2.0, playerWd, playerHt, color(100,255,0), image1, deathSounds);
+    playerTwo = new Player(0.0, ellipseSz/2.0, playerWd, playerHt, color(220,0,255), image2, deathSounds);
     
     pointed = createFont("font/Pointed.ttf", height/4);
     roundNum = roundCount;
@@ -125,6 +115,7 @@ class Round{
     this.medShots = medShots;
     this.longShots = longShots;
     this.jumpSounds = jumpSounds;
+    
     
   }
 

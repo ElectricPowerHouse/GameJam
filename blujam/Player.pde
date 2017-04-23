@@ -8,7 +8,10 @@ class Player{
   LightTrail[] trail = new LightTrail[3];
   float powerStart, powerDuration, powerCount;
   
-  Player (float a, float distance, float widt, float hght, color baseCol, PImage image) {
+  SoundManager[] deathSounds;
+
+  
+  Player (float a, float distance, float widt, float hght, color baseCol, PImage image, SoundManager[] deathSounds) {
     angle = a;
     dist = distance;
     baseDist = distance;
@@ -35,6 +38,7 @@ class Player{
       }
     }
     poweredUp=false;
+    this.deathSounds=deathSounds;
   }
   
   void display() {
@@ -141,10 +145,15 @@ class Player{
           }
           if (checkProj.type == 3) {
             if (curAngle >= targAngle - PI/10.0 && curAngle <= targAngle + PI/10.0 && dist > baseDist-ht) {
+              int randomChoose = int(random(0,3));
+              deathSounds[randomChoose].play();
+           
               this.jump(15);
             }
           } else {
             if (curAngle >= targAngle - PI/20.0 && curAngle <= targAngle + PI/20.0 && dist > baseDist-ht) {
+               int randomChoose = int(random(0,3));
+              deathSounds[randomChoose].play();
               this.jump(15);
             }
           }

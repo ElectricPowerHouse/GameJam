@@ -41,13 +41,9 @@ class Game{
   SoundManager[] medShots = new SoundManager[7];
   SoundManager[] longShots = new SoundManager[7];
   
-  SoundManager jumping1;
-  SoundManager jumping2;
-  SoundManager jumping3;
-  SoundManager jumping4;
-  SoundManager jumping5;
-  SoundManager jumping6;
-  SoundManager jumping7;
+ SoundManager[] deathSounds = new SoundManager[3];
+  
+
   
   SoundManager[] jumpSounds = new SoundManager[7];
   
@@ -93,9 +89,13 @@ class Game{
     jumpSounds[5] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Jumping_6.wav");
     jumpSounds[6] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Jumping_7.wav");
     
+    deathSounds[0] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Death_1.wav");
+    deathSounds[1] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Death_2.wav");
+    deathSounds[2] = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Death_3.wav");
+    
     gameOver= false;
     roundNum = 1;
-    round = new Round(roundNum, playerOneScore, playerTwoScore,shortShots,medShots,longShots,jumpSounds);
+    round = new Round(roundNum, playerOneScore, playerTwoScore,shortShots,medShots,longShots,jumpSounds,deathSounds);
     
     playerOneScore = 0;
     playerTwoScore = 0;
@@ -150,7 +150,7 @@ void drawGame(){
       }
       else{
         roundNum++;
-        round = new Round(roundNum,playerOneScore,playerTwoScore,shortShots,medShots,longShots,jumpSounds);
+        round = new Round(roundNum,playerOneScore,playerTwoScore,shortShots,medShots,longShots,jumpSounds,deathSounds);
       }
       
      
@@ -185,7 +185,7 @@ void drawGame(){
       }
       else{
         roundNum++;
-        round = new Round(roundNum,playerOneScore,playerTwoScore,shortShots,medShots,longShots,jumpSounds);
+        round = new Round(roundNum,playerOneScore,playerTwoScore,shortShots,medShots,longShots,jumpSounds,deathSounds);
       }
     }  
   
