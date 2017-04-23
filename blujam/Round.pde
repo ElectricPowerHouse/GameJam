@@ -32,6 +32,7 @@ class Round{
   PImage r_ava_b = loadImage("r_body.png");
   PImage r_ava_g = loadImage("r_glow.png");
   PImage bg = loadImage("bg.png");
+  PImage mainbg = loadImage("mainbg.png");
   PShape ring = loadShape("ring.svg");
   PShape ring2 = loadShape("ring.svg");
 
@@ -136,7 +137,7 @@ class Round{
       }
     }
     
-    background(37);
+    background(10);
     pushMatrix();
     translate(width/2.0, height/2.0);
     
@@ -161,6 +162,10 @@ class Round{
       }
     }
     
+    pushStyle();
+    imageMode(CENTER);
+    image(mainbg,0,0);
+    popStyle();
     drawBounds();
     blueHole.drawHole();
     
