@@ -60,24 +60,25 @@ class GameManager {
 
 
   void drawMenu() {
-
+    pushStyle();
+    imageMode(CENTER);
+    textMode(CENTER);
     background(37);
     fill(255);
 
 
     textFont(pointed, height/3);
-    text("ELIUM", width/4, (height/2.3));
+    text("ILIUM", width*0.3, (height/2.3));
     textFont(pointed, height/12);
     
     if(flash){
-    text("press any key to battle", width/3.5, (height-(height/2.2)));
+    text("press any key to battle", width*0.31, (height-(height/2.2)));
     }
     
-    pushStyle();
-    imageMode(CENTER);
-    image(wasd, width/15, height-(height/3) );
+    
+    image(wasd, width*0.3, height*0.66);
     wasd.resize(int(wasdWidth/1.5), int(wasdHeight/1.5));
-    image(arrows, width/2.5, height-(height/3));
+    image(arrows, width*0.75, height*0.66);
     arrows.resize(int(arrowWidth/1.5), int(arrowHeight/1.5));
     popStyle();
 
