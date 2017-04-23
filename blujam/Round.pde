@@ -65,6 +65,14 @@ class Round{
   int maxPickupTime = 30000;
   
   ArrayList<Explosion> explosions = new ArrayList<Explosion>();
+  
+  SoundManager shortShot;
+  SoundManager medShot;
+  SoundManager longShot;
+  
+  int shortShotMax = 8;
+  int medShotMax = 13;
+  int longShotMax = 18;
 
   Round(int roundCount, int playerOneScore, int playerTwoScore){
     
@@ -86,6 +94,11 @@ class Round{
     ring.disableStyle();
     
     ring2.disableStyle();
+    
+    shortShot = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Shot_Weak_1.wav");
+    medShot = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Shot_Medium_1.wav");
+    longShot = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Shot_Full_1.wav");
+    
   }
 
   void drawRound() {
@@ -192,6 +205,18 @@ class Round{
     if (p1fire) {
       if (playerOne.powerType != 2) {
         if(p1projvelocity > minVel) {
+          //if p1 vel is above 
+          if(p1projvelocity>2&&p1projvelocity<shortShotMax){
+            shortShot.play();
+          }
+          else if(p1projvelocity>shortShotMax&&p1projvelocity<medShotMax){
+            medShot.play();
+          }
+          else{
+            longShot.play();
+          }
+          
+          print(p1projvelocity);
           p1projectiles.add(new Projectile(playerOne.dist, ellipseSz/2.0, projxvel*p1aim, playerOne.angle, p1projvelocity,playerOne.powerType, playerOne.proj, playerOne.col));
         }
       } else {
@@ -226,6 +251,7 @@ class Round{
     }
     if (p2fire) {
       if (playerTwo.powerType != 2) {
+        // if p2 ...
       if(p2projvelocity > minVel) {
         p2projectiles.add(new Projectile(playerTwo.dist, ellipseSz/2.0, projxvel*p2aim, playerTwo.angle, p2projvelocity, playerTwo.powerType, playerTwo.proj, playerTwo.col));
       }
