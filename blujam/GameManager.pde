@@ -35,6 +35,7 @@ class GameManager {
     pointed = createFont("font/Pointed.ttf", height/4);
 
     gameState = "MAINMENU";
+    //gameState = "PLAYING";
     //game = new Game();    // delete this when menu properly implemented
     
     
