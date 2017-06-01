@@ -15,11 +15,11 @@ class Pickup {
 
   color c = color(0, 0, 0);
   
-  SoundManager[] pickupSpawnSounds;
-  SoundManager[] pickupGetSounds;
+  AudioPlayer[] pickupSpawnSounds;
+  AudioPlayer[] pickupGetSounds;
 
 
-  Pickup (float distance, SoundManager[] pickupSpawnSounds, SoundManager[] pickupGetSounds) {
+  Pickup (float distance, AudioPlayer[] pickupSpawnSounds, AudioPlayer[] pickupGetSounds) {
 
     getRandomType();
 
@@ -116,13 +116,13 @@ class Pickup {
     
     if (type==1) {
       imageNum = 0;
-      wd = 30;
+      wd = width/45;
     } else if (type ==2) {
       imageNum = 1;
-      wd = 40;
+      wd = width/34;
     } else {
       imageNum = 2;
-      wd = 50;
+      wd = width/27;
     }
     ht=wd;
   }

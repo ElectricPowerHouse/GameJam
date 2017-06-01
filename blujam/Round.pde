@@ -19,8 +19,9 @@ class Round{
 
   float ellipseSz = 800;
   
-  float playerWd = 64.0;
-  float playerHt = 64.0;
+  float playerWd = ellipseSz/13;
+  float playerHt = ellipseSz/13;
+  
   PImage image1 = loadImage("test1.png");
   PImage image2 = loadImage("test2.png");
   PImage splash = loadImage("splash.png");
@@ -70,20 +71,20 @@ class Round{
   
 
   
-  SoundManager[] shortShots;
-  SoundManager[] medShots;
-  SoundManager[] longShots;
-  SoundManager[] jumpSounds;
-  SoundManager[] deathSounds;
-  SoundManager[] bounceSounds;
-  SoundManager[] pickupSpawnSounds;
-  SoundManager[] pickupGetSounds;
-  SoundManager[] explosion;
-  SoundManager[] dashes;
+  AudioPlayer[] shortShots;
+  AudioPlayer[] medShots;
+  AudioPlayer[] longShots;
+  AudioPlayer[] jumpSounds;
+  AudioPlayer[] deathSounds;
+  AudioPlayer[] bounceSounds;
+  AudioPlayer[] pickupSpawnSounds;
+  AudioPlayer[] pickupGetSounds;
+  AudioPlayer[] explosion;
+  AudioPlayer[] dashes;
   
-  SoundManager chargeUp1;
-  SoundManager chargeUp2;
-  SoundManager chargeMax;
+  AudioPlayer chargeUp1;
+  AudioPlayer chargeUp2;
+  AudioPlayer chargeMax;
   
   
   
@@ -92,10 +93,13 @@ class Round{
   int longShotMax = 18;
   
 
-  Round(int roundCount, int playerOneScore, int playerTwoScore, SoundManager[] shortShots, SoundManager[] medShots, SoundManager[] longShots, SoundManager[] jumpSounds, 
-  SoundManager[] deathSounds, SoundManager[] bounceSounds, SoundManager chargeUp, SoundManager chargeUpv2, SoundManager[]  pickupSpawnSounds,
-   SoundManager[] pickupGetSounds, SoundManager[] explosions, SoundManager[] dashes){
+  Round(int roundCount, int playerOneScore, int playerTwoScore, AudioPlayer[] shortShots, AudioPlayer[] medShots, AudioPlayer[] longShots, AudioPlayer[] jumpSounds, 
+  AudioPlayer[] deathSounds, AudioPlayer[] bounceSounds, AudioPlayer chargeUp, AudioPlayer chargeUpv2, AudioPlayer[]  pickupSpawnSounds,
+   AudioPlayer[] pickupGetSounds, AudioPlayer[] explosions, AudioPlayer[] dashes){
     
+    
+     ellipseSz = width/2.48;
+     
     this.deathSounds = deathSounds;
     
     playerOne = new Player(PI, ellipseSz/2.0, playerWd, playerHt, color(100,255,0), image1, deathSounds);
@@ -138,6 +142,7 @@ class Round{
 
   void drawRound() {
     
+    
     checkChargeSounds();
     checkPickupSpawn();
     checkPickupCollision(playerOne);
@@ -158,7 +163,7 @@ class Round{
     
     background(10);
     pushMatrix();
-    translate(width/2.0, height/2.0+10);
+    translate(width/2.0, height/2.0);
     
     
     if (screenShake) {
@@ -183,11 +188,11 @@ class Round{
     
     pushStyle();
     imageMode(CENTER);
-    image(mainbg,0,0);
+    image(mainbg,0,0,width,height);
     
     fill(255);
     textFont(pointed, height/18.0);
-    text("ILIUM", -68, -480);
+    text("ILIUM", -(height/15), -(height/2.3));
    
     popStyle();
     drawBounds();
@@ -317,13 +322,10 @@ class Round{
         // if p2 ...
       if(p2projvelocity > minVel) {
         
-        
-          
           int randomChoose = int(random(0,7));
           //if p1 vel is above 
           if(p2projvelocity>2&&p2projvelocity<shortShotMax){
-            shortShots[randomChoose].play();
-            
+            shortShots[randomChoose].play();     
           }
           else if(p2projvelocity>shortShotMax&&p2projvelocity<medShotMax){
             medShots[randomChoose].play();
@@ -331,8 +333,7 @@ class Round{
           else{
             longShots[randomChoose].play();
           }
-          
-        
+         
         p2projectiles.add(new Projectile(playerTwo.dist, ellipseSz/2.0, projxvel*p2aim, playerTwo.angle, p2projvelocity, playerTwo.powerType, playerTwo.proj, playerTwo.col,bounceSounds, explosion));
       }
       } else {
@@ -498,7 +499,7 @@ class Round{
     imageMode(CENTER);
     noStroke();
     fill(22);
-    ellipse(0,0,ellipseSz+5,ellipseSz+5);
+    ellipse(0,0,ellipseSz,ellipseSz);
     image(bg,0,0,ellipseSz,ellipseSz);
     popStyle();
    
@@ -511,20 +512,20 @@ class Round{
     
     if (playerOneScore < 3) {
       tint(220, 100, 255);
-      image(l_ava_b, 0, 0);
+      image(l_ava_b, 0, 0,width,height);
       tint(255, count);
-      image(l_ava_g, 0, 0);
+      image(l_ava_g, 0, 0,width,height);
       tint(255,100);
-      image(l_ava_h, 0, 0);
+      image(l_ava_h, 0, 0,width,height);
     }
     
     if (playerTwoScore < 3) {
       tint(220, 255, 100);
-      image(r_ava_b, 0, 0);
+      image(r_ava_b, 0, 0,width,height);
       tint(255, count);
-      image(r_ava_g, 0, 0);
+      image(r_ava_g, 0, 0,width,height);
       tint(255,100);
-      image(r_ava_h, 0, 0);
+      image(r_ava_h, 0, 0,width,height);
     }
     popStyle();
     if(count >= 180){
@@ -610,12 +611,14 @@ class Round{
     if (p1charge && p1projvelocity == 0) {
       chargeUp1.play();
     } else if (!p1charge) {
-      chargeUp1.stop();
+      chargeUp1.pause();
+      chargeUp1.rewind();
     }   
     if (p2charge && p2projvelocity == 0) {
       chargeUp2.play();
     } else if (!p2charge) {
-      chargeUp2.stop();
+      chargeUp2.pause();
+      chargeUp2.rewind();
     }   
   }
   

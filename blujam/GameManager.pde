@@ -1,3 +1,7 @@
+
+
+
+
 class GameManager {
 
   PFont calibri;
@@ -18,27 +22,30 @@ class GameManager {
   
   boolean flash = true;
   
+  Minim m;
 
   String gameState;
   Game game;
   
-  
-  SoundManager menuMusic;
-  SoundManager startSound;
+  AudioPlayer menuMusic;
+  AudioPlayer startSound;
 
-  GameManager() {
+  GameManager(Minim m) {
     
-    menuMusic = new SoundManager("C:/Illium/GameJam/blujam/sounds/music/Title_Screen.wav");
-    startSound = new SoundManager("C:/Illium/GameJam/blujam/sounds/fx/Round_1.wav");
+    menuMusic = minim.loadFile("sounds/music/Title_Screen.wav");
+    //menuMusic = new SoundManager("C:/Illium/GameJam/blujam/sounds/music/Title_Screen.wav");
+    startSound = minim.loadFile("sounds/fx/Round_1.wav");
 
     calibri = createFont("font/calibri.ttf", 32); 
     pointed = createFont("font/Pointed.ttf", height/4);
 
     gameState = "MAINMENU";
+    //gameState = "PLAYING";
     //game = new Game();    // delete this when menu properly implemented
+    this.m=m;
     
-    
-    menuMusic.playLoop();
+    //menuMusic.playLoop();
+    menuMusic.loop();
   }
 
 
@@ -116,9 +123,10 @@ class GameManager {
     if (gameState.equals("MAINMENU")) {
 
       
-      menuMusic.stop();
+      menuMusic.pause();
+      menuMusic.rewind();
 
-      game = new Game();
+      game = new Game(m);
       gameState = "PLAYING";
     } else {
       
@@ -128,7 +136,7 @@ class GameManager {
          
         game.stopMusic();
         
-        menuMusic.playLoop();
+        menuMusic.loop();
         gameState="MAINMENU";
         
        }

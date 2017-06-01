@@ -8,10 +8,10 @@ class Player{
   LightTrail[] trail = new LightTrail[3];
   float powerStart, powerDuration, powerCount;
   
-  SoundManager[] deathSounds;
+  AudioPlayer[] deathSounds;
 
   
-  Player (float a, float distance, float widt, float hght, color baseCol, PImage image, SoundManager[] deathSounds) {
+  Player (float a, float distance, float widt, float hght, color baseCol, PImage image, AudioPlayer[] deathSounds) {
     angle = a;
     dist = distance;
     baseDist = distance;
