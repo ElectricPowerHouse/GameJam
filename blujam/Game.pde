@@ -229,7 +229,7 @@ void drawGame(){
       
       
       playerOneScore++;
-       if(playerTwoScore==2){
+       if(playerOneScore==2){
           if(isTense==false){
           round1Music.pause();
           round1Music.rewind();

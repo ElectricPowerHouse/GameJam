@@ -97,7 +97,7 @@ class Round{
   AudioPlayer[] deathSounds, AudioPlayer[] bounceSounds, AudioPlayer chargeUp, AudioPlayer chargeUpv2, AudioPlayer[]  pickupSpawnSounds,
    AudioPlayer[] pickupGetSounds, AudioPlayer[] explosions, AudioPlayer[] dashes){
     
-     print(width);
+    
      ellipseSz = width/2.48;
      
     this.deathSounds = deathSounds;
