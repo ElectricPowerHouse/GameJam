@@ -15,11 +15,11 @@ class Pickup {
 
   color c = color(0, 0, 0);
   
-  SoundManager[] pickupSpawnSounds;
-  SoundManager[] pickupGetSounds;
+  AudioPlayer[] pickupSpawnSounds;
+  AudioPlayer[] pickupGetSounds;
 
 
-  Pickup (float distance, SoundManager[] pickupSpawnSounds, SoundManager[] pickupGetSounds) {
+  Pickup (float distance, AudioPlayer[] pickupSpawnSounds, AudioPlayer[] pickupGetSounds) {
 
     getRandomType();
 

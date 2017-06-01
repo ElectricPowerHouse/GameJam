@@ -10,10 +10,10 @@ class Projectile{
   color col;
   float wd = 18;
   float ht = 18;
-  SoundManager[] bounceSounds;
-  SoundManager[] explosions;
+  AudioPlayer[] bounceSounds;
+  AudioPlayer[] explosions;
   
-  Projectile(float distance, float bounds, float xVelocity, float a, float yVelocity, int type, PImage proj, color initCol, SoundManager[] bounceSounds, SoundManager[] explosions) {
+  Projectile(float distance, float bounds, float xVelocity, float a, float yVelocity, int type, PImage proj, color initCol, AudioPlayer[] bounceSounds, AudioPlayer[] explosions) {
     dist = distance;
     baseDist = bounds;
     xVel = xVelocity;

@@ -71,20 +71,20 @@ class Round{
   
 
   
-  SoundManager[] shortShots;
-  SoundManager[] medShots;
-  SoundManager[] longShots;
-  SoundManager[] jumpSounds;
-  SoundManager[] deathSounds;
-  SoundManager[] bounceSounds;
-  SoundManager[] pickupSpawnSounds;
-  SoundManager[] pickupGetSounds;
-  SoundManager[] explosion;
-  SoundManager[] dashes;
+  AudioPlayer[] shortShots;
+  AudioPlayer[] medShots;
+  AudioPlayer[] longShots;
+  AudioPlayer[] jumpSounds;
+  AudioPlayer[] deathSounds;
+  AudioPlayer[] bounceSounds;
+  AudioPlayer[] pickupSpawnSounds;
+  AudioPlayer[] pickupGetSounds;
+  AudioPlayer[] explosion;
+  AudioPlayer[] dashes;
   
-  SoundManager chargeUp1;
-  SoundManager chargeUp2;
-  SoundManager chargeMax;
+  AudioPlayer chargeUp1;
+  AudioPlayer chargeUp2;
+  AudioPlayer chargeMax;
   
   
   
@@ -93,9 +93,9 @@ class Round{
   int longShotMax = 18;
   
 
-  Round(int roundCount, int playerOneScore, int playerTwoScore, SoundManager[] shortShots, SoundManager[] medShots, SoundManager[] longShots, SoundManager[] jumpSounds, 
-  SoundManager[] deathSounds, SoundManager[] bounceSounds, SoundManager chargeUp, SoundManager chargeUpv2, SoundManager[]  pickupSpawnSounds,
-   SoundManager[] pickupGetSounds, SoundManager[] explosions, SoundManager[] dashes){
+  Round(int roundCount, int playerOneScore, int playerTwoScore, AudioPlayer[] shortShots, AudioPlayer[] medShots, AudioPlayer[] longShots, AudioPlayer[] jumpSounds, 
+  AudioPlayer[] deathSounds, AudioPlayer[] bounceSounds, AudioPlayer chargeUp, AudioPlayer chargeUpv2, AudioPlayer[]  pickupSpawnSounds,
+   AudioPlayer[] pickupGetSounds, AudioPlayer[] explosions, AudioPlayer[] dashes){
     
      print(width);
      ellipseSz = width/2.48;
@@ -611,12 +611,14 @@ class Round{
     if (p1charge && p1projvelocity == 0) {
       chargeUp1.play();
     } else if (!p1charge) {
-      chargeUp1.stop();
+      chargeUp1.pause();
+      chargeUp1.rewind();
     }   
     if (p2charge && p2projvelocity == 0) {
       chargeUp2.play();
     } else if (!p2charge) {
-      chargeUp2.stop();
+      chargeUp2.pause();
+      chargeUp2.rewind();
     }   
   }
   
